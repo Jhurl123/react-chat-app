@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Avatar } from '@material-ui/core'
 import StyledBadge from '../badge/styledBadge'
+import MessageContext from '../../Context/messageContext'
 
 const useStyles = makeStyles((theme) => ({
 
@@ -10,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     padding: '1.15rem .75rem 1.15rem 1.5rem',
     borderBottom: '1px solid #d3d3d3',
+    justifyContent: 'space-evenlt',
+    [theme.breakpoints.down("md")]: {
+      justifyContent: 'space-around'
+    }
   },
   green: {
     backgroundColor: 'green',
@@ -21,12 +26,13 @@ const useStyles = makeStyles((theme) => ({
     width: 22,
     height: 22,
     border: `2px solid ${theme.palette.background.paper}`,
-    margin: '8px'
+    margin: '8px',
   },
   info: {
     display: 'flex',
     flexDirection: 'column',
     padding: '0 1.3rem',
+    width: '100%',
     '& h4': {
       margin: '0 0 .5rem 0'
     },
@@ -41,6 +47,8 @@ const ChatConversation = (props) => {
 
   const classes = useStyles()
   const { info } = props
+  
+  // Need to use the messages here, and show the excerpt of the last message sent using context
 
   return (
     <div className={classes.conversation}>

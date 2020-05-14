@@ -1,132 +1,45 @@
-import React, { useEffect, useState }from 'react'
+import React, { useEffect, useState, useContext }from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import ChatConversation from './chatConversation';
+import MessageContext from '../../Context/messageContext'
 
 const useStyles = makeStyles((theme) => ({
   chatList: {
     borderRight: '1px solid #d3d3d3',
     height: '80vh',
-    overflowY: 'scroll'
-  }
-}))
+    overflowY: 'scroll',
+  },
 
-const CONVERSATIONS = [
-  {
-    id: 3,
-    users: [
-      {
-        id: 343,
-        name: "Justin H."
-      },
-      {
-        id: 3432,
-        name: "Abby H."
-      }
-    ],
-    excerpt: "This is the last message we sent...",
-    time: "8:30pm"
-  },
-  {
-    id: 4,
-    users: [
-      {
-        id: 343,
-        name: "Justin H."
-      },
-      {
-        id: 3432,
-        name: "Abby H."
-      }
-    ],
-    excerpt: "This is the last message we sent...",
-    time: "8:30pm"
-  },
-  {
-    id: 5,
-    users: [
-      {
-        id: 343,
-        name: "Espresso H."
-      }
-    ],
-    excerpt: "This is the last message we sent...",
-    time: "8:30pm"
-  },
-  {
-    id: 3432,
-    users: [
-      {
-        id: 2132,
-        name: "Crush H."
-      }
-    ],
-    excerpt: "This is the last message we sent...",
-    time: "8:30pm"
-  },
-  {
-    id: 3432,
-    users: [
-      {
-        id: 2132,
-        name: "Crush H."
-      }
-    ],
-    excerpt: "This is the last message we sent...",
-    time: "8:30pm"
-  },
-  {
-    id: 3432,
-    users: [
-      {
-        id: 2132,
-        name: "Crush H."
-      }
-    ],
-    excerpt: "This is the last message we sent...",
-    time: "8:30pm"
-  },
-  {
-    id: 3432,
-    users: [
-      {
-        id: 2132,
-        name: "Crush H."
-      }
-    ],
-    excerpt: "This is the last message we sent...",
-    time: "8:30pm"
-  },
-  {
-    id: 3432,
-    users: [
-      {
-        id: 2132,
-        name: "Crush H."
-      }
-    ],
-    excerpt: "This is the last message we sent...",
-    time: "8:30pm"
-  },
-  {
-    id: 3432,
-    users: [
-      {
-        id: 2132,
-        name: "Crush H."
-      }
-    ],
-    excerpt: "This is the last message we sent...",
-    time: "8:30pm"
-  }
-]
+}))
 
 const ChatList = (props) => {
 
   const classes = useStyles()
+  const messageContext = useContext(MessageContext)
+  
+  // Move this to the conversation list component when prototyping is over
+  const conversations = messageContext.conversations
+  const messages = messageContext.messages
+  let [displayConversations, setDisplayconvo] = useState([]) 
+
+  useEffect(()=> {
+
+    if(conversations.length) {
+      
+      setDisplayconvo(conversations.map(convo => {
+        let message = messages.filter(message => convo.id === message.convoId)
+        // Don't let the excerpt overflow
+        convo.excerpt = message[0].content.substring(0, 25) + '...'
+        return convo
+      }))
+    }
+    
+  }, [conversations, messages]);
+  
   return (
-    <div className={classes.chatList}>
-      {CONVERSATIONS && (
-        CONVERSATIONS.map(convo => <ChatConversation key={convo.id} info={convo} />)
+    <div className={`${classes.chatList}`} >
+      {displayConversations && (
+        displayConversations.map(convo => <ChatConversation key={convo.id} info={convo} />)
       )}
 
     </div>

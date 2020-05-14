@@ -6,9 +6,17 @@ body {
   background-color: #d3d3d3;
 }
 
+body * {
+  box-sizing: border-box;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+*:focus {
+  outline: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
