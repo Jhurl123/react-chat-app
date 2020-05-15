@@ -17,7 +17,7 @@ const Window = (props) => {
   return (
     <Container maxWidth={'lg'}>
       <Box mt={8} mb={8}>
-        <WindowToolbar handleMenu={toggleMenu}/>
+        {/* <WindowToolbar handleMenu={toggleMenu}/> */}
         <WindowPane menuStatus={menuOpen} />
       </Box>
     </Container>
