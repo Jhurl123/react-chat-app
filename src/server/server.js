@@ -1,13 +1,21 @@
-const server = require('http').createServer()
-const io = require('socket.io')(server)
+const dotenv = require('dotenv').config({path: __dirname + '/.env'});
+const path = require('path');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser')
+
+const PORT = process.env.PORT || 3000;
+const server = app.listen(PORT)
+const io = require('socket.io')(server, { origins: '*:*'})
 
 io.on('connection', function (client) {
-
 
   client.on('connect', function () {
     console.log('client connected boiii...', client.id)
     // handleDisconnect()
   })
+
+  client.on('join', () => console.log("testseresr"))
   
   client.on('disconnect', function () {
     console.log('client disconnect...', client.id)
@@ -20,8 +28,8 @@ io.on('connection', function (client) {
   })
 })
 
+app.use(express.static(path.join(__dirname, 'build')));
 
-server.listen(3000, function (err) {
-  if (err) throw err
-  console.log('listening on port 3000')
-})
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});

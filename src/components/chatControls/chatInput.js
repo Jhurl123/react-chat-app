@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
 import { makeStyles } from "@material-ui/core/styles"
-import { Button } from '@material-ui/core'
 import EmailIcon from '@material-ui/icons/Email'
 import IconButton from '@material-ui/core/IconButton'
 import AttachFileIcon from '@material-ui/icons/AttachFile'
@@ -22,9 +21,11 @@ const ChatInput = (props) => {
 
   const [message, setMessage] = useState("")
   const messageContext = useContext(MessageContext)
+  const client = messageContext.client
   const classes = useStyles()
 
   const handleSubmit = (event) => {
+    client().connectSocket()
     event.preventDefault()
 
     // Temporary variable to sit in place of any response from the server

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid } from '@material-ui/core'
 import ChatList from '../chatList/chatList'
@@ -6,7 +6,8 @@ import MessagePane from '../message/messagePane'
 import ChatControls from '../chatControls/chatControls'
 import MessageContext from '../../Context/messageContext'
 import StaticMessages from '../message/testMessages'
-import StaticConversation from "../chatList/conversationList";
+import StaticConversation from "../chatList/conversationList"
+import socket from '../../server/socket-connect'
 
 const useStyles = makeStyles((theme) => ({
   pane: {
@@ -44,7 +45,7 @@ const WindowPane = (props) => {
   const [messages, setMessages] = useState([]);
   const [conversations, setConversations] = useState('')
 
-  const { size, menuStatus } = props
+  const { menuStatus } = props
 
   // Common parent of the message list and the input
   // Use Context to add messages to the pane
@@ -60,6 +61,7 @@ const WindowPane = (props) => {
     // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
     setMessages(StaticMessages)
     setConversations(StaticConversation)
+    socket().connectSocket()
 
   }, [])
 
@@ -68,6 +70,7 @@ const WindowPane = (props) => {
     messages: messages,
     conversations: conversations,
     sendMessage: addMessage,
+    client: socket
   }
 
   return (

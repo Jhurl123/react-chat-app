@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { Container, Grid, Box } from '@material-ui/core';
-import useWindowSize from '../../hooks/useWindowSize'
+import { Container, Box } from '@material-ui/core';
 import WindowToolbar from './toolbar';
 import WindowPane from './windowPane';
 
 const Window = (props) => {
 
-  const size = useWindowSize()
-
   // Breakpoint is 1280
   const [menuOpen, setMenuStatus] = useState(false)
+
 
   const toggleMenu = event => {
     setMenuStatus(prevState => !prevState)    
