@@ -47,6 +47,5 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "react-test-renderer": "^16.13.1"
   },
-  "proxy": "http://localhost:8080",
-  "homepage": "/"
+  "homepage": "https://whats-popping.herokuapp.com/"
 }
