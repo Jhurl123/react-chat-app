@@ -28,7 +28,7 @@ io.on('connection', function (client) {
   })
 })
 
-app.use(express.static(path.join(__dirname, 'build/static')));
+app.use(express.static(path.join(__dirname, '../../build/static')));
 
 console.log(path.join(__dirname, '../../build/index.html'));
 
