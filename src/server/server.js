@@ -28,10 +28,10 @@ io.on('connection', function (client) {
   })
 })
 
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, 'build/static')));
 
 console.log(path.join(__dirname, '../../build/index.html'));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../../index.html'));
+  res.sendFile(path.join(__dirname, '../../build/index.html'));
 });
