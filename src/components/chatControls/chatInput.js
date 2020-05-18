@@ -21,11 +21,11 @@ const ChatInput = (props) => {
 
   const [message, setMessage] = useState("")
   const messageContext = useContext(MessageContext)
-  const client = messageContext.client
+  // const client = messageContext.client
   const classes = useStyles()
 
   const handleSubmit = (event) => {
-    client().connectSocket()
+    // client().connectSocket()
     event.preventDefault()
 
     // Temporary variable to sit in place of any response from the server
@@ -50,7 +50,7 @@ const ChatInput = (props) => {
           value={message} 
           name="message"
           placeholder="Send a message"
-          onChange={ e=> setMessage(e.target.value)}
+          onChange={ e => setMessage(e.target.value)}
         />
         <IconButton aria-label="Send Message" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
           <EmailIcon />

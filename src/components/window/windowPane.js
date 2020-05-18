@@ -61,7 +61,7 @@ const WindowPane = (props) => {
     // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
     setMessages(StaticMessages)
     setConversations(StaticConversation)
-    socket().connectSocket()
+    // socket().connectSocket()
 
   }, [])
 
