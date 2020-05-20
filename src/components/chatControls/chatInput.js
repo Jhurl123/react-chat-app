@@ -21,27 +21,27 @@ const ChatInput = (props) => {
 
   const [message, setMessage] = useState("")
   const messageContext = useContext(MessageContext)
-  // const client = messageContext.client
+  const client = messageContext.client
   const classes = useStyles()
 
   const handleSubmit = (event) => {
-    // client().connectSocket()
     event.preventDefault()
-
+    
     // Temporary variable to sit in place of any response from the server
     let newMessage = {
-      id: 5,
-      convoId: 3,
+      id: 6,
+      convoId: 1,
       content: message,
       class: 'sent'
     }
+    
     messageContext.sendMessage(newMessage)
+    // client().sendMessage(newMessage)
     setMessage('')
   }
 
   return (
     <div >
-
       <form onSubmit={handleSubmit} style={{ padding: '.9rem'}}>
         <input 
           className={classes.ChatInput}

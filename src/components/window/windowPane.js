@@ -8,6 +8,7 @@ import MessageContext from '../../Context/messageContext'
 import StaticMessages from '../message/testMessages'
 import StaticConversation from "../chatList/conversationList"
 import socket from '../../server/socket-connect'
+// import dbFunctions from '../../server/database/db-functions'
 
 const useStyles = makeStyles((theme) => ({
   pane: {
@@ -52,14 +53,45 @@ const WindowPane = (props) => {
   
 
   // Use this function to update the messages in the current conversation.
-  const addMessage = message => setMessages(prevState => [message, ...prevState])
+  const addMessage = async message =>  {
+    setMessages(prevState => [message, ...prevState])
 
+    console.log(message);
+    
+
+    const response = await fetch('/send_message', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+
+  const getMessages = async () => {
+    
+    const response = await fetch('/get_messages')
+    const messages = await response.json();
+    
+    // if (response.status !== 200) throw Error(response);
+    
+    setMessages(messages);
+  };
 
   // Use this hook to populate messages and conversation list
   useEffect(() => {
     
     // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
-    setMessages(StaticMessages)
+
+    getMessages()
+   
     setConversations(StaticConversation)
     // socket().connectSocket()
 

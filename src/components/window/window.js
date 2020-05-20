@@ -21,7 +21,7 @@ const Window = (props) => {
         <WindowToolbar handleMenu={toggleMenu}/>
         <WindowPane menuStatus={menuOpen} />
       </Box>
-      <EmailModal />
+      {/* <EmailModal /> */}
     </Container>
   )
 };

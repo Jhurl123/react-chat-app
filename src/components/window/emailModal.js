@@ -44,8 +44,13 @@ const EmailModal = (props) => {
     re.test(email);
 
     if(re.test(email)) {
-      handleClose()
       setError(false)
+
+      handleClose()
+      // Send email to db, display generated code
+      // Eventually move the handleClose function to a button in the modal
+      // that shows only when the code is shown and copied
+      
     }
     else {
       // throw validation errors

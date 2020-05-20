@@ -23,10 +23,12 @@ const MessageList = (props) => {
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
 
+  let messages = messageContext.messages || []
+  
   return (
     <ul className={classes.container}>
-      {messageContext.messages && 
-        messageContext.messages.map(message =>  (
+      {messages && 
+        messages.map(message =>  (
           <Message key={message.id} class={message.class}>{message.content}</Message>
         ))}
     </ul>

@@ -1,7 +1,7 @@
 
 const CONVERSATIONS = [
   {
-    id: 3,
+    id: 1,
     users: [
       {
         id: 343,
