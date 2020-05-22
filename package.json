@@ -52,5 +52,6 @@
     "firebase-admin": "^8.12.1",
     "react-test-renderer": "^16.13.1"
   },
+  "proxy": "http://localhost:8080",
   "homepage": "https://whats-popping.herokuapp.com/"
 }

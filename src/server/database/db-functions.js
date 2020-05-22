@@ -45,7 +45,7 @@ exports.sendMessage = (message) => {
 }
 
 exports.getMessages = (id) => {
-
+  
   let messageRef = db.db.collection('messages');
 
   let messages = messageRef.get()
@@ -64,11 +64,14 @@ exports.getMessages = (id) => {
     messages = messages.sort(function(a,b) {
       return new Date(b.timestamp._seconds) - new Date(a.timestamp._seconds);
     });
+    console.log(messages);
     
     return messages
   })
   .catch(err => {
-    return err
+    console.log(err);
+    
+    return err.message
   });
   
   return messages

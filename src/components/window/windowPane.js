@@ -58,7 +58,7 @@ const WindowPane = (props) => {
     // Clear alert message
     setApiError('')
 
-    await fetch('/send_message', {
+    const response = await fetch('/send_message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -95,8 +95,8 @@ const WindowPane = (props) => {
     }
     catch(err) {
       // display error
-      console.log(err);
-      setApiError(err)
+      // console.log(err);
+      // setApiError(err)
     }
     
     // if (response.status !== 200) throw Error(response);

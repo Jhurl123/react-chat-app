@@ -1,6 +1,5 @@
 var firebase = require("firebase-admin");
 const dotenv = require('dotenv').config()
-var serviceAccount = require("./serviceAccountKey.json");
 
 // Connect to the firestore db
 firebase.initializeApp({
