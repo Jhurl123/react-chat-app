@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Container, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import WindowToolbar from './toolbar';
 import WindowPane from './windowPane';
 import EmailModal from './emailModal';

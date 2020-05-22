@@ -5,7 +5,6 @@ import ChatList from '../chatList/chatList'
 import MessagePane from '../message/messagePane'
 import ChatControls from '../chatControls/chatControls'
 import MessageContext from '../../Context/messageContext'
-import StaticMessages from '../message/testMessages'
 import StaticConversation from "../chatList/conversationList"
 import socket from '../../server/socket-connect'
 // import dbFunctions from '../../server/database/db-functions'
@@ -45,6 +44,7 @@ const WindowPane = (props) => {
   const classes = useStyles()
   const [messages, setMessages] = useState([]);
   const [conversations, setConversations] = useState('')
+  const [apiError, setApiError] = useState('')
 
   const { menuStatus } = props
 
@@ -54,35 +54,53 @@ const WindowPane = (props) => {
 
   // Use this function to update the messages in the current conversation.
   const addMessage = async message =>  {
-    setMessages(prevState => [message, ...prevState])
 
-    console.log(message);
-    
+    // Clear alert message
+    setApiError('')
 
-    const response = await fetch('/send_message', {
+    await fetch('/send_message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(message)
     })
-    .then(response => response.json())
+    .then(response =>  {
+      
+      if (!response.ok) {
+        throw new Error('Server Couldn\'t insert message!');
+      }
+      response.json()
+
+    })
     .then(data => {
+      setMessages(prevState => [message, ...prevState])
       console.log('Success:', data);
     })
     .catch((error) => {
-      console.error('Error:', error);
+
+      console.log(error.message);
+      
+      setApiError(error.message)
+      
     });
   }
 
   const getMessages = async () => {
-    
-    const response = await fetch('/get_messages')
-    const messages = await response.json();
+    setApiError('')
+    try {
+      const response = await fetch('/get_messages')
+      const messages = await response.json();
+      setMessages(messages);
+    }
+    catch(err) {
+      // display error
+      console.log(err);
+      setApiError(err)
+    }
     
     // if (response.status !== 200) throw Error(response);
     
-    setMessages(messages);
   };
 
   // Use this hook to populate messages and conversation list
@@ -115,7 +133,7 @@ const WindowPane = (props) => {
               <ChatList toggled={menuStatus}/>
             </Grid>
             <Grid item className={classes.MessagePane} sm={12} md={12} lg={8} style={{position: "relative", display: props.menuStatus ? 'none': 'block' }}>
-              <MessagePane />
+              <MessagePane error={apiError}/>
               <ChatControls/>
             </Grid>
           </Grid>

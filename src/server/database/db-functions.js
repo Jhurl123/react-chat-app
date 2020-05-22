@@ -19,6 +19,7 @@ exports.getUsers = () => {
       console.log('No matching documents')
       return
     }
+
     snapshot.forEach(doc => {
       console.log(doc.id, '=>', doc.data());
     });
@@ -33,10 +34,12 @@ exports.sendMessage = (message) => {
   // Send message logic
   console.log(message);
   message['timestamp'] = new Date()
-  
   let messageRef = db.db.collection('messages');
   let response = messageRef.doc().set(message)
   .then(() => true)
+  .catch(err => {
+    throw Error(err)
+  })
 
   return response
 }
@@ -58,8 +61,6 @@ exports.getMessages = (id) => {
       messages.push(doc.data())
     });
 
-    // console.log(messages);
-
     messages = messages.sort(function(a,b) {
       return new Date(b.timestamp._seconds) - new Date(a.timestamp._seconds);
     });
@@ -67,7 +68,7 @@ exports.getMessages = (id) => {
     return messages
   })
   .catch(err => {
-    console.log('Error getting documents', err);
+    return err
   });
   
   return messages

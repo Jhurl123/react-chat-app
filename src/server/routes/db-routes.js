@@ -9,14 +9,14 @@ router.get('/get_messages', async (req, res) => {
   res.send(messages)
 })
 
-router.post('/send_message', async (req, res) => {  
-  let response = await dbFunctions.sendMessage(req.body)
-
-  if(response) { 
+router.post('/send_message', async (req, res) => { 
+  
+  try {
+    let response = await dbFunctions.sendMessage(req.body)
     res.send(true)
   }
-  else {
-    res.send(false)
+  catch (err) {
+    res.status(500).send('Could not insert new message')
   }
 })
 

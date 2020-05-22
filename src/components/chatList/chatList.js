@@ -26,9 +26,9 @@ const ChatList = (props) => {
 
     if(conversations.length && messages.length) {
       setDisplayconvo(conversations.map(convo => {
-        let message = messages.filter(message => convo.id == message.convoId)
+        let message = messages.filter(message => convo.id === message.convoId)
 
-        if (!message.length) return 
+        if (!message.length) return undefined
         
         // Don't let the excerpt overflow
         convo.excerpt = message[0].content.substring(0, 25) + '...'
