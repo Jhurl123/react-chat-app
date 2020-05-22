@@ -17,6 +17,8 @@
     "enzyme-adapter-utils": "^1.13.0",
     "enzyme-to-json": "^3.4.4",
     "express": "^4.17.1",
+    "firebase": "^7.14.4",
+    "firebase-admin": "^8.12.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
