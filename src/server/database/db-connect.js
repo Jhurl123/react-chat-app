@@ -1,5 +1,5 @@
 var firebase = require("firebase-admin");
-const dotenv = require('dotenv').config()
+const dotenv = require('dotenv').config({path: __dirname + '../.env'})
 
 
 // Connect to the firestore db
