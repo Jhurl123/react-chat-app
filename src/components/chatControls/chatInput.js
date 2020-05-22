@@ -25,23 +25,23 @@ const ChatInput = (props) => {
   const classes = useStyles()
 
   const handleSubmit = (event) => {
-    client().connectSocket()
     event.preventDefault()
-
+    
     // Temporary variable to sit in place of any response from the server
     let newMessage = {
-      id: 5,
-      convoId: 3,
+      id: 6,
+      convoId: 1,
       content: message,
       class: 'sent'
     }
+    
     messageContext.sendMessage(newMessage)
+    // client().sendMessage(newMessage)
     setMessage('')
   }
 
   return (
     <div >
-
       <form onSubmit={handleSubmit} style={{ padding: '.9rem'}}>
         <input 
           className={classes.ChatInput}
@@ -50,7 +50,7 @@ const ChatInput = (props) => {
           value={message} 
           name="message"
           placeholder="Send a message"
-          onChange={ e=> setMessage(e.target.value)}
+          onChange={ e => setMessage(e.target.value)}
         />
         <IconButton aria-label="Send Message" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
           <EmailIcon />

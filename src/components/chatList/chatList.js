@@ -24,14 +24,16 @@ const ChatList = (props) => {
 
   useEffect(()=> {
 
-    if(conversations.length) {
-      
+    if(conversations.length && messages.length) {
       setDisplayconvo(conversations.map(convo => {
         let message = messages.filter(message => convo.id === message.convoId)
+
+        if (!message.length) return undefined
+        
         // Don't let the excerpt overflow
         convo.excerpt = message[0].content.substring(0, 25) + '...'
         return convo
-      }))
+      }).filter(convo => convo !== undefined))
     }
     
   }, [conversations, messages]);

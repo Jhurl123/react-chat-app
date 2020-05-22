@@ -8,12 +8,28 @@ export default function () {
     socket.emit('join', 'test')
   }
 
+  const sendMessage = (message) => {
+    console.log(message);
+    
+    socket.emit('sendMessage', message)
+  }
+
+  const receiveMessage = (message) => {
+    socket.emit('receiveMessage', message)
+  }
+
+  const getMessages = (id) => {
+    socket.emit('getMessages', {id: 1})
+  }
+
   socket.on('error', function (err) {
     console.log('received socket error:')
     console.log(err)
   })
 
   return {
-    connectSocket
+    connectSocket,
+    sendMessage,
+    receiveMessage
   }
 }
