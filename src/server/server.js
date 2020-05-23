@@ -24,7 +24,7 @@ io.on('connection', function (client) {
 
   client.on('join', () => console.log("testseresr"))
 
-  client.on('sendMessage', message => socketMessages.push(message))
+  // client.on('sendMessage', message => ))
 
   client.on('setMessages', (messages) => {
     console.log(messages);

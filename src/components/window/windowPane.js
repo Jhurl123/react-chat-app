@@ -79,7 +79,7 @@ const WindowPane = (props) => {
       setMessages(prevState => [message, ...prevState])
 
       // Send the message to the client
-      socket.sendMessage(message)
+      socket.setMessages([message, ...messages])
       console.log('Success:', data);
     })
     .catch((error) => {
@@ -100,7 +100,8 @@ const WindowPane = (props) => {
       socket.setMessages(messages)
     }
     catch(err) {
-      // display error
+
+      // display error if it exists
       console.log(err);
       setApiError(err)
     }

@@ -12,7 +12,6 @@ router.get('/get_messages', async (req, res) => {
   }
   catch(err) {
     console.log(err);
-    
     res.status(500).send('Could not get all messages')
   }
 })
