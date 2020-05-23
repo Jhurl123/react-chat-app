@@ -36,7 +36,6 @@ const ChatInput = (props) => {
     }
     
     messageContext.sendMessage(newMessage)
-    // client().sendMessage(newMessage)
     setMessage('')
   }
 

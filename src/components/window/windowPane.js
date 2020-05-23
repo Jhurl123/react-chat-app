@@ -6,8 +6,8 @@ import MessagePane from '../message/messagePane'
 import ChatControls from '../chatControls/chatControls'
 import MessageContext from '../../Context/messageContext'
 import StaticConversation from "../chatList/conversationList"
-import socket from '../../server/socket-connect'
-// import dbFunctions from '../../server/database/db-functions'
+import socket from '../../server/socket-client'
+
 
 const useStyles = makeStyles((theme) => ({
   pane: {
@@ -58,7 +58,9 @@ const WindowPane = (props) => {
     // Clear alert message
     setApiError('')
 
-    const response = await fetch('/send_message', {
+    console.log(message);
+
+    await fetch('/send_message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -75,6 +77,9 @@ const WindowPane = (props) => {
     })
     .then(data => {
       setMessages(prevState => [message, ...prevState])
+
+      // Send the message to the client
+      socket.sendMessage(message)
       console.log('Success:', data);
     })
     .catch((error) => {
@@ -92,11 +97,12 @@ const WindowPane = (props) => {
       const response = await fetch('/get_messages')
       const messages = await response.json();
       setMessages(messages);
+      socket.setMessages(messages)
     }
     catch(err) {
       // display error
-      // console.log(err);
-      // setApiError(err)
+      console.log(err);
+      setApiError(err)
     }
     
     // if (response.status !== 200) throw Error(response);

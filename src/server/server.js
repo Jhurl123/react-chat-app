@@ -4,9 +4,9 @@ const express = require('express');
 const router = express.Router();
 const app = express();
 const bodyParser = require('body-parser')
-
-app.use(bodyParser.urlencoded({ extended: true }));
+const socketEvents = require('./socket-connect')
 app.use(bodyParser.json());
+
 const dbRoutes = require('./routes/db-routes')
 
 // Create server connection
@@ -15,21 +15,21 @@ const server = app.listen(PORT)
 const io = require('socket.io')(server, { origins: '*:*'})
 io.on('connection', function (client) {
 
-  // Include client files 
-  // const dbFunctions = require('./socket-client')
+  let socketMessages = [];
 
-  let messages = [];
   client.on('connect', function () {
     console.log('client connected boiii...', client.id)
     // handleDisconnect()
   })
 
-  client.on('getMessages', (id) => dbFunctions.getMessages(id))
-
   client.on('join', () => console.log("testseresr"))
 
-  client.on('sendMessage', (message) => messages.push(message))
-  client.on('receiveMessage', (message) => messages.push(message))
+  client.on('sendMessage', message => socketMessages.push(message))
+
+  client.on('setMessages', (messages) => {
+    console.log(messages);
+    socketMessages = messages
+  })
 
   client.on('disconnect', function () {
     console.log('client disconnect...', client.id)
@@ -46,9 +46,11 @@ io.on('connection', function (client) {
 // The above is the correct bath to serve files from
 app.use(express.static(path.join(__dirname, '../../build/')));
 
+
 app.use(dbRoutes);
 
+
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  res.sendFile(path.join(__dirname, '../../build', 'index.html'))
   // res.sendFile(path.join(__dirname, '../../src/index.html'));
 });

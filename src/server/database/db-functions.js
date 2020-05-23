@@ -32,12 +32,14 @@ exports.getUsers = () => {
 
 exports.sendMessage = (message) => {
   // Send message logic
-  console.log(message);
+  console.log( "Database " + message);
   message['timestamp'] = new Date()
   let messageRef = db.db.collection('messages');
   let response = messageRef.doc().set(message)
   .then(() => true)
   .catch(err => {
+    console.log(err);
+    
     throw Error(err)
   })
 
@@ -64,7 +66,7 @@ exports.getMessages = (id) => {
     messages = messages.sort(function(a,b) {
       return new Date(b.timestamp._seconds) - new Date(a.timestamp._seconds);
     });
-    console.log(messages);
+    // console.log(messages);
     
     return messages
   })
