@@ -2,7 +2,7 @@
 const io = require('socket.io-client')
 const PORT = process.env.PORT || 8080;
 
-const socket = io.connect(PORT)
+const socket = io()
 
 const sendMessage = message => {
   socket.emit('sendMessage', () => message)
