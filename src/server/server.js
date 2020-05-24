@@ -24,17 +24,13 @@ io.on('connection', function (client) {
 
   client.on('join', () => console.log("testseresr"))
 
-  // client.on('sendMessage', message => ))
-
   client.on('setMessages', (messages) => {
-    console.log(messages);
     socketMessages = messages
     client.broadcast.emit('updateMessages', socketMessages)
   })
 
   client.on('disconnect', function () {
     console.log('client disconnect...', client.id)
-    // handleDisconnect()
   })
 
   client.on('error', function (err) {

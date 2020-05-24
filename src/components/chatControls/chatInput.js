@@ -13,7 +13,10 @@ const useStyles = makeStyles((theme) => ({
     padding: '.5rem',
     fontSize: '18px',
     border: 'none',
-    margin: '0 auto'
+    margin: '0 auto',
+    [theme.breakpoints.down('sm')]: {
+      width: '65%'
+    }
   }
 }))
 

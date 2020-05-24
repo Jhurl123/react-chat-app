@@ -138,7 +138,7 @@ const WindowPane = (props) => {
               <ChatList toggled={menuStatus}/>
             </Grid>
             <Grid item className={classes.MessagePane} sm={12} md={12} lg={8} style={{position: "relative", display: props.menuStatus ? 'none': 'block' }}>
-              <MessagePane error={apiError}/>
+              <MessagePane error={apiError} />
               <ChatControls/>
             </Grid>
           </Grid>
