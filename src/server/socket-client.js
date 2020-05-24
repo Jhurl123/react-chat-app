@@ -9,7 +9,7 @@ const sendMessage = message => {
 }
 
 const setMessages = messages => {
-  socket.emit('setMessages', { messages })
+  socket.emit('setMessages', messages )
 }
 
 const messageListener = (messages, cb) => {
