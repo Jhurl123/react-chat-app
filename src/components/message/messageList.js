@@ -10,9 +10,10 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 'calc(80vh - 80px)',
     margin: 0,
     padding: '0 1.5rem',
-    paddingBottom: '3rem',
+    paddingBottom: '1.5rem',
     width: '100%',
     overflow: 'auto',
+    overflowX: 'hidden',
     display: 'flex',
     flexDirection: 'column-reverse'
   }
@@ -27,9 +28,6 @@ const MessageList = (props) => {
 
   const messageListEl = useCallback(node => {
     if (node !== null) {
-      console.log("Tewt this node");
-      console.log(node.scrollHeight);
-      
       node.scrollTop = node.scrollHeight
     }
   });
