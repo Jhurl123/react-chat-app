@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useCallback } from 'react'
 import Message from './message'
 import { makeStyles } from '@material-ui/core'
 import MessageContext from '../../Context/messageContext'
@@ -27,9 +27,17 @@ const MessageList = (props) => {
   const messageContext = useContext(MessageContext)
 
   let messages = messageContext.messages || []
+
+  const messageListEl = useCallback(node => {
+    if (node !== null) {
+      console.log("Tewt this node");
+      
+      node.scrollTo(0, node.scrollHeight)
+    }
+  });
   
   return (
-    <ul className={classes.container}>
+    <ul className={classes.container} ref={messageListEl}>
       {messages && 
         messages.map(message =>  (
           <Message key={message.id} class={message.class}>{message.content}</Message>
