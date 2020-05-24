@@ -116,7 +116,7 @@ const WindowPane = (props) => {
     getMessages()
    
     setConversations(StaticConversation)
-    socket().messageListener()
+    socket.messageListener()
 
   }, [])
 
