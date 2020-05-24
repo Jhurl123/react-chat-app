@@ -27,8 +27,8 @@ const MessageList = (props) => {
   let messages = messageContext.messages || []
 
   const messageListEl = useCallback(node => {
-    if (node !== null) {
-      node.scrollTop = node.scrollHeight
+    if (node !== null) {  
+      node.scrollTo(0, node.scrollHeight)
     }
   });
   
