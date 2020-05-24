@@ -96,6 +96,7 @@ const WindowPane = (props) => {
       const messages = await response.json();
       setMessages(messages);
       socket.setMessages(messages)
+      socket.messageListener(messages, setMessages)
     }
     catch(err) {
 
@@ -116,7 +117,6 @@ const WindowPane = (props) => {
     getMessages()
    
     setConversations(StaticConversation)
-    socket.messageListener()
 
   }, [])
 

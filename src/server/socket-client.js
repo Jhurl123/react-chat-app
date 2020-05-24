@@ -12,8 +12,9 @@ const setMessages = messages => {
   socket.emit('setMessages', { messages })
 }
 
-const messageListener = messages => {
-  socket.on('updateMessages', () => console.log("This is shit"))
+const messageListener = (messages, cb) => {
+  console.log("Called the message Listener")
+  socket.on('updateMessages', (messages) => cb(messages))
 }
 
 export default {
