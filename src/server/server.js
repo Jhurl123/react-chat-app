@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const app = express();
 const bodyParser = require('body-parser')
-const socketEvents = require('./socket-connect')
+// const socketClient = require('./socket-client')
 app.use(bodyParser.json());
 
 const dbRoutes = require('./routes/db-routes')
@@ -29,6 +29,7 @@ io.on('connection', function (client) {
   client.on('setMessages', (messages) => {
     console.log(messages);
     socketMessages = messages
+    client.broadcast.emit('updateMessages', socketMessages)
   })
 
   client.on('disconnect', function () {

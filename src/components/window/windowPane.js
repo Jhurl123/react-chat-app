@@ -58,8 +58,6 @@ const WindowPane = (props) => {
     // Clear alert message
     setApiError('')
 
-    console.log(message);
-
     await fetch('/send_message', {
       method: 'POST',
       headers: {
@@ -118,7 +116,7 @@ const WindowPane = (props) => {
     getMessages()
    
     setConversations(StaticConversation)
-    // socket().connectSocket()
+    socket().messageListener()
 
   }, [])
 
