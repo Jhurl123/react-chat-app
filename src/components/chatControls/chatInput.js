@@ -58,9 +58,9 @@ const ChatInput = (props) => {
           <EmailIcon />
         </IconButton>
 
-        <IconButton aria-label="Attach a File" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
+        {/* <IconButton aria-label="Attach a File" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
           <AttachFileIcon />
-        </IconButton>
+        </IconButton> */}
       </form>
     </div>
   )

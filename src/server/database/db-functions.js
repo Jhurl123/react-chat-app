@@ -10,26 +10,6 @@ var firebase = require("firebase-admin");
 // getUsers()
 // var usersRef = ref.child("users");
 
-// Valid example of querying data
-exports.getUsers = () => {
-  let usersRef = db.db.collection('users');
-  usersRef.where('id', '==', '69').get()
-  .then(snapshot => {
-    if(snapshot.empty) {
-      console.log('No matching documents')
-      return
-    }
-
-    snapshot.forEach(doc => {
-      console.log(doc.id, '=>', doc.data());
-    });
-
-  })
-  .catch(err => {
-    console.log('Error getting documents', err);
-  });
-}
-
 exports.sendMessage = (message) => {
   // Send message logic
   console.log( "Database " + message);

@@ -25,7 +25,6 @@ const MessagePane = (props) => {
 
   const classes = useStyles()
   const { error } = props
-  console.log(error);
   
   return (
     <div className={classes.MessagePane}>

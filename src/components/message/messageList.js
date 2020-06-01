@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 'calc(80vh - 80px)',
     margin: 0,
     padding: '0 1.5rem',
-    paddingBottom: '1.5rem',
+    paddingBottom: '3rem',
     width: '100%',
     overflow: 'auto',
     overflowX: 'hidden',
@@ -27,8 +27,8 @@ const MessageList = (props) => {
   let messages = messageContext.messages || []
 
   const messageListEl = useCallback(node => {
-    if (node !== null) {  
-      node.scrollTo(0, node.scrollHeight)
+    if (node !== null) {
+      node.scrollTop = node.scrollHeight
     }
   });
   

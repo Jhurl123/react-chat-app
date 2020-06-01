@@ -94,6 +94,8 @@ const WindowPane = (props) => {
     try {
       const response = await fetch('/get_messages')
       const messages = await response.json();
+      console.log(messages);
+      
       setMessages(messages);
       socket.setMessages(messages)
       socket.messageListener(messages, setMessages)
