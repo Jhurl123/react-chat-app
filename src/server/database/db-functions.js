@@ -46,7 +46,6 @@ exports.getMessages = (id) => {
       console.log(message);
       console.log(doc.id);
       
-      
       message['id'] = doc.id
       messages.push(message)
     });

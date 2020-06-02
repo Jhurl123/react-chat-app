@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react'
+import React, { useContext, useCallback, useEffect } from 'react'
 import Message from './message'
 import { makeStyles } from '@material-ui/core'
 import MessageContext from '../../Context/messageContext'
@@ -26,8 +26,6 @@ const MessageList = (props) => {
   const userId = localStorage.getItem('userId')
 
   let messages = messageContext.messages || []
-  console.log(messages);
-  
 
   const messageListEl = useCallback(node => {
     if (node !== null) {

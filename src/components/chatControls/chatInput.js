@@ -24,7 +24,6 @@ const ChatInput = (props) => {
 
   const [message, setMessage] = useState("")
   const messageContext = useContext(MessageContext)
-  const client = messageContext.client
   const classes = useStyles()
   const userId = localStorage.getItem('userId')
 

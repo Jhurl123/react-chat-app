@@ -45,7 +45,7 @@ const WindowPane = (props) => {
   const [messages, setMessages] = useState([]);
   const [conversations, setConversations] = useState('')
   const [apiError, setApiError] = useState('')
-
+  const [user, setUser] = useState({})
   const { menuStatus } = props
 
   // Common parent of the message list and the input
@@ -81,8 +81,6 @@ const WindowPane = (props) => {
       console.log('Success:', data);
     })
     .catch((error) => {
-
-      console.log(error.message);
       
       setApiError(error.message)
       
@@ -93,8 +91,7 @@ const WindowPane = (props) => {
     setApiError('')
     try {
       const response = await fetch('/get_messages')
-      const messages = await response.json();
-      console.log(messages);
+      const messages = await response.json()
       
       setMessages(messages);
       socket.setMessages(messages)
@@ -116,7 +113,8 @@ const WindowPane = (props) => {
     
     // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
 
-    getMessages()
+
+    if(localStorage.getItem('userId')) getMessages()
    
     setConversations(StaticConversation)
 
@@ -127,7 +125,7 @@ const WindowPane = (props) => {
     messages: messages,
     conversations: conversations,
     sendMessage: addMessage,
-    client: socket
+    client: socket,
   }
 
   return (

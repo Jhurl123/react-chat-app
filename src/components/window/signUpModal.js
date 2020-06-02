@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left'
   },
   input: {
+    '&.exited input': {
+      color: 'red',
+      zIndex: -1
+    },
     width: '80%',
     marginBottom: '1.2rem',
   },
@@ -158,9 +162,9 @@ const SignUpModal = (props) => {
   
   const transitionStyles = {
     entering: { opacity: .5 },
-    entered:  { opacity: 1, position: 'relative' },
+    entered:  { opacity: 1, position: 'relative', zIndex: 1 },
     exiting:  { opacity: .1 },
-    exited:   { opacity: 0, position: 'absolute'  },
+    exited:   { opacity: 0, position: 'absolute' },
   }
 
   const body = (
@@ -206,6 +210,7 @@ const SignUpModal = (props) => {
                     name='userName'
                     label=' Enter User Name' 
                     size='medium' 
+                    disabled={state === 'exited' ? 'disabled' : ''}
                     variant='outlined' 
                     onChange={e => setUserName(e.target.value)}
                     helperText={ error && 'Invalid Username'}
@@ -220,6 +225,7 @@ const SignUpModal = (props) => {
                     label='Enter Password'
                     size='medium' 
                     variant='outlined' 
+                    disabled={state === 'exited' ? 'disabled' : ''}
                     onChange={e => setPassword(e.target.value)}
                     helperText={ error && 'Invalid Password'}
                   />
