@@ -2,10 +2,12 @@ const dotenv = require('dotenv').config({path: __dirname + '/.env'});
 const path = require('path');
 const express = require('express');
 const router = express.Router();
+const cookieParser = require('cookie-parser')
 const app = express();
 const bodyParser = require('body-parser')
 // const socketClient = require('./socket-client')
 app.use(bodyParser.json());
+app.use(cookieParser())
 
 const dbRoutes = require('./routes/db-routes')
 

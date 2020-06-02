@@ -119,14 +119,13 @@ const SignUpModal = (props) => {
 
     // Test if response from server is good, then return, or set error
     if(response.passed) {
-      console.log(response);
-      
+
+      localStorage.setItem('userId', response.userId)
       setError(false)
       setApiError(false)
       handleClose()
     }
     else {
-      console.log(response)
       // throw validation errors
       setError(true)
       setApiError(response.message)
@@ -261,6 +260,7 @@ const SignUpModal = (props) => {
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       disableBackdropClick={true}
+      disableEscapeKeyDown={true}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps= {{

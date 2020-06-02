@@ -23,8 +23,11 @@ const MessageList = (props) => {
 
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
+  const userId = localStorage.getItem('userId')
 
   let messages = messageContext.messages || []
+  console.log(messages);
+  
 
   const messageListEl = useCallback(node => {
     if (node !== null) {
@@ -36,7 +39,7 @@ const MessageList = (props) => {
     <ul className={classes.container} ref={messageListEl}>
       {messages && 
         messages.map(message =>  (
-          <Message key={message.id} class={message.class}>{message.content}</Message>
+          <Message key={message.id} class={userId === message.userId ? 'sent' : 'received'}>{message.content}</Message>
         ))}
     </ul>
   )

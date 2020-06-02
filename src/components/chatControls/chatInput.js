@@ -26,16 +26,16 @@ const ChatInput = (props) => {
   const messageContext = useContext(MessageContext)
   const client = messageContext.client
   const classes = useStyles()
+  const userId = localStorage.getItem('userId')
 
   const handleSubmit = (event) => {
     event.preventDefault()
     
     // Temporary variable to sit in place of any response from the server
     let newMessage = {
-      id: 6,
       convoId: 1,
       content: message,
-      class: 'sent'
+      userId
     }
     
     messageContext.sendMessage(newMessage)

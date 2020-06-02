@@ -1,6 +1,7 @@
 // Connect to DB
 const db = require('./db-connect')
-var firebase = require("firebase-admin");
+var firebase = require("firebase-admin")
+const JWT = require('jsonwebtoken');
 
 // Add a new document in collection "cities" with ID 'LA'
 // Valid way to send data to a users collection
@@ -14,6 +15,7 @@ exports.sendMessage = (message) => {
   // Send message logic
   console.log( "Database " + message);
   message['timestamp'] = new Date()
+
   let messageRef = db.db.collection('messages');
   let response = messageRef.doc().set(message)
   .then(() => true)
@@ -40,7 +42,13 @@ exports.getMessages = (id) => {
     }
     
     snapshot.forEach(doc => {
-      messages.push(doc.data())
+      let message = doc.data()
+      console.log(message);
+      console.log(doc.id);
+      
+      
+      message['id'] = doc.id
+      messages.push(message)
     });
 
     messages = messages.sort(function(a,b) {

@@ -1,4 +1,5 @@
 const db = require('./db-connect')
+const JWT = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 exports.hashPassword = async password => {
@@ -14,7 +15,7 @@ exports.hashPassword = async password => {
 
 // Check to see if a username already exists
 exports.checkForUsername = userName => {
-
+w
   let usersRef = db.db.collection('users');
   let userQuery = usersRef.where('userName', '==', userName).get()
   .then(snapshot => {
@@ -61,7 +62,7 @@ exports.verifyCredentials = (userName, password) => {
         }
       }
       else {
-        return checkData(snapshot, password)
+        return userLogin(snapshot, password)
       }
     }).catch(err => {
       throw Error(err.message)
@@ -73,19 +74,23 @@ const comparePassword = async (hash, password) => {
   return compareRes
 }
 
-const checkData = async (snapshot, password) => {
+const userLogin = async (snapshot, enteredPassword) => {
   let message = {}
   await snapshot.forEach( doc => {
     const data = doc.data()
-    console.log(doc.id);
+    const  {userName, password} = data
     
-    const passwordRes = comparePassword(data.password, password)
+    const passwordRes = comparePassword(password, enteredPassword)
     
     message = passwordRes.then(newData => {
       if(newData) {
+
+        const token = JWT.sign({userName}, process.env.JSON_SECRET)
+        
         return {
           message: 'Login Sucessful!',
-          userID: doc.id,
+          token: token,
+          userId: doc.id,
           passed: true
         }
       }
