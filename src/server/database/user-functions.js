@@ -15,7 +15,6 @@ exports.hashPassword = async password => {
 
 // Check to see if a username already exists
 exports.checkForUsername = userName => {
-w
   let usersRef = db.db.collection('users');
   let userQuery = usersRef.where('userName', '==', userName).get()
   .then(snapshot => {
