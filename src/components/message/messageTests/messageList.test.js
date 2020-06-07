@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom'
 import renderer from 'react-test-renderer'
 import { mount, configure  } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Message from '../message'
 import MessageList from '../messageList'
 import messageContext from '../../../Context/messageContext';
 
@@ -31,13 +30,8 @@ const userObject = {
 
 describe('Message List Tests', () => {
   it('renders without crashing', () => {
-    // first create a DOM element to render the component into
     const div = document.createElement('div');
-
-    // render the component, this is the actual test, if something is wrong it will fail here
     ReactDOM.render(<MessageList />, div);
-
-    // clean up code
     ReactDOM.unmountComponentAtNode(div);
   });
 

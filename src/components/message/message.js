@@ -22,10 +22,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Message = (props) => {
-
   const classes = useStyles()
-  
-  
   return (
     <li className={`${classes.message} ${classes[props.class]}` }>
       {props.children}
