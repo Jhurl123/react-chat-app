@@ -43,11 +43,25 @@ router.post('/user_signup', async (req, res) => {
     
     const userNameRes = await userFunctions.checkForUsername(userName)
     const passwordRes = await userFunctions.hashPassword(password)
+    // Insert the token here
     
     // UN wasn't found in the database and pw was created correctly
     if (!userNameRes && passwordRes ) {
       const userRes = await userFunctions.insertUser({userName, password: passwordRes})
-      res.status(200).json({status: 'User Successfully added', passed: true})
+
+      console.log(userRes);
+      
+
+      // Create token here
+      let resObject = {
+        status: 'User Successfully added', 
+        passed: true,
+        userId: userRes.userId,
+        token: userRes.token
+      }
+      console.log(resObject);
+      
+      res.status(200).json(resObject)
     }
     else if(userNameRes) {
       res.status(200).json({statusCode: 'EXISTS', status: 'Username already Exists!', passed: false})

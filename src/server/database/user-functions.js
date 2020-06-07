@@ -37,8 +37,20 @@ exports.checkForUsername = userName => {
 // Insert the user into the database after validation
 exports.insertUser = user => {
   let usersRef = db.db.collection('users');
-  let response = usersRef.doc().set(user)
-  .then(() => true)
+  let response = usersRef.add(user)
+  .then(ref => {
+    console.log(ref);
+
+    const token = createToken(user.userName)
+
+    let userAuth = {
+      token,
+      userId: ref.id
+    }
+    
+
+    return userAuth
+  })
   .catch(err => {
     console.log(err);
     
@@ -84,7 +96,7 @@ const userLogin = async (snapshot, enteredPassword) => {
     message = passwordRes.then(newData => {
       if(newData) {
 
-        const token = JWT.sign({userName}, process.env.JSON_SECRET)
+        const token = createToken(userName)
         
         return {
           message: 'Login Sucessful!',
@@ -105,4 +117,8 @@ const userLogin = async (snapshot, enteredPassword) => {
   })
 
   return message
+}
+
+const createToken = userName => {
+  return JWT.sign({userName}, process.env.JSON_SECRET)
 }
