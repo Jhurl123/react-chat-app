@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8080;
 const socket = io()
 
 const sendMessage = message => {
-  socket.emit('sendMessage', () => message)
+  socket.emit('sendMessage', () => message.message)
 }
 
 const setMessages = messages => {
