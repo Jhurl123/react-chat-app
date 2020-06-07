@@ -23,7 +23,7 @@ const MessageList = (props) => {
 
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
-  const userObject = JSON.parse(localStorage.getItem('user'))
+  const { userObject } = props
 
   let messages = messageContext.messages || []
 
@@ -32,8 +32,6 @@ const MessageList = (props) => {
       node.scrollTop = node.scrollHeight
     }
   });
-  
-  console.log(messages);
   
   return (
     <ul className={classes.container} ref={messageListEl}>

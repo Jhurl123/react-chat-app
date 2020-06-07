@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
     }
   }
 }))
-const ChatControls = (props) => {
+
+const ChatControls = () => {
 
   const classes = useStyles()
 
@@ -29,6 +30,7 @@ const ChatControls = (props) => {
       </Grid>
     </div>
   )
+  
 }
 
 export default ChatControls

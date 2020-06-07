@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chat controls test renders the ui as expected 1`] = `
+<div
+  className="makeStyles-container-1"
+>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <div>
+      <form
+        onSubmit={[Function]}
+        style={
+          Object {
+            "padding": ".9rem",
+          }
+        }
+      >
+        <input
+          autoComplete="off"
+          className="makeStyles-ChatInput-105"
+          name="message"
+          onChange={[Function]}
+          placeholder="Send a message"
+          type="text"
+          value=""
+        />
+        <button
+          aria-label="Send Message"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          style={
+            Object {
+              "marginLeft": ".5rem",
+            }
+          }
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+              />
+            </svg>
+          </span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;

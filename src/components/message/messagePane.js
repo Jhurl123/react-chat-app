@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const MessagePane = (props) => {
 
   const classes = useStyles()
+  const userObject = JSON.parse(localStorage.getItem('user'))
   const { error } = props
 
   console.log(typeof error);
@@ -39,7 +40,7 @@ const MessagePane = (props) => {
           </Alert>
         </div>
       }
-      <MessageList />
+      <MessageList userObject={userObject}/>
     </div>
   )
 }
