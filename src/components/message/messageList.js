@@ -23,7 +23,7 @@ const MessageList = (props) => {
 
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
-  const userId = localStorage.getItem('userId')
+  const userObject = JSON.parse(localStorage.getItem('user'))
 
   let messages = messageContext.messages || []
 
@@ -33,11 +33,13 @@ const MessageList = (props) => {
     }
   });
   
+  console.log(messages);
+  
   return (
     <ul className={classes.container} ref={messageListEl}>
       {messages && 
         messages.map(message =>  (
-          <Message key={message.id} class={userId === message.userId ? 'sent' : 'received'}>{message.content}</Message>
+          <Message key={message.id} class={userObject.userId === message.userId ? 'sent' : 'received'}>{message.content}</Message>
         ))}
     </ul>
   )

@@ -23,20 +23,32 @@ const useStyles = makeStyles((theme) => ({
 const ChatInput = (props) => {
 
   const [message, setMessage] = useState("")
+
   const messageContext = useContext(MessageContext)
   const classes = useStyles()
-  const userId = localStorage.getItem('userId')
+  const userObject = JSON.parse(localStorage.getItem('user'))
 
   const handleSubmit = (event) => {
     event.preventDefault()
     
+    // Set error here
+    if(!userObject.hasOwnProperty('token')) {
+      messageContext.error('You are not authorized to perform this action!')
+      return
+    }
+
     // Temporary variable to sit in place of any response from the server
     let newMessage = {
-      convoId: 1,
-      content: message,
-      userId
+      message: {
+        convoId: 1,
+        content: message,
+        userId: userObject.userId
+      },
+      userToken: userObject.token
     }
-    
+
+
+
     messageContext.sendMessage(newMessage)
     setMessage('')
   }

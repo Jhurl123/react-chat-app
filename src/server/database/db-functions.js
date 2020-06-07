@@ -11,10 +11,17 @@ const JWT = require('jsonwebtoken');
 // getUsers()
 // var usersRef = ref.child("users");
 
-exports.sendMessage = (message) => {
-  // Send message logic
-  console.log( "Database " + message);
+exports.sendMessage = async (newMessage) => {
+
+  const { userToken, message } = newMessage
+  let validJWT = await validateJWT(userToken)
+  
   message['timestamp'] = new Date()
+
+  if(!validJWT) return
+
+  console.log("Testerooo");
+  
 
   let messageRef = db.db.collection('messages');
   let response = messageRef.doc().set(message)
@@ -42,10 +49,7 @@ exports.getMessages = (id) => {
     }
     
     snapshot.forEach(doc => {
-      let message = doc.data()
-      console.log(message);
-      console.log(doc.id);
-      
+      let message = doc.data() 
       message['id'] = doc.id
       messages.push(message)
     });
@@ -64,4 +68,23 @@ exports.getMessages = (id) => {
   });
   
   return messages
+}
+
+const validateJWT = async (token) => {
+
+  let validJWT = false
+
+  // Verify that the user is signed in and valid
+  await JWT.verify(token, process.env.JSON_SECRET,  (err, token) => {
+
+    if(err) {
+      validJWT = false
+      throw Error('You aren\'t authorized to perform this action')
+    }
+    else {
+      validJWT = true
+    }
+  })
+
+  return validJWT
 }

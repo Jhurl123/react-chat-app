@@ -4,5 +4,6 @@ export default React.createContext({
   messages: [],
   conversations: [],
   sendMessage: () => {},
-  client: () => {}
+  client: () => {},
+  error: () => {}
 })

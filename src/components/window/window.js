@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Container, Box } from '@material-ui/core';
 import WindowToolbar from './toolbar';
 import WindowPane from './windowPane';
-import SignUpModal from './signUpModal';
 
 const Window = (props) => {
 
@@ -20,7 +19,6 @@ const Window = (props) => {
         <WindowToolbar handleMenu={toggleMenu}/>
         <WindowPane menuStatus={menuOpen} />
       </Box>
-      <SignUpModal />
     </Container>
   )
 };

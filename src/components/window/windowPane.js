@@ -7,7 +7,7 @@ import ChatControls from '../chatControls/chatControls'
 import MessageContext from '../../Context/messageContext'
 import StaticConversation from "../chatList/conversationList"
 import socket from '../../server/socket-client'
-
+import SignUpModal from './signUpModal';
 
 const useStyles = makeStyles((theme) => ({
   pane: {
@@ -45,7 +45,7 @@ const WindowPane = (props) => {
   const [messages, setMessages] = useState([]);
   const [conversations, setConversations] = useState('')
   const [apiError, setApiError] = useState('')
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(false)
   const { menuStatus } = props
 
   // Common parent of the message list and the input
@@ -74,7 +74,7 @@ const WindowPane = (props) => {
 
     })
     .then(data => {
-      setMessages(prevState => [message, ...prevState])
+      setMessages(prevState => [message.message, ...prevState])
 
       // Send the message to the client
       socket.setMessages([message, ...messages])
@@ -98,13 +98,9 @@ const WindowPane = (props) => {
       socket.messageListener(messages, setMessages)
     }
     catch(err) {
-
       // display error if it exists
-      console.log(err);
-      setApiError(err)
+      setApiError("Sorry, couldn't grab these messages")
     }
-    
-    // if (response.status !== 200) throw Error(response);
     
   };
 
@@ -112,9 +108,10 @@ const WindowPane = (props) => {
   useEffect(() => {
     
     // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
-
-
-    if(localStorage.getItem('userId')) getMessages()
+    if(localStorage.getItem('user')) {
+      setUser(true)
+      getMessages()
+    }
    
     setConversations(StaticConversation)
 
@@ -126,12 +123,16 @@ const WindowPane = (props) => {
     conversations: conversations,
     sendMessage: addMessage,
     client: socket,
+    error: setApiError
   }
 
   return (
     
     <MessageContext.Provider value={value}>
       <div className={classes.pane}>
+        { !user &&
+          <SignUpModal getMessages={getMessages}/>
+        }
         <Container style={{padding: 0}}>
           <Grid container>
             <Grid item className={`${classes.conversationList} ${props.menuStatus ? classes.listOpen : ''}`} sm={12} md={12} lg={4}>

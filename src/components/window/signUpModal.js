@@ -85,6 +85,8 @@ const SignUpModal = (props) => {
   const [formSubmit, setFormSubmit] = useState(false)
   const [apiError, setApiError] = useState('')
 
+  const { getMessages } = props
+
   const handleClose = () => {
     setModal(prevState => !prevState)
   }
@@ -124,7 +126,9 @@ const SignUpModal = (props) => {
     // Test if response from server is good, then return, or set error
     if(response.passed) {
 
-      localStorage.setItem('userId', response.userId)
+      localStorage.setItem('user', JSON.stringify({ userId: response.userId, token: response.token}))
+
+      getMessages()
       setError(false)
       setApiError(false)
       handleClose()
@@ -210,7 +214,7 @@ const SignUpModal = (props) => {
                     name='userName'
                     label=' Enter User Name' 
                     size='medium' 
-                    disabled={state === 'exited' ? 'disabled' : ''}
+                    disabled={state === 'exited' ? true : false}
                     variant='outlined' 
                     onChange={e => setUserName(e.target.value)}
                     helperText={ error && 'Invalid Username'}
@@ -225,7 +229,7 @@ const SignUpModal = (props) => {
                     label='Enter Password'
                     size='medium' 
                     variant='outlined' 
-                    disabled={state === 'exited' ? 'disabled' : ''}
+                    disabled={state === 'exited' ? true: false}
                     onChange={e => setPassword(e.target.value)}
                     helperText={ error && 'Invalid Password'}
                   />
