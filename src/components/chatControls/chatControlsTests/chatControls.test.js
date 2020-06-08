@@ -18,5 +18,4 @@ describe('Chat controls test', () => {
     ReactDOM.unmountComponentAtNode(div);
   })
 
-  
 })

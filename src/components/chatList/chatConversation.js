@@ -50,22 +50,26 @@ const ChatConversation = (props) => {
   // Need to use the messages here, and show the excerpt of the last message sent using context
 
   return (
-    <div className={classes.conversation}>
-      <StyledBadge
-        overlap="circle"
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        variant="dot"
-      >
-        <Avatar className={classes.green}>JH</Avatar>
-      </StyledBadge>
-        <div className={classes.info}>
-          <h4>{info.users[0].name}</h4>
-          <p>{info.excerpt}</p>
-        </div>
-        <span>{info.time}</span>
+    <div>
+      {info && (
+        <div className={classes.conversation}>
+          <StyledBadge
+            overlap="circle"
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            variant="dot"
+          >
+            <Avatar className={classes.green}>JH</Avatar>
+          </StyledBadge>
+          <div className={classes.info}>
+            <h4>{info.users[0].name}</h4>
+            <p>{info.excerpt}</p>
+          </div>
+          <span>{info.time}</span>
+      </div>
+      )}
     </div>
   )
 }

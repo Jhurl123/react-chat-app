@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
-const ChatList = (props) => {
+const ChatList = () => {
 
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
@@ -45,7 +45,6 @@ const ChatList = (props) => {
       {displayConversations && (
         displayConversations.map(convo => <ChatConversation key={convo.id} info={convo} />)
       )}
-
     </div>
   )
 }
