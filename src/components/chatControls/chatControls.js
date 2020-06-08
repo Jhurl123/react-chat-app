@@ -22,11 +22,12 @@ const useStyles = makeStyles((theme) => ({
 const ChatControls = () => {
 
   const classes = useStyles()
+  const userObject = JSON.parse(localStorage.getItem('user')) || {}
 
   return (
     <div className={classes.container}>
       <Grid item xs={12}>
-        <ChatInput />
+        <ChatInput userObject={userObject}/>
       </Grid>
     </div>
   )

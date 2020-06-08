@@ -12,7 +12,7 @@ exports[`Chat Input Tests renders the UI as expected 1`] = `
   >
     <input
       autoComplete="off"
-      className="makeStyles-ChatInput-1"
+      className="makeStyles-ChatInput-23"
       name="message"
       onChange={[Function]}
       placeholder="Send a message"
@@ -24,6 +24,7 @@ exports[`Chat Input Tests renders the UI as expected 1`] = `
       className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}

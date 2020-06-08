@@ -26,7 +26,7 @@ const ChatInput = (props) => {
 
   const messageContext = useContext(MessageContext)
   const classes = useStyles()
-  const userObject = JSON.parse(localStorage.getItem('user'))
+  const { userObject } = props
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -47,8 +47,6 @@ const ChatInput = (props) => {
       userToken: userObject.token
     }
 
-
-
     messageContext.sendMessage(newMessage)
     setMessage('')
   }
@@ -65,7 +63,7 @@ const ChatInput = (props) => {
           placeholder="Send a message"
           onChange={ e => setMessage(e.target.value)}
         />
-        <IconButton aria-label="Send Message" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
+        <IconButton onClick={handleSubmit} aria-label="Send Message" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
           <EmailIcon />
         </IconButton>
 

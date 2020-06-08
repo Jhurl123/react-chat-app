@@ -30,6 +30,7 @@ exports[`Chat controls test renders the ui as expected 1`] = `
           className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
           disabled={false}
           onBlur={[Function]}
+          onClick={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
