@@ -1,0 +1,1726 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sign Up Modal test renders the ui as expected 1`] = `
+<SignUpModal>
+  <ForwardRef(Modal)
+    BackdropComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "Naked": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "propTypes": Object {
+            "children": [Function],
+            "className": [Function],
+            "classes": [Function],
+            "invisible": [Function],
+            "open": [Function],
+            "transitionDuration": [Function],
+          },
+          "render": [Function],
+        },
+        "displayName": "WithStyles(ForwardRef(Backdrop))",
+        "options": Object {
+          "defaultTheme": Object {
+            "breakpoints": Object {
+              "between": [Function],
+              "down": [Function],
+              "keys": Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ],
+              "only": [Function],
+              "up": [Function],
+              "values": Object {
+                "lg": 1280,
+                "md": 960,
+                "sm": 600,
+                "xl": 1920,
+                "xs": 0,
+              },
+              "width": [Function],
+            },
+            "direction": "ltr",
+            "mixins": Object {
+              "gutters": [Function],
+              "toolbar": Object {
+                "@media (min-width:0px) and (orientation: landscape)": Object {
+                  "minHeight": 48,
+                },
+                "@media (min-width:600px)": Object {
+                  "minHeight": 64,
+                },
+                "minHeight": 56,
+              },
+            },
+            "overrides": Object {},
+            "palette": Object {
+              "action": Object {
+                "activatedOpacity": 0.12,
+                "active": "rgba(0, 0, 0, 0.54)",
+                "disabled": "rgba(0, 0, 0, 0.26)",
+                "disabledBackground": "rgba(0, 0, 0, 0.12)",
+                "disabledOpacity": 0.38,
+                "focus": "rgba(0, 0, 0, 0.12)",
+                "focusOpacity": 0.12,
+                "hover": "rgba(0, 0, 0, 0.04)",
+                "hoverOpacity": 0.04,
+                "selected": "rgba(0, 0, 0, 0.08)",
+                "selectedOpacity": 0.08,
+              },
+              "augmentColor": [Function],
+              "background": Object {
+                "default": "#fafafa",
+                "paper": "#fff",
+              },
+              "common": Object {
+                "black": "#000",
+                "white": "#fff",
+              },
+              "contrastThreshold": 3,
+              "divider": "rgba(0, 0, 0, 0.12)",
+              "error": Object {
+                "contrastText": "#fff",
+                "dark": "#d32f2f",
+                "light": "#e57373",
+                "main": "#f44336",
+              },
+              "getContrastText": [Function],
+              "grey": Object {
+                "100": "#f5f5f5",
+                "200": "#eeeeee",
+                "300": "#e0e0e0",
+                "400": "#bdbdbd",
+                "50": "#fafafa",
+                "500": "#9e9e9e",
+                "600": "#757575",
+                "700": "#616161",
+                "800": "#424242",
+                "900": "#212121",
+                "A100": "#d5d5d5",
+                "A200": "#aaaaaa",
+                "A400": "#303030",
+                "A700": "#616161",
+              },
+              "info": Object {
+                "contrastText": "#fff",
+                "dark": "#1976d2",
+                "light": "#64b5f6",
+                "main": "#2196f3",
+              },
+              "primary": Object {
+                "contrastText": "#fff",
+                "dark": "#303f9f",
+                "light": "#7986cb",
+                "main": "#3f51b5",
+              },
+              "secondary": Object {
+                "contrastText": "#fff",
+                "dark": "#c51162",
+                "light": "#ff4081",
+                "main": "#f50057",
+              },
+              "success": Object {
+                "contrastText": "rgba(0, 0, 0, 0.87)",
+                "dark": "#388e3c",
+                "light": "#81c784",
+                "main": "#4caf50",
+              },
+              "text": Object {
+                "disabled": "rgba(0, 0, 0, 0.38)",
+                "hint": "rgba(0, 0, 0, 0.38)",
+                "primary": "rgba(0, 0, 0, 0.87)",
+                "secondary": "rgba(0, 0, 0, 0.54)",
+              },
+              "tonalOffset": 0.2,
+              "type": "light",
+              "warning": Object {
+                "contrastText": "rgba(0, 0, 0, 0.87)",
+                "dark": "#f57c00",
+                "light": "#ffb74d",
+                "main": "#ff9800",
+              },
+            },
+            "props": Object {},
+            "shadows": Array [
+              "none",
+              "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
+              "0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12)",
+              "0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)",
+              "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
+              "0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12)",
+              "0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)",
+              "0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12)",
+              "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
+              "0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12)",
+              "0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12)",
+              "0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12)",
+              "0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12)",
+              "0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
+              "0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12)",
+              "0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12)",
+              "0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)",
+              "0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12)",
+              "0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12)",
+              "0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12)",
+              "0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12)",
+              "0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)",
+              "0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)",
+              "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
+              "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
+            ],
+            "shape": Object {
+              "borderRadius": 4,
+            },
+            "spacing": [Function],
+            "transitions": Object {
+              "create": [Function],
+              "duration": Object {
+                "complex": 375,
+                "enteringScreen": 225,
+                "leavingScreen": 195,
+                "short": 250,
+                "shorter": 200,
+                "shortest": 150,
+                "standard": 300,
+              },
+              "easing": Object {
+                "easeIn": "cubic-bezier(0.4, 0, 1, 1)",
+                "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
+                "easeOut": "cubic-bezier(0.0, 0, 0.2, 1)",
+                "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+              },
+              "getAutoHeightDuration": [Function],
+            },
+            "typography": Object {
+              "body1": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "1rem",
+                "fontWeight": 400,
+                "letterSpacing": "0.00938em",
+                "lineHeight": 1.5,
+              },
+              "body2": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "0.875rem",
+                "fontWeight": 400,
+                "letterSpacing": "0.01071em",
+                "lineHeight": 1.43,
+              },
+              "button": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "0.875rem",
+                "fontWeight": 500,
+                "letterSpacing": "0.02857em",
+                "lineHeight": 1.75,
+                "textTransform": "uppercase",
+              },
+              "caption": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "0.75rem",
+                "fontWeight": 400,
+                "letterSpacing": "0.03333em",
+                "lineHeight": 1.66,
+              },
+              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+              "fontSize": 14,
+              "fontWeightBold": 700,
+              "fontWeightLight": 300,
+              "fontWeightMedium": 500,
+              "fontWeightRegular": 400,
+              "h1": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "6rem",
+                "fontWeight": 300,
+                "letterSpacing": "-0.01562em",
+                "lineHeight": 1.167,
+              },
+              "h2": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "3.75rem",
+                "fontWeight": 300,
+                "letterSpacing": "-0.00833em",
+                "lineHeight": 1.2,
+              },
+              "h3": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "3rem",
+                "fontWeight": 400,
+                "letterSpacing": "0em",
+                "lineHeight": 1.167,
+              },
+              "h4": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "2.125rem",
+                "fontWeight": 400,
+                "letterSpacing": "0.00735em",
+                "lineHeight": 1.235,
+              },
+              "h5": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "1.5rem",
+                "fontWeight": 400,
+                "letterSpacing": "0em",
+                "lineHeight": 1.334,
+              },
+              "h6": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "1.25rem",
+                "fontWeight": 500,
+                "letterSpacing": "0.0075em",
+                "lineHeight": 1.6,
+              },
+              "htmlFontSize": 16,
+              "overline": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "0.75rem",
+                "fontWeight": 400,
+                "letterSpacing": "0.08333em",
+                "lineHeight": 2.66,
+                "textTransform": "uppercase",
+              },
+              "pxToRem": [Function],
+              "round": [Function],
+              "subtitle1": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "1rem",
+                "fontWeight": 400,
+                "letterSpacing": "0.00938em",
+                "lineHeight": 1.75,
+              },
+              "subtitle2": Object {
+                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                "fontSize": "0.875rem",
+                "fontWeight": 500,
+                "letterSpacing": "0.00714em",
+                "lineHeight": 1.57,
+              },
+            },
+            "zIndex": Object {
+              "appBar": 1100,
+              "drawer": 1200,
+              "mobileStepper": 1000,
+              "modal": 1300,
+              "snackbar": 1400,
+              "speedDial": 1050,
+              "tooltip": 1500,
+            },
+          },
+          "name": "MuiBackdrop",
+        },
+        "propTypes": Object {
+          "classes": [Function],
+          "innerRef": [Function],
+        },
+        "render": [Function],
+        "useStyles": [Function],
+      }
+    }
+    BackdropProps={
+      Object {
+        "timeout": 500,
+      }
+    }
+    aria-describedby="simple-modal-description"
+    aria-labelledby="simple-modal-title"
+    disableBackdropClick={true}
+    disableEscapeKeyDown={true}
+    onClose={[Function]}
+    open={true}
+  >
+    <ForwardRef(Portal)
+      disablePortal={false}
+    >
+      <Portal
+        containerInfo={
+          <body
+            style="padding-right: 0px; overflow: hidden;"
+          >
+            <div
+              aria-describedby="simple-modal-description"
+              aria-labelledby="simple-modal-title"
+              role="presentation"
+              style="position: fixed; z-index: 1300; right: 0px; bottom: 0px; top: 0px; left: 0px;"
+            >
+              <div
+                aria-hidden="true"
+                class="MuiBackdrop-root"
+                style="opacity: 1; webkit-transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+              />
+              <div
+                data-test="sentinelStart"
+                tabindex="0"
+              />
+              <div
+                class="makeStyles-paper-1"
+                tabindex="-1"
+              >
+                <h2
+                  class="makeStyles-header-2"
+                  id="simple-modal-title"
+                >
+                  Welcome!
+                </h2>
+                <p
+                  class="makeStyles-intro-3"
+                >
+                  Log in or sign up to send messages to anyone whos username you have!
+                </p>
+                
+                <div>
+                  <form
+                    class="makeStyles-form-4"
+                  >
+                    <div
+                      style="opacity: 0; position: absolute;"
+                    >
+                      <button
+                        aria-label="Go Back"
+                        class="MuiButtonBase-root MuiIconButton-root makeStyles-backButton-11 MuiIconButton-colorPrimary"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21z"
+                            />
+                          </svg>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                      <div
+                        class="MuiFormControl-root MuiTextField-root makeStyles-input-5"
+                        style="width: 100%;"
+                      >
+                        <label
+                          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-disabled Mui-disabled"
+                          data-shrink="false"
+                          for="userName"
+                          id="userName-label"
+                        >
+                           Enter User Name
+                        </label>
+                        <div
+                          class="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-formControl"
+                        >
+                          <input
+                            aria-invalid="false"
+                            class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                            disabled=""
+                            id="userName"
+                            name="userName"
+                            type="text"
+                            value=""
+                          />
+                          <fieldset
+                            aria-hidden="true"
+                            class="PrivateNotchedOutline-root-93 MuiOutlinedInput-notchedOutline"
+                          >
+                            <legend
+                              class="PrivateNotchedOutline-legendLabelled-95"
+                            >
+                              <span>
+                                 Enter User Name
+                              </span>
+                            </legend>
+                          </fieldset>
+                        </div>
+                        
+                      </div>
+                      <div
+                        class="MuiFormControl-root MuiTextField-root makeStyles-input-5"
+                        style="width: 100%;"
+                      >
+                        <label
+                          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-disabled Mui-disabled"
+                          data-shrink="false"
+                          for="password"
+                          id="password-label"
+                        >
+                          Enter Password
+                        </label>
+                        <div
+                          class="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-formControl"
+                        >
+                          <input
+                            aria-invalid="false"
+                            class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                            disabled=""
+                            id="password"
+                            name="password"
+                            type="password"
+                            value=""
+                          />
+                          <fieldset
+                            aria-hidden="true"
+                            class="PrivateNotchedOutline-root-93 MuiOutlinedInput-notchedOutline"
+                          >
+                            <legend
+                              class="PrivateNotchedOutline-legendLabelled-95"
+                            >
+                              <span>
+                                Enter Password
+                              </span>
+                            </legend>
+                          </fieldset>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <button
+                      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-7 signup-button MuiButton-containedPrimary"
+                      tabindex="0"
+                      type="submit"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Sign up
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                    <button
+                      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-button-7 login-button MuiButton-outlinedPrimary"
+                      tabindex="0"
+                      type="submit"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Log in
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div
+                data-test="sentinelEnd"
+                tabindex="0"
+              />
+            </div>
+          </body>
+        }
+      >
+        <div
+          aria-describedby="simple-modal-description"
+          aria-labelledby="simple-modal-title"
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "fixed",
+              "right": 0,
+              "top": 0,
+              "zIndex": 1300,
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Backdrop))
+            onClick={[Function]}
+            open={true}
+            timeout={500}
+          >
+            <ForwardRef(Backdrop)
+              classes={
+                Object {
+                  "invisible": "MuiBackdrop-invisible",
+                  "root": "MuiBackdrop-root",
+                }
+              }
+              onClick={[Function]}
+              open={true}
+              timeout={500}
+            >
+              <ForwardRef(Fade)
+                in={true}
+                onClick={[Function]}
+                timeout={500}
+              >
+                <Transition
+                  appear={true}
+                  enter={true}
+                  exit={true}
+                  in={true}
+                  mountOnEnter={false}
+                  onClick={[Function]}
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={500}
+                  unmountOnExit={false}
+                >
+                  <div
+                    aria-hidden={true}
+                    className="MuiBackdrop-root"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "opacity": 1,
+                        "visibility": undefined,
+                      }
+                    }
+                  />
+                </Transition>
+              </ForwardRef(Fade)>
+            </ForwardRef(Backdrop)>
+          </WithStyles(ForwardRef(Backdrop))>
+          <TrapFocus
+            disableAutoFocus={false}
+            disableEnforceFocus={false}
+            disableRestoreFocus={false}
+            getDoc={[Function]}
+            isEnabled={[Function]}
+            open={true}
+          >
+            <div
+              data-test="sentinelStart"
+              tabIndex={0}
+            />
+            <div
+              className="makeStyles-paper-1"
+              tabIndex="-1"
+            >
+              <h2
+                className="makeStyles-header-2"
+                id="simple-modal-title"
+              >
+                Welcome!
+              </h2>
+              <p
+                className="makeStyles-intro-3"
+              >
+                Log in or sign up to send messages to anyone whos username you have!
+              </p>
+              <div>
+                <form
+                  className="makeStyles-form-4"
+                  onSubmit={[Function]}
+                >
+                  <Transition
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={false}
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    timeout={300}
+                    unmountOnExit={false}
+                  >
+                    <div
+                      style={
+                        Object {
+                          "opacity": 0,
+                          "position": "absolute",
+                        }
+                      }
+                    >
+                      <WithStyles(ForwardRef(IconButton))
+                        aria-label="Go Back"
+                        className="makeStyles-backButton-11"
+                        color="primary"
+                        onClick={[Function]}
+                      >
+                        <ForwardRef(IconButton)
+                          aria-label="Go Back"
+                          className="makeStyles-backButton-11"
+                          classes={
+                            Object {
+                              "colorInherit": "MuiIconButton-colorInherit",
+                              "colorPrimary": "MuiIconButton-colorPrimary",
+                              "colorSecondary": "MuiIconButton-colorSecondary",
+                              "disabled": "Mui-disabled",
+                              "edgeEnd": "MuiIconButton-edgeEnd",
+                              "edgeStart": "MuiIconButton-edgeStart",
+                              "label": "MuiIconButton-label",
+                              "root": "MuiIconButton-root",
+                              "sizeSmall": "MuiIconButton-sizeSmall",
+                            }
+                          }
+                          color="primary"
+                          onClick={[Function]}
+                        >
+                          <WithStyles(ForwardRef(ButtonBase))
+                            aria-label="Go Back"
+                            centerRipple={true}
+                            className="MuiIconButton-root makeStyles-backButton-11 MuiIconButton-colorPrimary"
+                            disabled={false}
+                            focusRipple={true}
+                            onClick={[Function]}
+                          >
+                            <ForwardRef(ButtonBase)
+                              aria-label="Go Back"
+                              centerRipple={true}
+                              className="MuiIconButton-root makeStyles-backButton-11 MuiIconButton-colorPrimary"
+                              classes={
+                                Object {
+                                  "disabled": "Mui-disabled",
+                                  "focusVisible": "Mui-focusVisible",
+                                  "root": "MuiButtonBase-root",
+                                }
+                              }
+                              disabled={false}
+                              focusRipple={true}
+                              onClick={[Function]}
+                            >
+                              <button
+                                aria-label="Go Back"
+                                className="MuiButtonBase-root MuiIconButton-root makeStyles-backButton-11 MuiIconButton-colorPrimary"
+                                disabled={false}
+                                onBlur={[Function]}
+                                onClick={[Function]}
+                                onDragLeave={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                onKeyUp={[Function]}
+                                onMouseDown={[Function]}
+                                onMouseLeave={[Function]}
+                                onMouseUp={[Function]}
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                                tabIndex={0}
+                                type="button"
+                              >
+                                <span
+                                  className="MuiIconButton-label"
+                                >
+                                  <ForwardRef
+                                    fontSize="large"
+                                  >
+                                    <WithStyles(ForwardRef(SvgIcon))
+                                      fontSize="large"
+                                    >
+                                      <ForwardRef(SvgIcon)
+                                        classes={
+                                          Object {
+                                            "colorAction": "MuiSvgIcon-colorAction",
+                                            "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                            "colorError": "MuiSvgIcon-colorError",
+                                            "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                            "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                            "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                            "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                            "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                            "root": "MuiSvgIcon-root",
+                                          }
+                                        }
+                                        fontSize="large"
+                                      >
+                                        <svg
+                                          aria-hidden={true}
+                                          className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                                          focusable="false"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path
+                                            d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21z"
+                                          />
+                                        </svg>
+                                      </ForwardRef(SvgIcon)>
+                                    </WithStyles(ForwardRef(SvgIcon))>
+                                  </ForwardRef>
+                                </span>
+                                <WithStyles(memo)
+                                  center={true}
+                                >
+                                  <ForwardRef(TouchRipple)
+                                    center={true}
+                                    classes={
+                                      Object {
+                                        "child": "MuiTouchRipple-child",
+                                        "childLeaving": "MuiTouchRipple-childLeaving",
+                                        "childPulsate": "MuiTouchRipple-childPulsate",
+                                        "ripple": "MuiTouchRipple-ripple",
+                                        "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                        "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                        "root": "MuiTouchRipple-root",
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      className="MuiTouchRipple-root"
+                                    >
+                                      <TransitionGroup
+                                        childFactory={[Function]}
+                                        component={null}
+                                        exit={true}
+                                      />
+                                    </span>
+                                  </ForwardRef(TouchRipple)>
+                                </WithStyles(memo)>
+                              </button>
+                            </ForwardRef(ButtonBase)>
+                          </WithStyles(ForwardRef(ButtonBase))>
+                        </ForwardRef(IconButton)>
+                      </WithStyles(ForwardRef(IconButton))>
+                      <WithStyles(ForwardRef(TextField))
+                        className="makeStyles-input-5"
+                        disabled={true}
+                        error={false}
+                        helperText=""
+                        id="userName"
+                        label=" Enter User Name"
+                        name="userName"
+                        onChange={[Function]}
+                        size="medium"
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
+                        type="text"
+                        variant="outlined"
+                      >
+                        <ForwardRef(TextField)
+                          className="makeStyles-input-5"
+                          classes={
+                            Object {
+                              "root": "MuiTextField-root",
+                            }
+                          }
+                          disabled={true}
+                          error={false}
+                          helperText=""
+                          id="userName"
+                          label=" Enter User Name"
+                          name="userName"
+                          onChange={[Function]}
+                          size="medium"
+                          style={
+                            Object {
+                              "width": "100%",
+                            }
+                          }
+                          type="text"
+                          variant="outlined"
+                        >
+                          <WithStyles(ForwardRef(FormControl))
+                            className="MuiTextField-root makeStyles-input-5"
+                            color="primary"
+                            disabled={true}
+                            error={false}
+                            fullWidth={false}
+                            required={false}
+                            size="medium"
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                            variant="outlined"
+                          >
+                            <ForwardRef(FormControl)
+                              className="MuiTextField-root makeStyles-input-5"
+                              classes={
+                                Object {
+                                  "fullWidth": "MuiFormControl-fullWidth",
+                                  "marginDense": "MuiFormControl-marginDense",
+                                  "marginNormal": "MuiFormControl-marginNormal",
+                                  "root": "MuiFormControl-root",
+                                }
+                              }
+                              color="primary"
+                              disabled={true}
+                              error={false}
+                              fullWidth={false}
+                              required={false}
+                              size="medium"
+                              style={
+                                Object {
+                                  "width": "100%",
+                                }
+                              }
+                              variant="outlined"
+                            >
+                              <div
+                                className="MuiFormControl-root MuiTextField-root makeStyles-input-5"
+                                style={
+                                  Object {
+                                    "width": "100%",
+                                  }
+                                }
+                              >
+                                <WithStyles(ForwardRef(InputLabel))
+                                  htmlFor="userName"
+                                  id="userName-label"
+                                >
+                                  <ForwardRef(InputLabel)
+                                    classes={
+                                      Object {
+                                        "animated": "MuiInputLabel-animated",
+                                        "asterisk": "MuiInputLabel-asterisk",
+                                        "disabled": "Mui-disabled",
+                                        "error": "Mui-error",
+                                        "filled": "MuiInputLabel-filled",
+                                        "focused": "Mui-focused",
+                                        "formControl": "MuiInputLabel-formControl",
+                                        "marginDense": "MuiInputLabel-marginDense",
+                                        "outlined": "MuiInputLabel-outlined",
+                                        "required": "Mui-required",
+                                        "root": "MuiInputLabel-root",
+                                        "shrink": "MuiInputLabel-shrink",
+                                      }
+                                    }
+                                    htmlFor="userName"
+                                    id="userName-label"
+                                  >
+                                    <WithStyles(ForwardRef(FormLabel))
+                                      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                                      classes={
+                                        Object {
+                                          "asterisk": "MuiInputLabel-asterisk",
+                                          "disabled": "Mui-disabled",
+                                          "error": "Mui-error",
+                                          "focused": "Mui-focused",
+                                          "required": "Mui-required",
+                                        }
+                                      }
+                                      data-shrink={false}
+                                      htmlFor="userName"
+                                      id="userName-label"
+                                    >
+                                      <ForwardRef(FormLabel)
+                                        className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                                        classes={
+                                          Object {
+                                            "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                                            "colorSecondary": "MuiFormLabel-colorSecondary",
+                                            "disabled": "Mui-disabled Mui-disabled",
+                                            "error": "Mui-error Mui-error",
+                                            "filled": "MuiFormLabel-filled",
+                                            "focused": "Mui-focused Mui-focused",
+                                            "required": "Mui-required Mui-required",
+                                            "root": "MuiFormLabel-root",
+                                          }
+                                        }
+                                        data-shrink={false}
+                                        htmlFor="userName"
+                                        id="userName-label"
+                                      >
+                                        <label
+                                          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-disabled Mui-disabled"
+                                          data-shrink={false}
+                                          htmlFor="userName"
+                                          id="userName-label"
+                                        >
+                                           Enter User Name
+                                        </label>
+                                      </ForwardRef(FormLabel)>
+                                    </WithStyles(ForwardRef(FormLabel))>
+                                  </ForwardRef(InputLabel)>
+                                </WithStyles(ForwardRef(InputLabel))>
+                                <WithStyles(ForwardRef(OutlinedInput))
+                                  autoFocus={false}
+                                  fullWidth={false}
+                                  id="userName"
+                                  label={
+                                    <React.Fragment>
+                                       Enter User Name
+                                    </React.Fragment>
+                                  }
+                                  multiline={false}
+                                  name="userName"
+                                  onChange={[Function]}
+                                  type="text"
+                                >
+                                  <ForwardRef(OutlinedInput)
+                                    autoFocus={false}
+                                    classes={
+                                      Object {
+                                        "adornedEnd": "MuiOutlinedInput-adornedEnd",
+                                        "adornedStart": "MuiOutlinedInput-adornedStart",
+                                        "colorSecondary": "MuiOutlinedInput-colorSecondary",
+                                        "disabled": "Mui-disabled",
+                                        "error": "Mui-error",
+                                        "focused": "Mui-focused",
+                                        "input": "MuiOutlinedInput-input",
+                                        "inputAdornedEnd": "MuiOutlinedInput-inputAdornedEnd",
+                                        "inputAdornedStart": "MuiOutlinedInput-inputAdornedStart",
+                                        "inputMarginDense": "MuiOutlinedInput-inputMarginDense",
+                                        "inputMultiline": "MuiOutlinedInput-inputMultiline",
+                                        "marginDense": "MuiOutlinedInput-marginDense",
+                                        "multiline": "MuiOutlinedInput-multiline",
+                                        "notchedOutline": "MuiOutlinedInput-notchedOutline",
+                                        "root": "MuiOutlinedInput-root",
+                                      }
+                                    }
+                                    fullWidth={false}
+                                    id="userName"
+                                    label={
+                                      <React.Fragment>
+                                         Enter User Name
+                                      </React.Fragment>
+                                    }
+                                    multiline={false}
+                                    name="userName"
+                                    onChange={[Function]}
+                                    type="text"
+                                  >
+                                    <WithStyles(ForwardRef(InputBase))
+                                      autoFocus={false}
+                                      classes={
+                                        Object {
+                                          "adornedEnd": "MuiOutlinedInput-adornedEnd",
+                                          "adornedStart": "MuiOutlinedInput-adornedStart",
+                                          "colorSecondary": "MuiOutlinedInput-colorSecondary",
+                                          "disabled": "Mui-disabled",
+                                          "error": "Mui-error",
+                                          "focused": "Mui-focused",
+                                          "input": "MuiOutlinedInput-input",
+                                          "inputAdornedEnd": "MuiOutlinedInput-inputAdornedEnd",
+                                          "inputAdornedStart": "MuiOutlinedInput-inputAdornedStart",
+                                          "inputMarginDense": "MuiOutlinedInput-inputMarginDense",
+                                          "inputMultiline": "MuiOutlinedInput-inputMultiline",
+                                          "marginDense": "MuiOutlinedInput-marginDense",
+                                          "multiline": "MuiOutlinedInput-multiline",
+                                          "notchedOutline": null,
+                                          "root": "MuiOutlinedInput-root",
+                                        }
+                                      }
+                                      fullWidth={false}
+                                      id="userName"
+                                      inputComponent="input"
+                                      multiline={false}
+                                      name="userName"
+                                      onChange={[Function]}
+                                      renderSuffix={[Function]}
+                                      type="text"
+                                    >
+                                      <ForwardRef(InputBase)
+                                        autoFocus={false}
+                                        classes={
+                                          Object {
+                                            "adornedEnd": "MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd",
+                                            "adornedStart": "MuiInputBase-adornedStart MuiOutlinedInput-adornedStart",
+                                            "colorSecondary": "MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary",
+                                            "disabled": "Mui-disabled Mui-disabled",
+                                            "error": "Mui-error Mui-error",
+                                            "focused": "Mui-focused Mui-focused",
+                                            "formControl": "MuiInputBase-formControl",
+                                            "fullWidth": "MuiInputBase-fullWidth",
+                                            "input": "MuiInputBase-input MuiOutlinedInput-input",
+                                            "inputAdornedEnd": "MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd",
+                                            "inputAdornedStart": "MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart",
+                                            "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
+                                            "inputMarginDense": "MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense",
+                                            "inputMultiline": "MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline",
+                                            "inputTypeSearch": "MuiInputBase-inputTypeSearch",
+                                            "marginDense": "MuiInputBase-marginDense MuiOutlinedInput-marginDense",
+                                            "multiline": "MuiInputBase-multiline MuiOutlinedInput-multiline",
+                                            "root": "MuiInputBase-root MuiOutlinedInput-root",
+                                          }
+                                        }
+                                        fullWidth={false}
+                                        id="userName"
+                                        inputComponent="input"
+                                        multiline={false}
+                                        name="userName"
+                                        onChange={[Function]}
+                                        renderSuffix={[Function]}
+                                        type="text"
+                                      >
+                                        <div
+                                          className="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-formControl"
+                                          onClick={[Function]}
+                                        >
+                                          <input
+                                            aria-invalid={false}
+                                            autoFocus={false}
+                                            className="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                                            disabled={true}
+                                            id="userName"
+                                            name="userName"
+                                            onAnimationStart={[Function]}
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onFocus={[Function]}
+                                            required={false}
+                                            type="text"
+                                          />
+                                          <WithStyles(ForwardRef(NotchedOutline))
+                                            className="MuiOutlinedInput-notchedOutline"
+                                            label={
+                                              <React.Fragment>
+                                                 Enter User Name
+                                              </React.Fragment>
+                                            }
+                                            labelWidth={0}
+                                            notched={false}
+                                          >
+                                            <ForwardRef(NotchedOutline)
+                                              className="MuiOutlinedInput-notchedOutline"
+                                              classes={
+                                                Object {
+                                                  "legend": "PrivateNotchedOutline-legend-94",
+                                                  "legendLabelled": "PrivateNotchedOutline-legendLabelled-95",
+                                                  "legendNotched": "PrivateNotchedOutline-legendNotched-96",
+                                                  "root": "PrivateNotchedOutline-root-93",
+                                                }
+                                              }
+                                              label={
+                                                <React.Fragment>
+                                                   Enter User Name
+                                                </React.Fragment>
+                                              }
+                                              labelWidth={0}
+                                              notched={false}
+                                            >
+                                              <fieldset
+                                                aria-hidden={true}
+                                                className="PrivateNotchedOutline-root-93 MuiOutlinedInput-notchedOutline"
+                                              >
+                                                <legend
+                                                  className="PrivateNotchedOutline-legendLabelled-95"
+                                                >
+                                                  <span>
+                                                     Enter User Name
+                                                  </span>
+                                                </legend>
+                                              </fieldset>
+                                            </ForwardRef(NotchedOutline)>
+                                          </WithStyles(ForwardRef(NotchedOutline))>
+                                        </div>
+                                      </ForwardRef(InputBase)>
+                                    </WithStyles(ForwardRef(InputBase))>
+                                  </ForwardRef(OutlinedInput)>
+                                </WithStyles(ForwardRef(OutlinedInput))>
+                              </div>
+                            </ForwardRef(FormControl)>
+                          </WithStyles(ForwardRef(FormControl))>
+                        </ForwardRef(TextField)>
+                      </WithStyles(ForwardRef(TextField))>
+                      <WithStyles(ForwardRef(TextField))
+                        className="makeStyles-input-5"
+                        disabled={true}
+                        error={false}
+                        helperText=""
+                        id="password"
+                        label="Enter Password"
+                        name="password"
+                        onChange={[Function]}
+                        size="medium"
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
+                        type="password"
+                        variant="outlined"
+                      >
+                        <ForwardRef(TextField)
+                          className="makeStyles-input-5"
+                          classes={
+                            Object {
+                              "root": "MuiTextField-root",
+                            }
+                          }
+                          disabled={true}
+                          error={false}
+                          helperText=""
+                          id="password"
+                          label="Enter Password"
+                          name="password"
+                          onChange={[Function]}
+                          size="medium"
+                          style={
+                            Object {
+                              "width": "100%",
+                            }
+                          }
+                          type="password"
+                          variant="outlined"
+                        >
+                          <WithStyles(ForwardRef(FormControl))
+                            className="MuiTextField-root makeStyles-input-5"
+                            color="primary"
+                            disabled={true}
+                            error={false}
+                            fullWidth={false}
+                            required={false}
+                            size="medium"
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                            variant="outlined"
+                          >
+                            <ForwardRef(FormControl)
+                              className="MuiTextField-root makeStyles-input-5"
+                              classes={
+                                Object {
+                                  "fullWidth": "MuiFormControl-fullWidth",
+                                  "marginDense": "MuiFormControl-marginDense",
+                                  "marginNormal": "MuiFormControl-marginNormal",
+                                  "root": "MuiFormControl-root",
+                                }
+                              }
+                              color="primary"
+                              disabled={true}
+                              error={false}
+                              fullWidth={false}
+                              required={false}
+                              size="medium"
+                              style={
+                                Object {
+                                  "width": "100%",
+                                }
+                              }
+                              variant="outlined"
+                            >
+                              <div
+                                className="MuiFormControl-root MuiTextField-root makeStyles-input-5"
+                                style={
+                                  Object {
+                                    "width": "100%",
+                                  }
+                                }
+                              >
+                                <WithStyles(ForwardRef(InputLabel))
+                                  htmlFor="password"
+                                  id="password-label"
+                                >
+                                  <ForwardRef(InputLabel)
+                                    classes={
+                                      Object {
+                                        "animated": "MuiInputLabel-animated",
+                                        "asterisk": "MuiInputLabel-asterisk",
+                                        "disabled": "Mui-disabled",
+                                        "error": "Mui-error",
+                                        "filled": "MuiInputLabel-filled",
+                                        "focused": "Mui-focused",
+                                        "formControl": "MuiInputLabel-formControl",
+                                        "marginDense": "MuiInputLabel-marginDense",
+                                        "outlined": "MuiInputLabel-outlined",
+                                        "required": "Mui-required",
+                                        "root": "MuiInputLabel-root",
+                                        "shrink": "MuiInputLabel-shrink",
+                                      }
+                                    }
+                                    htmlFor="password"
+                                    id="password-label"
+                                  >
+                                    <WithStyles(ForwardRef(FormLabel))
+                                      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                                      classes={
+                                        Object {
+                                          "asterisk": "MuiInputLabel-asterisk",
+                                          "disabled": "Mui-disabled",
+                                          "error": "Mui-error",
+                                          "focused": "Mui-focused",
+                                          "required": "Mui-required",
+                                        }
+                                      }
+                                      data-shrink={false}
+                                      htmlFor="password"
+                                      id="password-label"
+                                    >
+                                      <ForwardRef(FormLabel)
+                                        className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                                        classes={
+                                          Object {
+                                            "asterisk": "MuiFormLabel-asterisk MuiInputLabel-asterisk",
+                                            "colorSecondary": "MuiFormLabel-colorSecondary",
+                                            "disabled": "Mui-disabled Mui-disabled",
+                                            "error": "Mui-error Mui-error",
+                                            "filled": "MuiFormLabel-filled",
+                                            "focused": "Mui-focused Mui-focused",
+                                            "required": "Mui-required Mui-required",
+                                            "root": "MuiFormLabel-root",
+                                          }
+                                        }
+                                        data-shrink={false}
+                                        htmlFor="password"
+                                        id="password-label"
+                                      >
+                                        <label
+                                          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-disabled Mui-disabled"
+                                          data-shrink={false}
+                                          htmlFor="password"
+                                          id="password-label"
+                                        >
+                                          Enter Password
+                                        </label>
+                                      </ForwardRef(FormLabel)>
+                                    </WithStyles(ForwardRef(FormLabel))>
+                                  </ForwardRef(InputLabel)>
+                                </WithStyles(ForwardRef(InputLabel))>
+                                <WithStyles(ForwardRef(OutlinedInput))
+                                  autoFocus={false}
+                                  fullWidth={false}
+                                  id="password"
+                                  label={
+                                    <React.Fragment>
+                                      Enter Password
+                                    </React.Fragment>
+                                  }
+                                  multiline={false}
+                                  name="password"
+                                  onChange={[Function]}
+                                  type="password"
+                                >
+                                  <ForwardRef(OutlinedInput)
+                                    autoFocus={false}
+                                    classes={
+                                      Object {
+                                        "adornedEnd": "MuiOutlinedInput-adornedEnd",
+                                        "adornedStart": "MuiOutlinedInput-adornedStart",
+                                        "colorSecondary": "MuiOutlinedInput-colorSecondary",
+                                        "disabled": "Mui-disabled",
+                                        "error": "Mui-error",
+                                        "focused": "Mui-focused",
+                                        "input": "MuiOutlinedInput-input",
+                                        "inputAdornedEnd": "MuiOutlinedInput-inputAdornedEnd",
+                                        "inputAdornedStart": "MuiOutlinedInput-inputAdornedStart",
+                                        "inputMarginDense": "MuiOutlinedInput-inputMarginDense",
+                                        "inputMultiline": "MuiOutlinedInput-inputMultiline",
+                                        "marginDense": "MuiOutlinedInput-marginDense",
+                                        "multiline": "MuiOutlinedInput-multiline",
+                                        "notchedOutline": "MuiOutlinedInput-notchedOutline",
+                                        "root": "MuiOutlinedInput-root",
+                                      }
+                                    }
+                                    fullWidth={false}
+                                    id="password"
+                                    label={
+                                      <React.Fragment>
+                                        Enter Password
+                                      </React.Fragment>
+                                    }
+                                    multiline={false}
+                                    name="password"
+                                    onChange={[Function]}
+                                    type="password"
+                                  >
+                                    <WithStyles(ForwardRef(InputBase))
+                                      autoFocus={false}
+                                      classes={
+                                        Object {
+                                          "adornedEnd": "MuiOutlinedInput-adornedEnd",
+                                          "adornedStart": "MuiOutlinedInput-adornedStart",
+                                          "colorSecondary": "MuiOutlinedInput-colorSecondary",
+                                          "disabled": "Mui-disabled",
+                                          "error": "Mui-error",
+                                          "focused": "Mui-focused",
+                                          "input": "MuiOutlinedInput-input",
+                                          "inputAdornedEnd": "MuiOutlinedInput-inputAdornedEnd",
+                                          "inputAdornedStart": "MuiOutlinedInput-inputAdornedStart",
+                                          "inputMarginDense": "MuiOutlinedInput-inputMarginDense",
+                                          "inputMultiline": "MuiOutlinedInput-inputMultiline",
+                                          "marginDense": "MuiOutlinedInput-marginDense",
+                                          "multiline": "MuiOutlinedInput-multiline",
+                                          "notchedOutline": null,
+                                          "root": "MuiOutlinedInput-root",
+                                        }
+                                      }
+                                      fullWidth={false}
+                                      id="password"
+                                      inputComponent="input"
+                                      multiline={false}
+                                      name="password"
+                                      onChange={[Function]}
+                                      renderSuffix={[Function]}
+                                      type="password"
+                                    >
+                                      <ForwardRef(InputBase)
+                                        autoFocus={false}
+                                        classes={
+                                          Object {
+                                            "adornedEnd": "MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd",
+                                            "adornedStart": "MuiInputBase-adornedStart MuiOutlinedInput-adornedStart",
+                                            "colorSecondary": "MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary",
+                                            "disabled": "Mui-disabled Mui-disabled",
+                                            "error": "Mui-error Mui-error",
+                                            "focused": "Mui-focused Mui-focused",
+                                            "formControl": "MuiInputBase-formControl",
+                                            "fullWidth": "MuiInputBase-fullWidth",
+                                            "input": "MuiInputBase-input MuiOutlinedInput-input",
+                                            "inputAdornedEnd": "MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd",
+                                            "inputAdornedStart": "MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart",
+                                            "inputHiddenLabel": "MuiInputBase-inputHiddenLabel",
+                                            "inputMarginDense": "MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense",
+                                            "inputMultiline": "MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline",
+                                            "inputTypeSearch": "MuiInputBase-inputTypeSearch",
+                                            "marginDense": "MuiInputBase-marginDense MuiOutlinedInput-marginDense",
+                                            "multiline": "MuiInputBase-multiline MuiOutlinedInput-multiline",
+                                            "root": "MuiInputBase-root MuiOutlinedInput-root",
+                                          }
+                                        }
+                                        fullWidth={false}
+                                        id="password"
+                                        inputComponent="input"
+                                        multiline={false}
+                                        name="password"
+                                        onChange={[Function]}
+                                        renderSuffix={[Function]}
+                                        type="password"
+                                      >
+                                        <div
+                                          className="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-formControl"
+                                          onClick={[Function]}
+                                        >
+                                          <input
+                                            aria-invalid={false}
+                                            autoFocus={false}
+                                            className="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                                            disabled={true}
+                                            id="password"
+                                            name="password"
+                                            onAnimationStart={[Function]}
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onFocus={[Function]}
+                                            required={false}
+                                            type="password"
+                                          />
+                                          <WithStyles(ForwardRef(NotchedOutline))
+                                            className="MuiOutlinedInput-notchedOutline"
+                                            label={
+                                              <React.Fragment>
+                                                Enter Password
+                                              </React.Fragment>
+                                            }
+                                            labelWidth={0}
+                                            notched={false}
+                                          >
+                                            <ForwardRef(NotchedOutline)
+                                              className="MuiOutlinedInput-notchedOutline"
+                                              classes={
+                                                Object {
+                                                  "legend": "PrivateNotchedOutline-legend-94",
+                                                  "legendLabelled": "PrivateNotchedOutline-legendLabelled-95",
+                                                  "legendNotched": "PrivateNotchedOutline-legendNotched-96",
+                                                  "root": "PrivateNotchedOutline-root-93",
+                                                }
+                                              }
+                                              label={
+                                                <React.Fragment>
+                                                  Enter Password
+                                                </React.Fragment>
+                                              }
+                                              labelWidth={0}
+                                              notched={false}
+                                            >
+                                              <fieldset
+                                                aria-hidden={true}
+                                                className="PrivateNotchedOutline-root-93 MuiOutlinedInput-notchedOutline"
+                                              >
+                                                <legend
+                                                  className="PrivateNotchedOutline-legendLabelled-95"
+                                                >
+                                                  <span>
+                                                    Enter Password
+                                                  </span>
+                                                </legend>
+                                              </fieldset>
+                                            </ForwardRef(NotchedOutline)>
+                                          </WithStyles(ForwardRef(NotchedOutline))>
+                                        </div>
+                                      </ForwardRef(InputBase)>
+                                    </WithStyles(ForwardRef(InputBase))>
+                                  </ForwardRef(OutlinedInput)>
+                                </WithStyles(ForwardRef(OutlinedInput))>
+                              </div>
+                            </ForwardRef(FormControl)>
+                          </WithStyles(ForwardRef(FormControl))>
+                        </ForwardRef(TextField)>
+                      </WithStyles(ForwardRef(TextField))>
+                    </div>
+                  </Transition>
+                  <WithStyles(ForwardRef(Button))
+                    className="makeStyles-button-7 signup-button"
+                    color="primary"
+                    onClick={[Function]}
+                    type="submit"
+                    variant="contained"
+                  >
+                    <ForwardRef(Button)
+                      className="makeStyles-button-7 signup-button"
+                      classes={
+                        Object {
+                          "colorInherit": "MuiButton-colorInherit",
+                          "contained": "MuiButton-contained",
+                          "containedPrimary": "MuiButton-containedPrimary",
+                          "containedSecondary": "MuiButton-containedSecondary",
+                          "containedSizeLarge": "MuiButton-containedSizeLarge",
+                          "containedSizeSmall": "MuiButton-containedSizeSmall",
+                          "disableElevation": "MuiButton-disableElevation",
+                          "disabled": "Mui-disabled",
+                          "endIcon": "MuiButton-endIcon",
+                          "focusVisible": "Mui-focusVisible",
+                          "fullWidth": "MuiButton-fullWidth",
+                          "iconSizeLarge": "MuiButton-iconSizeLarge",
+                          "iconSizeMedium": "MuiButton-iconSizeMedium",
+                          "iconSizeSmall": "MuiButton-iconSizeSmall",
+                          "label": "MuiButton-label",
+                          "outlined": "MuiButton-outlined",
+                          "outlinedPrimary": "MuiButton-outlinedPrimary",
+                          "outlinedSecondary": "MuiButton-outlinedSecondary",
+                          "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
+                          "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
+                          "root": "MuiButton-root",
+                          "sizeLarge": "MuiButton-sizeLarge",
+                          "sizeSmall": "MuiButton-sizeSmall",
+                          "startIcon": "MuiButton-startIcon",
+                          "text": "MuiButton-text",
+                          "textPrimary": "MuiButton-textPrimary",
+                          "textSecondary": "MuiButton-textSecondary",
+                          "textSizeLarge": "MuiButton-textSizeLarge",
+                          "textSizeSmall": "MuiButton-textSizeSmall",
+                        }
+                      }
+                      color="primary"
+                      onClick={[Function]}
+                      type="submit"
+                      variant="contained"
+                    >
+                      <WithStyles(ForwardRef(ButtonBase))
+                        className="MuiButton-root MuiButton-contained makeStyles-button-7 signup-button MuiButton-containedPrimary"
+                        component="button"
+                        disabled={false}
+                        focusRipple={true}
+                        focusVisibleClassName="Mui-focusVisible"
+                        onClick={[Function]}
+                        type="submit"
+                      >
+                        <ForwardRef(ButtonBase)
+                          className="MuiButton-root MuiButton-contained makeStyles-button-7 signup-button MuiButton-containedPrimary"
+                          classes={
+                            Object {
+                              "disabled": "Mui-disabled",
+                              "focusVisible": "Mui-focusVisible",
+                              "root": "MuiButtonBase-root",
+                            }
+                          }
+                          component="button"
+                          disabled={false}
+                          focusRipple={true}
+                          focusVisibleClassName="Mui-focusVisible"
+                          onClick={[Function]}
+                          type="submit"
+                        >
+                          <button
+                            className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-7 signup-button MuiButton-containedPrimary"
+                            disabled={false}
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onDragLeave={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseDown={[Function]}
+                            onMouseLeave={[Function]}
+                            onMouseUp={[Function]}
+                            onTouchEnd={[Function]}
+                            onTouchMove={[Function]}
+                            onTouchStart={[Function]}
+                            tabIndex={0}
+                            type="submit"
+                          >
+                            <span
+                              className="MuiButton-label"
+                            >
+                              Sign up
+                            </span>
+                            <WithStyles(memo)
+                              center={false}
+                            >
+                              <ForwardRef(TouchRipple)
+                                center={false}
+                                classes={
+                                  Object {
+                                    "child": "MuiTouchRipple-child",
+                                    "childLeaving": "MuiTouchRipple-childLeaving",
+                                    "childPulsate": "MuiTouchRipple-childPulsate",
+                                    "ripple": "MuiTouchRipple-ripple",
+                                    "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                    "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                    "root": "MuiTouchRipple-root",
+                                  }
+                                }
+                              >
+                                <span
+                                  className="MuiTouchRipple-root"
+                                >
+                                  <TransitionGroup
+                                    childFactory={[Function]}
+                                    component={null}
+                                    exit={true}
+                                  />
+                                </span>
+                              </ForwardRef(TouchRipple)>
+                            </WithStyles(memo)>
+                          </button>
+                        </ForwardRef(ButtonBase)>
+                      </WithStyles(ForwardRef(ButtonBase))>
+                    </ForwardRef(Button)>
+                  </WithStyles(ForwardRef(Button))>
+                  <WithStyles(ForwardRef(Button))
+                    className="makeStyles-button-7 login-button"
+                    color="primary"
+                    onClick={[Function]}
+                    type="submit"
+                    variant="outlined"
+                  >
+                    <ForwardRef(Button)
+                      className="makeStyles-button-7 login-button"
+                      classes={
+                        Object {
+                          "colorInherit": "MuiButton-colorInherit",
+                          "contained": "MuiButton-contained",
+                          "containedPrimary": "MuiButton-containedPrimary",
+                          "containedSecondary": "MuiButton-containedSecondary",
+                          "containedSizeLarge": "MuiButton-containedSizeLarge",
+                          "containedSizeSmall": "MuiButton-containedSizeSmall",
+                          "disableElevation": "MuiButton-disableElevation",
+                          "disabled": "Mui-disabled",
+                          "endIcon": "MuiButton-endIcon",
+                          "focusVisible": "Mui-focusVisible",
+                          "fullWidth": "MuiButton-fullWidth",
+                          "iconSizeLarge": "MuiButton-iconSizeLarge",
+                          "iconSizeMedium": "MuiButton-iconSizeMedium",
+                          "iconSizeSmall": "MuiButton-iconSizeSmall",
+                          "label": "MuiButton-label",
+                          "outlined": "MuiButton-outlined",
+                          "outlinedPrimary": "MuiButton-outlinedPrimary",
+                          "outlinedSecondary": "MuiButton-outlinedSecondary",
+                          "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
+                          "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
+                          "root": "MuiButton-root",
+                          "sizeLarge": "MuiButton-sizeLarge",
+                          "sizeSmall": "MuiButton-sizeSmall",
+                          "startIcon": "MuiButton-startIcon",
+                          "text": "MuiButton-text",
+                          "textPrimary": "MuiButton-textPrimary",
+                          "textSecondary": "MuiButton-textSecondary",
+                          "textSizeLarge": "MuiButton-textSizeLarge",
+                          "textSizeSmall": "MuiButton-textSizeSmall",
+                        }
+                      }
+                      color="primary"
+                      onClick={[Function]}
+                      type="submit"
+                      variant="outlined"
+                    >
+                      <WithStyles(ForwardRef(ButtonBase))
+                        className="MuiButton-root MuiButton-outlined makeStyles-button-7 login-button MuiButton-outlinedPrimary"
+                        component="button"
+                        disabled={false}
+                        focusRipple={true}
+                        focusVisibleClassName="Mui-focusVisible"
+                        onClick={[Function]}
+                        type="submit"
+                      >
+                        <ForwardRef(ButtonBase)
+                          className="MuiButton-root MuiButton-outlined makeStyles-button-7 login-button MuiButton-outlinedPrimary"
+                          classes={
+                            Object {
+                              "disabled": "Mui-disabled",
+                              "focusVisible": "Mui-focusVisible",
+                              "root": "MuiButtonBase-root",
+                            }
+                          }
+                          component="button"
+                          disabled={false}
+                          focusRipple={true}
+                          focusVisibleClassName="Mui-focusVisible"
+                          onClick={[Function]}
+                          type="submit"
+                        >
+                          <button
+                            className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-button-7 login-button MuiButton-outlinedPrimary"
+                            disabled={false}
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onDragLeave={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseDown={[Function]}
+                            onMouseLeave={[Function]}
+                            onMouseUp={[Function]}
+                            onTouchEnd={[Function]}
+                            onTouchMove={[Function]}
+                            onTouchStart={[Function]}
+                            tabIndex={0}
+                            type="submit"
+                          >
+                            <span
+                              className="MuiButton-label"
+                            >
+                              Log in
+                            </span>
+                            <WithStyles(memo)
+                              center={false}
+                            >
+                              <ForwardRef(TouchRipple)
+                                center={false}
+                                classes={
+                                  Object {
+                                    "child": "MuiTouchRipple-child",
+                                    "childLeaving": "MuiTouchRipple-childLeaving",
+                                    "childPulsate": "MuiTouchRipple-childPulsate",
+                                    "ripple": "MuiTouchRipple-ripple",
+                                    "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                    "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                    "root": "MuiTouchRipple-root",
+                                  }
+                                }
+                              >
+                                <span
+                                  className="MuiTouchRipple-root"
+                                >
+                                  <TransitionGroup
+                                    childFactory={[Function]}
+                                    component={null}
+                                    exit={true}
+                                  />
+                                </span>
+                              </ForwardRef(TouchRipple)>
+                            </WithStyles(memo)>
+                          </button>
+                        </ForwardRef(ButtonBase)>
+                      </WithStyles(ForwardRef(ButtonBase))>
+                    </ForwardRef(Button)>
+                  </WithStyles(ForwardRef(Button))>
+                </form>
+              </div>
+            </div>
+            <div
+              data-test="sentinelEnd"
+              tabIndex={0}
+            />
+          </TrapFocus>
+        </div>
+      </Portal>
+    </ForwardRef(Portal)>
+  </ForwardRef(Modal)>
+</SignUpModal>
+`;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
@@ -87,6 +87,10 @@ const SignUpModal = (props) => {
 
   const { getMessages } = props
 
+  useEffect(() => {
+    console.log(authChoice)
+  })
+
   const handleClose = () => {
     setModal(prevState => !prevState)
   }
@@ -142,8 +146,10 @@ const SignUpModal = (props) => {
   }
 
   const handleSignup = () => {
-    if(authChoice !== 'user_signup')  {
-      setAuthChoice(prevState => prevState == 'user_signup' ? '' : 'user_signup')
+    console.log("Tested this hoe");
+
+    if(authChoice !== 'user_signup')  {      
+      setAuthChoice('user_signup')
     }
     else {
       setFormSubmit(true)
@@ -156,7 +162,7 @@ const SignUpModal = (props) => {
 
   const handleLogin = () => {
     if(authChoice !== 'user_login') {
-      setAuthChoice(prevState => prevState === 'user_login' ? '' : 'user_login')
+      setAuthChoice('user_login')
     }
     else {
       setFormSubmit(true)
@@ -240,7 +246,7 @@ const SignUpModal = (props) => {
             <Button 
               onClick={() => handleSignup()} 
               type="submit"
-              className={classes.button} 
+              className={`${classes.button} signup-button`} 
               variant='contained' 
               color='primary'
             >
@@ -251,8 +257,8 @@ const SignUpModal = (props) => {
               <Button
                 onClick={() => handleLogin()} 
                 type="submit"
-                className={classes.button} 
-                variant='outlined' 
+                className={`${classes.button} login-button`}
+                variant='outlined'
                 color='primary'
               >
                 Log in
@@ -271,15 +277,12 @@ const SignUpModal = (props) => {
       aria-describedby='simple-modal-description'
       disableBackdropClick={true}
       disableEscapeKeyDown={true}
-      closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps= {{
         timeout: 500
       }}
     >
-      <Fade in={open}>
-        {body}
-      </Fade>
+      {body}
     </Modal>
   )
 }
