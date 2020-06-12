@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   listOpen: {
     width: '100%',
+    position: 'relative',
     transform: 'translateX(0)',
   },
   MessagePane: {
