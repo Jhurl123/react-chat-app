@@ -38,6 +38,7 @@ describe('Sign Up Modal test', () => {
      act( () => {
         wrapper.find('.signup-button').first().simulate('click')
       })
+      
       expect(wrapper.find('.login-button').first()).toBeNull()
     })
 
