@@ -5,7 +5,6 @@ import ChatList from '../chatList/chatList'
 import MessagePane from '../message/messagePane'
 import ChatControls from '../chatControls/chatControls'
 import MessageContext from '../../Context/messageContext'
-import StaticConversation from "../chatList/conversationList"
 import socket from '../../server/socket-client'
 import SignUpModal from './signUpModal';
 
@@ -114,7 +113,7 @@ const WindowPane = (props) => {
       getMessages()
     }
    
-    setConversations(StaticConversation)
+    setConversations()
 
   }, [])
 
