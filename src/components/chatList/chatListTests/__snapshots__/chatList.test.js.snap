@@ -3,5 +3,49 @@
 exports[`Chat List tests renders the ui as expected 1`] = `
 <div
   className="makeStyles-chatList-1"
-/>
+>
+  <div
+    className="makeStyles-addContainer-2"
+  >
+    <button
+      aria-label="Open a new Conversation"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-addIcon-3"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+      </span>
+    </button>
+    <span
+      className="makeStyles-convPrompt-4"
+    >
+      Start Conversation
+    </span>
+  </div>
+</div>
 `;

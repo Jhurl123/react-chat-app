@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext }from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import ChatConversation from './chatConversation';
+import ChatAdd from './chatAdd'
 import MessageContext from '../../Context/messageContext'
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +43,8 @@ const ChatList = () => {
   
   return (
     <div className={`${classes.chatList}`} >
+      {/* Chat add button will be here and pop a modal */}
+      <ChatAdd />
       {displayConversations && (
         displayConversations.map(convo => <ChatConversation key={convo.id} info={convo} />)
       )}
