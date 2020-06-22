@@ -1,12 +1,14 @@
 import React, { useState, useContext } from 'react'
 import { makeStyles } from "@material-ui/core/styles"
 import IconButton from '@material-ui/core/IconButton'
+import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
   addContainer: {
     alignItems: 'center',
     backgroundColor: '#049404',
+    border: 'none',
     cursor: 'pointer',
     display: 'flex',
     fontSize: '1.25rem',
@@ -25,22 +27,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const ChatAdd = () => {
+const ChatAdd = (props) => {
   const classes = useStyles()
-  const openModal = () => {
-
-  }
 
   return (
-    <div className={classes.addContainer}>
-      <IconButton className={classes.addIcon} onClick={openModal} aria-label="Open a new Conversation" size="medium">
-        <AddIcon fontSize="large" />
-      </IconButton>
+    <button className={classes.addContainer} onClick={() => props.openModal()} aria-label="Open a new Conversation">
+      <AddIcon className={classes.addIcon} fontSize="large" />
       <span className={classes.convPrompt}>
         Start Conversation
       </span>
-    </div>
+    </button>
   )
+}
+
+ChatAdd.propTypes = {
+  openModal: PropTypes.func
 }
 
 export default ChatAdd

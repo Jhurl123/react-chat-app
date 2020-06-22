@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use(cookieParser())
 
 const dbRoutes = require('./routes/db-routes')
+const convRoutes = require('./routes/conversation-routes')
 
 // Create server connection
 const PORT = process.env.PORT || 8080;
@@ -46,7 +47,8 @@ io.on('connection', function (client) {
 app.use(express.static(path.join(__dirname, '../../build/')));
 
 
-app.use(dbRoutes);
+app.use(dbRoutes)
+app.use(convRoutes)
 
 
 app.get('*', function (req, res) {

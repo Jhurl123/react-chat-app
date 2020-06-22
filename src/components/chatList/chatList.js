@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext }from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import ChatConversation from './chatConversation';
 import ChatAdd from './chatAdd'
+import NewConversationModal from './modal/newConversationModal'
+
 import MessageContext from '../../Context/messageContext'
 
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     height: '80vh',
     overflowY: 'scroll',
   },
-
 }))
 
 const ChatList = () => {
@@ -22,6 +23,7 @@ const ChatList = () => {
   const conversations = messageContext.conversations
   const messages = messageContext.messages
   let [displayConversations, setDisplayconvo] = useState([]) 
+  let [modalOpen, setModalOpen] = useState(false)
 
   useEffect(()=> {
 
@@ -40,11 +42,15 @@ const ChatList = () => {
     }
     
   }, [conversations, messages]);
+
+  const openModal = () =>  {
+    setModalOpen(prevState => !prevState)
+  }
   
   return (
     <div className={`${classes.chatList}`} >
-      {/* Chat add button will be here and pop a modal */}
-      <ChatAdd />
+      <ChatAdd openModal={openModal} />
+      <NewConversationModal toggleModal={openModal} open={modalOpen} />
       {displayConversations && (
         displayConversations.map(convo => <ChatConversation key={convo.id} info={convo} />)
       )}

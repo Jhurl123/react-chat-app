@@ -87,4 +87,20 @@ router.post('/user_login', async (req, res) => {
   }
 
 })
+
+router.post('/username_search', async (req, res) => {
+
+  try {
+
+    const { userName } = req.body
+    const foundUserNames = await userFunctions.searchUsernames(userName)
+
+    res.status(200).send(foundUserNames)
+    
+  }
+  catch(err) {
+    console.log(err);
+    
+  }
+})
 module.exports = router;

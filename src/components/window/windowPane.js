@@ -49,11 +49,20 @@ const WindowPane = (props) => {
   const [user, setUser] = useState(false)
   const { menuStatus } = props
 
-  // Common parent of the message list and the input
-  // Use Context to add messages to the pane
-  
-
-  // Use this function to update the messages in the current conversation.
+  /**
+   * Send a new message to the database
+   * 
+   * @param {object} message - Message object containing {
+   * {
+      message: {
+        convoId: 1,
+        content: message,
+        userId: userObject.userId
+      },
+      userToken: userObject.token
+    }
+   * 
+  */
   const addMessage = async message =>  {
 
     // Clear alert message
@@ -104,6 +113,21 @@ const WindowPane = (props) => {
     }
     
   };
+
+  /**
+   * Add a new conversation to the conversation list
+   * 
+   * @param {array} userIds - array of userIds in the new conversation
+   * @param {object} message - Message object
+   * 
+   * *
+   **/
+  const startConversation = async (userIds, message) => {
+    
+    // await
+
+    
+  }
 
   // Use this hook to populate messages and conversation list
   useEffect(() => {

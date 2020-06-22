@@ -47,8 +47,7 @@ exports.insertUser = user => {
       token,
       userId: ref.id
     }
-    
-
+  
     return userAuth
   })
   .catch(err => {
@@ -78,6 +77,37 @@ exports.verifyCredentials = (userName, password) => {
     }).catch(err => {
       throw Error(err.message)
     })
+}
+
+// Search database for users
+exports.searchUsernames = (userName) => {
+  
+  let usersRef = db.db.collection('users');
+  let userQuery = usersRef.orderBy('userName').startAt(userName).endAt(userName + '~').get()
+  .then(snapshot => {
+    if(snapshot.empty) {
+      return false
+    }
+    else {
+      let users = []
+
+      snapshot.forEach(doc => {
+        let data = doc.data() 
+        let user = {}
+        user['name'] = data.userName
+        user['id'] = doc.id
+        users.push(user)
+      });
+      
+      return users
+    }
+
+  })
+  .catch(err => {
+    console.log('Error getting documents', err);
+  });
+  
+  return userQuery
 }
 
 const comparePassword = async (hash, password) => {
