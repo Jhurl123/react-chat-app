@@ -19,15 +19,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const ChatControls = () => {
+const ChatControls = (props) => {
 
   const classes = useStyles()
   const userObject = JSON.parse(localStorage.getItem('user')) || {}
+  const { activeConversation } = props
 
   return (
     <div className={classes.container}>
       <Grid item xs={12}>
-        <ChatInput userObject={userObject}/>
+        <ChatInput activeConversation={activeConversation} userObject={userObject}/>
       </Grid>
     </div>
   )

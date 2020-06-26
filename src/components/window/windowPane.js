@@ -154,6 +154,7 @@ const WindowPane = (props) => {
     addMessage(message);
     newConversation['excerpt'] = messageBody.substring(0, 25) + '...'
     setConversations(prevState => [newConversation, ...prevState]);
+    setActiveConversation(newConversation.id)
   };
 
   const activateConversation = conversationId => {
@@ -212,7 +213,7 @@ const WindowPane = (props) => {
               }}
             >
               <MessagePane activeConversation={activeConversation} error={apiError} />
-              <ChatControls />
+              <ChatControls activeConversation={activeConversation} />
             </Grid>
           </Grid>
         </Container>

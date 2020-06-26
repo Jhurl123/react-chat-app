@@ -26,7 +26,7 @@ const ChatInput = (props) => {
 
   const messageContext = useContext(MessageContext)
   const classes = useStyles()
-  const { userObject } = props
+  const { userObject, activeConversation } = props
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -40,7 +40,7 @@ const ChatInput = (props) => {
     // Temporary variable to sit in place of any response from the server
     let newMessage = {
       message: {
-        convoId: 1,
+        convoId: activeConversation,
         content: message,
         userId: userObject.userId
       },
