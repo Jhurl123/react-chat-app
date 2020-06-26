@@ -25,7 +25,7 @@ const MessagePane = (props) => {
 
   const classes = useStyles()
   const userObject = JSON.parse(localStorage.getItem('user'))
-  const { error } = props
+  const { error, activeConversation } = props
   
   return (
     <div className={classes.MessagePane}>
@@ -37,7 +37,7 @@ const MessagePane = (props) => {
           </Alert>
         </div>
       }
-      <MessageList userObject={userObject}/>
+      <MessageList activeConversation={activeConversation} userObject={userObject}/>
     </div>
   )
 }

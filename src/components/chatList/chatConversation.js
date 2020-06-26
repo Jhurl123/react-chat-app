@@ -45,14 +45,14 @@ const useStyles = makeStyles((theme) => ({
 const ChatConversation = (props) => {
 
   const classes = useStyles()
-  const { info } = props
+  const { info, activateConversation, key,id } = props
   
   // Need to use the messages here, and show the excerpt of the last message sent using context
 
   return (
     <div>
       {info && (
-        <div className={classes.conversation}>
+        <div className={classes.conversation} onClick={()=> activateConversation(id)}>
           <StyledBadge
             overlap="circle"
             anchorOrigin={{

@@ -47,6 +47,7 @@ const WindowPane = (props) => {
   const [conversations, setConversations] = useState("");
   const [apiError, setApiError] = useState("");
   const [user, setUser] = useState(false);
+  const [activeConversation, setActiveConversation] = useState("")
   const { menuStatus } = props;
   const userObject = JSON.parse(localStorage.getItem('user')) || {}
 
@@ -123,6 +124,7 @@ const WindowPane = (props) => {
       console.log(conversations);
   
       setConversations(conversations.conversations);
+      setActiveConversation(conversations.conversations[0].id)
       // socket.setConversations(conversations);
       // socket.messageListener(conversations, setConversations);
     } catch (err) {
@@ -153,6 +155,12 @@ const WindowPane = (props) => {
     newConversation['excerpt'] = messageBody.substring(0, 25) + '...'
     setConversations(prevState => [newConversation, ...prevState]);
   };
+
+  const activateConversation = conversationId => {
+    console.log(conversationId);
+    setActiveConversation(conversationId)
+    
+  }
 
   // Use this hook to populate messages and conversation list
   useEffect(() => {
@@ -191,7 +199,7 @@ const WindowPane = (props) => {
               md={12}
               lg={4}
             >
-              <ChatList toggled={menuStatus} />
+              <ChatList setActiveConversation={activateConversation} toggled={menuStatus} />
             </Grid>
             <Grid
               item
@@ -203,7 +211,7 @@ const WindowPane = (props) => {
                 display: props.menuStatus ? "none" : "block",
               }}
             >
-              <MessagePane error={apiError} />
+              <MessagePane activeConversation={activeConversation} error={apiError} />
               <ChatControls />
             </Grid>
           </Grid>

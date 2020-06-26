@@ -23,7 +23,7 @@ const MessageList = (props) => {
 
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
-  const { userObject } = props
+  const { userObject, activeConversation } = props
 
   let messages = messageContext.messages || []
 
@@ -36,7 +36,7 @@ const MessageList = (props) => {
   return (
     <ul className={classes.container} ref={messageListEl}>
       {messages && 
-        messages.map(message =>  (
+        messages.filter(message => message.convoId === activeConversation).map(message =>  (
           <Message key={message.id} class={userObject.userId === message.userId ? 'sent' : 'received'}>{message.content}</Message>
         ))}
     </ul>

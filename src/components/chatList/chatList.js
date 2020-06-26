@@ -14,15 +14,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ChatList = () => {
+const ChatList = (props) => {
 
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
+
+  const { setActiveConversation } = props
   
   // Move this to the conversation list component when prototyping is over
   const conversations = messageContext.conversations
   const messages = messageContext.messages
-  
+
   let [displayConversations, setDisplayconvo] = useState([]) 
   let [modalOpen, setModalOpen] = useState(false)
 
@@ -53,7 +55,12 @@ const ChatList = () => {
       <ChatAdd openModal={openModal} />
       <NewConversationModal toggleModal={openModal} open={modalOpen} />
       {displayConversations && (
-        displayConversations.map(convo => <ChatConversation key={convo.id} info={convo} />)
+        displayConversations.map(convo => <ChatConversation 
+                                            activateConversation={setActiveConversation} 
+                                            key={convo.id} 
+                                            id={convo.id} 
+                                            info={convo} 
+                                          />)
       )}
     </div>
   )
