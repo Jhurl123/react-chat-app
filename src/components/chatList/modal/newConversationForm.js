@@ -26,11 +26,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 const NewConversationForm = (props) => {
 
+  const { closeModal } = props
   const userNameInput = useRef(null)
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
   const [selectedUsers, setSelectedUsers] = useState([])
   const [foundUsers, setFoundUsers] = useState([])
+  const [newMessage, setNewMessage] = useState('')
   const [apiError, setApiError] = useState('')
 
   const conversations = messageContext.conversations
@@ -50,25 +52,54 @@ const NewConversationForm = (props) => {
   const handleFormSubmit = (event) => {
     // Will need to send the message and add a conversation to the list
     if(event) event.preventDefault()
-    console.log(selectedUsers);
+    const conversationExists = checkExistingConversations()
+    
+
+    // Hve confirmed that this works in my testing
+    
     // Ignore this until  I can add conversation ids to the front/back end
-    // checkExistingConversations()
-    startConversation(selectedUsers)
+    if( !conversationExists ) {
+      startConversation(selectedUsers)
+    }
+    else {
+    //   let message = {
+    //     message: {
+    //       convoId: newConversation.id,
+    //       content: messageBody,
+    //       userId: userObject.userId,
+    //     },
+    //     userToken: userObject.token,
+    //   };
+    //   messageContext.addMessage(newMessage)
+    }
 
   }
 
   const checkExistingConversations = () => {
 
-    // filter the convos to decide if to pass id along or autogenerate a new one
-    console.log(selectedUsers);
+    const selectedIds = selectedUsers.map(user => user.id)
+    console.log(selectedIds);
     
-    console.log();
-    console.log(currentUserId);
-  }
+    const containsAllUsers = conversations.map(conversation =>  {
+      return conversation.users.every(user => {
+        return selectedIds.includes(user.id)
+      })
+    })
+    console.log(containsAllUsers.filter(Boolean));
+    
+      
+    
+    // const userIds = users.map(user => user[0].id)
+    
+    // const containsAllUsers = users.every(user => selectedIds.includes(user..id))
+
+    return containsAllUsers.filter(Boolean)[0]
+  } 
 
   // Insert new conversation into front/backend
   const startConversation = async users => {
 
+    users.push(currentUserId)
     // Lets have the user ids and names  send to the database
     await fetch('/start_conversation', {
       method: 'POST',
@@ -78,7 +109,6 @@ const NewConversationForm = (props) => {
       body: JSON.stringify({users})
     })
     .then(res =>  {
-      console.log(res);
       if (!res.ok) {
         throw new Error('Server Error');
       }
@@ -86,12 +116,8 @@ const NewConversationForm = (props) => {
 
     })
     .then(data => {
-
-      // Update the conversations array here
-
-      console.log(data);
-      
-
+      messageContext.startConversation(data.conversation, newMessage )
+      closeModal()
     })
 
     // At this point we will check to see if the conversation exists yet
@@ -123,7 +149,6 @@ const NewConversationForm = (props) => {
       body: JSON.stringify({userName})
     })
     .then(response =>  {
-      console.log(response);
       if (!response.ok) {
         throw new Error('Server Error');
       }
@@ -132,8 +157,6 @@ const NewConversationForm = (props) => {
     })
     .then(data => {
       if(data.length) {
-        console.log(data);
-        
         setFoundUsers(data)
       }
       else {
@@ -186,7 +209,8 @@ const NewConversationForm = (props) => {
           multiline
           rows={3}
           className={classes.messageInput}
-          onKeyDown={(event) => formEnter(event)}
+          onKeyDown={event => formEnter(event)}
+          onChange={event => setNewMessage(event.target.value)}
           variant="outlined"
         />
 

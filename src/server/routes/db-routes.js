@@ -5,6 +5,7 @@ const db = require('../database/db-connect')
 const dbFunctions = require('../database/db-functions')
 const socketEvents = require('../socket-connect')
 const userFunctions = require('../database/user-functions')
+const convFunctions = require('../database/conversation-functions')
 const JWT = require('jsonwebtoken')
 
 router.get('/get_messages', async (req, res) => {
@@ -21,11 +22,15 @@ router.get('/get_messages', async (req, res) => {
 router.post('/send_message', async (req, res) => { 
   
   try {
+    const { message } = req.body
+
     let response = await dbFunctions.sendMessage(req.body)
     socketEvents.sendMessage(req.body)
     const authToken = req.cookies['authToken']
     const validateJWT = JWT.verify(authToken, process.env.JSON_SECRET)
 
+    // Add the excerpt from the message to its conversation
+    convFunctions.addExcerpt(message)
     
     res.send(true)
   }

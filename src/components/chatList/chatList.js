@@ -22,6 +22,7 @@ const ChatList = () => {
   // Move this to the conversation list component when prototyping is over
   const conversations = messageContext.conversations
   const messages = messageContext.messages
+  
   let [displayConversations, setDisplayconvo] = useState([]) 
   let [modalOpen, setModalOpen] = useState(false)
 

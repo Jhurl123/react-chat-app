@@ -1,53 +1,54 @@
-import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Container, Grid } from '@material-ui/core'
-import ChatList from '../chatList/chatList'
-import MessagePane from '../message/messagePane'
-import ChatControls from '../chatControls/chatControls'
-import MessageContext from '../../Context/messageContext'
-import StaticConversation from "../chatList/conversationList"
-import socket from '../../server/socket-client'
-import SignUpModal from './signUpModal';
+import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Container, Grid } from "@material-ui/core";
+import ChatList from "../chatList/chatList";
+import MessagePane from "../message/messagePane";
+import ChatControls from "../chatControls/chatControls";
+import MessageContext from "../../Context/messageContext";
+import StaticConversation from "../chatList/conversationList";
+import socket from "../../server/socket-client";
+import SignUpModal from "./signUpModal";
 
 const useStyles = makeStyles((theme) => ({
   pane: {
-    minHeight: '80vh',
-    backgroundColor: '#ffffff',
-    borderBottomLeftRadius: '10px',
-    borderBottomRightRadius: '10px',
-    boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)'
+    minHeight: "80vh",
+    backgroundColor: "#ffffff",
+    borderBottomLeftRadius: "10px",
+    borderBottomRightRadius: "10px",
+    boxShadow:
+      "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
   },
   conversationList: {
-    position: 'absolute',
-    width: '100%',
-    transform: 'translateX(-1200%)',
+    position: "absolute",
+    width: "100%",
+    transform: "translateX(-1200%)",
     [theme.breakpoints.up("md")]: {
-      position: 'relative',
-      transform: 'translateX(0)',
-    }
+      position: "relative",
+      transform: "translateX(0)",
+    },
   },
   listOpen: {
-    width: '100%',
-    position: 'relative',
-    transform: 'translateX(0)',
+    width: "100%",
+    position: "relative",
+    transform: "translateX(0)",
   },
   MessagePane: {
     [theme.breakpoints.down("md")]: {
-      position: 'relative',
-      height: 'calc(90vh - 80px)',
-      width: '100%'
-    }
-  }
-}))
+      position: "relative",
+      height: "calc(90vh - 80px)",
+      width: "100%",
+    },
+  },
+}));
 
 const WindowPane = (props) => {
-
-  const classes = useStyles()
+  const classes = useStyles();
   const [messages, setMessages] = useState([]);
-  const [conversations, setConversations] = useState('')
-  const [apiError, setApiError] = useState('')
-  const [user, setUser] = useState(false)
-  const { menuStatus } = props
+  const [conversations, setConversations] = useState("");
+  const [apiError, setApiError] = useState("");
+  const [user, setUser] = useState(false);
+  const { menuStatus } = props;
+  const userObject = JSON.parse(localStorage.getItem('user')) || {}
 
   /**
    * Send a new message to the database
@@ -63,115 +64,153 @@ const WindowPane = (props) => {
     }
    * 
   */
-  const addMessage = async message =>  {
-
+  const addMessage = async (message) => {
     // Clear alert message
-    setApiError('')
+    setApiError("");
 
-    await fetch('/send_message', {
-      method: 'POST',
+    await fetch("/send_message", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(message)
+      body: JSON.stringify(message),
     })
-    .then(response =>  {
-      
-      if (!response.ok) {
-        throw new Error('Server Couldn\'t insert message!');
-      }
-      response.json()
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Server Couldn't insert message!");
+        }
+        response.json();
+      })
+      .then((data) => {
+        setMessages((prevState) => [message.message, ...prevState]);
 
-    })
-    .then(data => {
-      setMessages(prevState => [message.message, ...prevState])
-
-      // Send the message to the client
-      socket.setMessages([message, ...messages])
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      
-      setApiError(error.message)
-      
-    });
-  }
+        // Send the message to the client
+        socket.setMessages([message, ...messages]);
+      })
+      .catch((error) => {
+        setApiError(error.message);
+      });
+  };
 
   const getMessages = async () => {
-    setApiError('')
+    setApiError("");
     try {
-      const response = await fetch('/get_messages')
-      const messages = await response.json()
-      
+      const response = await fetch("/get_messages");
+      const messages = await response.json();
+
       setMessages(messages);
-      socket.setMessages(messages)
-      socket.messageListener(messages, setMessages)
-    }
-    catch(err) {
+      socket.setMessages(messages);
+      socket.messageListener(messages, setMessages);
+    } catch (err) {
       // display error if it exists
-      setApiError("Sorry, couldn't grab these messages")
+      setApiError("Sorry, couldn't grab these messages");
     }
-    
   };
+
+  const getConversations = async (userId) => {
+    setApiError("");
+    try {
+      const response = await fetch("/get_conversations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({userId}),
+      });
+      
+      const conversations = await response.json();
+
+      console.log(conversations);
+  
+      setConversations(conversations.conversations);
+      // socket.setConversations(conversations);
+      // socket.messageListener(conversations, setConversations);
+    } catch (err) {
+      // display error if it exists
+      setApiError("Sorry, couldn't grab these messages");
+    }
+  }
 
   /**
    * Add a new conversation to the conversation list
-   * 
+   *
    * @param {array} userIds - array of userIds in the new conversation
    * @param {object} message - Message object
-   * 
-   * *
-   **/
-  const startConversation = async (userIds, message) => {
-    
-    // await
+   *
+   * */
+  const startConversation = async (newConversation, messageBody) => {
 
-    
-  }
+    // Format the object to be inserted into the db
+    let message = {
+      message: {
+        convoId: newConversation.id,
+        content: messageBody,
+        userId: userObject.userId,
+      },
+      userToken: userObject.token,
+    };
+    addMessage(message);
+    newConversation['excerpt'] = messageBody.substring(0, 25) + '...'
+    setConversations(prevState => [newConversation, ...prevState]);
+  };
 
   // Use this hook to populate messages and conversation list
   useEffect(() => {
-    
     // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
-    if(localStorage.getItem('user')) {
-      setUser(true)
-      getMessages()
+    if (localStorage.getItem("user")) {
+      setUser(true);
+      getMessages();
+      getConversations(userObject.userId)
     }
-   
-    setConversations(StaticConversation)
 
-  }, [])
+    setConversations(StaticConversation);
+  }, []);
 
   // Need to fuigure out how to change conversations/messages shown in the message pane
   const value = {
     messages: messages,
     conversations: conversations,
+    startConversation,
     sendMessage: addMessage,
     client: socket,
-    error: setApiError
-  }
+    error: setApiError,
+  };
 
   return (
-    
     <MessageContext.Provider value={value}>
       <div className={classes.pane}>
-        { !user &&
-          <SignUpModal getMessages={getMessages}/>
-        }
-        <Container style={{padding: 0}}>
+        {!user && <SignUpModal getMessages={getMessages} />}
+        <Container style={{ padding: 0 }}>
           <Grid container>
-            <Grid item className={`${classes.conversationList} ${props.menuStatus ? classes.listOpen : ''}`} sm={12} md={12} lg={4}>
-              <ChatList toggled={menuStatus}/>
+            <Grid
+              item
+              className={`${classes.conversationList} ${
+                props.menuStatus ? classes.listOpen : ""
+              }`}
+              sm={12}
+              md={12}
+              lg={4}
+            >
+              <ChatList toggled={menuStatus} />
             </Grid>
-            <Grid item className={classes.MessagePane} sm={12} md={12} lg={8} style={{position: "relative", display: props.menuStatus ? 'none': 'block' }}>
+            <Grid
+              item
+              className={classes.MessagePane}
+              md={12}
+              lg={8}
+              style={{
+                position: "relative",
+                display: props.menuStatus ? "none" : "block",
+              }}
+            >
               <MessagePane error={apiError} />
-              <ChatControls/>
+              <ChatControls />
             </Grid>
           </Grid>
         </Container>
       </div>
     </MessageContext.Provider>
-  )
-}
+  );
+};
 
-export default WindowPane
+export default WindowPane;

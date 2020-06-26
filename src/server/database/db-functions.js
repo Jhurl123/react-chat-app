@@ -15,13 +15,9 @@ exports.sendMessage = async (newMessage) => {
 
   const { userToken, message } = newMessage
   let validJWT = await validateJWT(userToken)
-  
   message['timestamp'] = new Date()
 
   if(!validJWT) return
-
-  console.log("Testerooo");
-  
 
   let messageRef = db.db.collection('messages');
   let response = messageRef.doc().set(message)

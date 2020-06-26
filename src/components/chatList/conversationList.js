@@ -4,16 +4,11 @@ const CONVERSATIONS = [
     id: 1,
     users: [
       {
-        id: 343,
+        id: '7oZPwZjVBO1st0ULbSnV',
         name: "Justin H."
       },
-      {
-        id: 3432,
-        name: "Abby H."
-      }
     ],
     excerpt: "This is the last message we sent...",
-    time: "8:30pm"
   },
   {
     id: 4,
@@ -28,7 +23,6 @@ const CONVERSATIONS = [
       }
     ],
     excerpt: "This is the last message we sent...",
-    time: "8:30pm"
   },
   {
     id: 5,
@@ -39,7 +33,6 @@ const CONVERSATIONS = [
       }
     ],
     excerpt: "This is the last message we sent...",
-    time: "8:30pm"
   },
   {
     id: 3432,
@@ -50,7 +43,6 @@ const CONVERSATIONS = [
       }
     ],
     excerpt: "This is the last message we sent...",
-    time: "8:30pm"
   },
   
 ]

@@ -147,7 +147,6 @@ const SignUpModal = (props) => {
   }
 
   const handleSignup = () => {
-    console.log("Tested this hoe");
 
     if(authChoice !== 'user_signup')  {      
       setAuthChoice('user_signup')

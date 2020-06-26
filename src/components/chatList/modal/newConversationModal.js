@@ -46,7 +46,7 @@ const NewConversationModal = (props) => {
       <div className={classes.paper}>
         <ModalCloseButon styles={closeButtonStyles} close={toggleModal} />
         <h2>Say 'Hi' to some one new!</h2>
-        <NewConversationForm />
+        <NewConversationForm closeModal={toggleModal} />
       </div>
 
     </Modal>
