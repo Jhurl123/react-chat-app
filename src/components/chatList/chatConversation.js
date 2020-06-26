@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'space-around'
     }
   },
+  activeConversation: {
+    backgroundColor: '#e6e2e2',
+  },
   green: {
     backgroundColor: 'green',
     color: '#ffffff',
@@ -45,14 +48,14 @@ const useStyles = makeStyles((theme) => ({
 const ChatConversation = (props) => {
 
   const classes = useStyles()
-  const { info, activateConversation, key,id } = props
+  const { info, activateConversation, activeConversation, id } = props
   
   // Need to use the messages here, and show the excerpt of the last message sent using context
 
   return (
     <div>
       {info && (
-        <div className={classes.conversation} onClick={()=> activateConversation(id)}>
+        <div className={`${classes.conversation} ${activeConversation == id ? classes.activeConversation : ''}`} onClick={()=> activateConversation(id)}>
           <StyledBadge
             overlap="circle"
             anchorOrigin={{

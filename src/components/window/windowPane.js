@@ -200,7 +200,11 @@ const WindowPane = (props) => {
               md={12}
               lg={4}
             >
-              <ChatList setActiveConversation={activateConversation} toggled={menuStatus} />
+              <ChatList 
+                setActiveConversation={activateConversation} 
+                toggled={menuStatus}
+                activeConversation={activeConversation} 
+              />
             </Grid>
             <Grid
               item

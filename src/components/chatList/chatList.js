@@ -19,7 +19,7 @@ const ChatList = (props) => {
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
 
-  const { setActiveConversation } = props
+  const { setActiveConversation, activeConversation } = props
   
   // Move this to the conversation list component when prototyping is over
   const conversations = messageContext.conversations
@@ -57,6 +57,7 @@ const ChatList = (props) => {
       {displayConversations && (
         displayConversations.map(convo => <ChatConversation 
                                             activateConversation={setActiveConversation} 
+                                            activeConversation={activeConversation}
                                             key={convo.id} 
                                             id={convo.id} 
                                             info={convo} 
