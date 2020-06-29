@@ -52,14 +52,13 @@ const NewConversationForm = (props) => {
   const handleFormSubmit = (event) => {
     // Will need to send the message and add a conversation to the list
     if(event) event.preventDefault()
-    const conversationExists = checkExistingConversations()
-    
+    if(!newMessage.length) return
 
-    // Hve confirmed that this works in my testing
+    const conversationExists = checkExistingConversations()
     
     // Ignore this until  I can add conversation ids to the front/back end
     if( !conversationExists ) {
-      startConversation(selectedUsers)
+      startConversation(selectedUsers, newMessage)
     }
     else {
     //   let message = {
@@ -78,35 +77,37 @@ const NewConversationForm = (props) => {
   const checkExistingConversations = () => {
 
     const selectedIds = selectedUsers.map(user => user.id)
-    console.log(selectedIds);
     
-    const containsAllUsers = conversations.map(conversation =>  {
-      return conversation.users.every(user => {
-        return selectedIds.includes(user.id)
+    if (conversations.length) {
+      const containsAllUsers = conversations.map(conversation =>  {
+        return conversation.users.every(user => {
+          return selectedIds.includes(user.id)
+        })
       })
-    })
-    console.log(containsAllUsers.filter(Boolean));
-    
-      
-    
-    // const userIds = users.map(user => user[0].id)
-    
-    // const containsAllUsers = users.every(user => selectedIds.includes(user..id))
 
-    return containsAllUsers.filter(Boolean)[0]
+      return containsAllUsers.filter(Boolean)[0]
+    }
+
+    return 
   } 
 
   // Insert new conversation into front/backend
-  const startConversation = async users => {
+  const startConversation = async (users, message) => {
 
+    // TODO Add the full user object including username here
     users.push(currentUserId)
-    // Lets have the user ids and names  send to the database
+    
+    let conversation = {
+      users,
+      message: message
+    }
+    
     await fetch('/start_conversation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({users})
+      body: JSON.stringify(conversation)
     })
     .then(res =>  {
       if (!res.ok) {
@@ -116,7 +117,7 @@ const NewConversationForm = (props) => {
 
     })
     .then(data => {
-      messageContext.startConversation(data.conversation, newMessage )
+      messageContext.startConversation(data.conversation, message )
       closeModal()
     })
 
@@ -124,18 +125,7 @@ const NewConversationForm = (props) => {
     // If it does, add the message to the message list and update the conversation list so that the newest message is the last one showing
     // If it does not, add a new one to the database
 
-
-    //Give conversation id?
-      // This wqould involve creating a new conversation collection in the database
-      // then, give the converrsation id back in response, then add the new conversation to the conversation array
-      // This would allow me to be able to ensure that an ID is present
-    
-    // No conversation id
-      // start 
-    
   }
-
-
 
   const searchForUsers = async userName => {
 

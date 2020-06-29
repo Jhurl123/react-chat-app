@@ -88,10 +88,6 @@ const SignUpModal = (props) => {
 
   const { getMessages } = props
 
-  useEffect(() => {
-    console.log(authChoice)
-  })
-
   const handleClose = () => {
     setModal(prevState => !prevState)
   }

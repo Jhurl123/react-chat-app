@@ -31,6 +31,7 @@ const ChatInput = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     
+    if(message.length == 0 ) return
     // Set error here
     if(!userObject.hasOwnProperty('token')) {
       messageContext.error('You are not authorized to perform this action!')

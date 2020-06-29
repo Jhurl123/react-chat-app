@@ -51,6 +51,16 @@ const WindowPane = (props) => {
   const { menuStatus } = props;
   const userObject = JSON.parse(localStorage.getItem('user')) || {}
 
+  // Use this hook to populate messages and conversation list
+  useEffect(() => {
+    // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
+    if (localStorage.getItem("user")) {
+      setUser(true);
+      getMessages();
+      getConversations(userObject.userId)
+    }
+  }, []);
+
   /**
    * Send a new message to the database
    * 
@@ -63,9 +73,9 @@ const WindowPane = (props) => {
       },
       userToken: userObject.token
     }
-   * 
+   * @param {object} newConversation - new conversation object to add to state
   */
-  const addMessage = async (message) => {
+  const addMessage = async (message, newConversation = {}) => {
     // Clear alert message
     setApiError("");
 
@@ -87,6 +97,21 @@ const WindowPane = (props) => {
 
         // Send the message to the client
         socket.setMessages([message, ...messages]);
+
+        let messageContent = message.message.content
+        const excerpt = messageContent.length >= 25 ? messageContent.substring(0, 25) + '...' : messageContent
+
+        // Need two scenarios - new conversation as well as update 
+        if(Object.keys(newConversation).length) {
+          newConversation['excerpt'] = excerpt
+          setConversations(prevState => [newConversation, ...prevState])
+        }
+        else {
+          const lastConversation = conversations.filter(convo => convo.id === activeConversation)[0]
+          lastConversation['excerpt'] = excerpt
+          
+          setConversations(prevState => [lastConversation, ...prevState.filter(convo => convo.id !== activeConversation)])
+        }
       })
       .catch((error) => {
         setApiError(error.message);
@@ -119,12 +144,10 @@ const WindowPane = (props) => {
         body: JSON.stringify({userId}),
       });
       
-      const conversations = await response.json();
-
-      console.log(conversations);
+      const allConversations = await response.json();
   
-      setConversations(conversations.conversations);
-      setActiveConversation(conversations.conversations[0].id)
+      setConversations(allConversations.conversations);
+      setActiveConversation(allConversations.conversations[0].id)
       // socket.setConversations(conversations);
       // socket.messageListener(conversations, setConversations);
     } catch (err) {
@@ -141,7 +164,7 @@ const WindowPane = (props) => {
    *
    * */
   const startConversation = async (newConversation, messageBody) => {
-
+    
     // Format the object to be inserted into the db
     let message = {
       message: {
@@ -151,29 +174,23 @@ const WindowPane = (props) => {
       },
       userToken: userObject.token,
     };
-    addMessage(message);
-    newConversation['excerpt'] = messageBody.substring(0, 25) + '...'
-    setConversations(prevState => [newConversation, ...prevState]);
+
+    console.log(newConversation);
+
+    // const excerpt = messageBody.length >= 25 ? messageBody.substring(0, 25) + '...' : messageBody
+    
+    // console.log(conversations);
+    
+    // newConversation['excerpt'] = excerpt
     setActiveConversation(newConversation.id)
+    
+    addMessage(message, newConversation);
   };
 
+  //Used as prop
   const activateConversation = conversationId => {
-    console.log(conversationId);
     setActiveConversation(conversationId)
-    
   }
-
-  // Use this hook to populate messages and conversation list
-  useEffect(() => {
-    // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
-    if (localStorage.getItem("user")) {
-      setUser(true);
-      getMessages();
-      getConversations(userObject.userId)
-    }
-
-    setConversations(StaticConversation);
-  }, []);
 
   // Need to fuigure out how to change conversations/messages shown in the message pane
   const value = {

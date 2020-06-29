@@ -21,10 +21,12 @@ router.post('/get_conversations', async (req, res) => {
 
 router.post('/start_conversation', async (req, res) => {
   try {
-    const { users } = req.body
+    const { users, message } = req.body
     
-    let conversation = await convFunctions.startConversation(users)
+    let conversation = await convFunctions.startConversation(users, message)
 
+    console.log(conversation);
+    
     if( conversation ) res.status(200).send({conversation})
 
   }

@@ -1,17 +1,27 @@
 const db = require('./db-connect')
 
-exports.startConversation = async users => {
+exports.startConversation = async (users, message) => {
+
+  if(message.length > 25) {
+    // Don't let the excerpt overflow
+    excerpt = message.substring(0, 25) + '...'
+  }
+  else {
+    excerpt = message
+  }
 
   // At this point the data will already be formatted as it should be, if not, throw error
   // Shouild return the conversation ids
   let conversationRef = db.db.collection('conversations')
   let addConversation = conversationRef.add({users})
   .then( ref => {
+
     let conversation = {
       id: ref.id,
       users,
-      timestamp: new Date()
+      excerpt: excerpt
     }
+
     return conversation
   })
   .catch( err => {
@@ -38,7 +48,8 @@ exports.getConversations = async userId => {
           const data = doc.data() 
           let conversation = {
             id: doc.id,
-            users: data.users
+            users: data.users,
+            excerpt: data.excerpt
           } 
           conversations.push(conversation)
         })
@@ -55,7 +66,6 @@ exports.addExcerpt = async message => {
   let excerpt = ''
   console.log(message);
   
-
   if(message.content.length > 25) {
     // Don't let the excerpt overflow
     excerpt = message.content.substring(0, 25) + '...'
@@ -64,6 +74,7 @@ exports.addExcerpt = async message => {
     excerpt = message.content
   }
 
+  // the issue here is that I'm trying to update a conversations field that doesn't exist yet
   try {
     let conversationRef = db.db.collection('conversations').doc(message.convoId)
     conversationRef.update({excerpt})

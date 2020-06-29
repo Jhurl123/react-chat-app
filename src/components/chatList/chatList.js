@@ -30,10 +30,12 @@ const ChatList = (props) => {
 
   useEffect(()=> {
 
+    console.log(conversations);
+    
     if(conversations.length && messages.length) {
       setDisplayconvo(conversations.map(convo => {
         let message = messages.filter(message => convo.id === message.convoId)
-
+        
         if (!message.length) return undefined
         
         if(message.length > 25) {

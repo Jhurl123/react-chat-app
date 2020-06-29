@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '1.15rem .75rem 1.15rem 1.5rem',
     borderBottom: '1px solid #d3d3d3',
     justifyContent: 'space-evenly',
+    minHeight: '90px',
     [theme.breakpoints.down("md")]: {
       justifyContent: 'space-around'
     }
@@ -56,7 +57,7 @@ const ChatConversation = (props) => {
     <div>
       {info && (
         <div className={`${classes.conversation} ${activeConversation == id ? classes.activeConversation : ''}`} onClick={()=> activateConversation(id)}>
-          <StyledBadge
+          {/* <StyledBadge
             overlap="circle"
             anchorOrigin={{
               vertical: 'bottom',
@@ -65,7 +66,7 @@ const ChatConversation = (props) => {
             variant="dot"
           >
             <Avatar className={classes.green}>JH</Avatar>
-          </StyledBadge>
+          </StyledBadge> */}
           <div className={classes.info}>
             <h4>{info.users[0].name}</h4>
             <p>{info.excerpt}</p>
