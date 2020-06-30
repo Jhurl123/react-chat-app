@@ -53,7 +53,6 @@ exports.getMessages = (id) => {
     messages = messages.sort(function(a,b) {
       return new Date(b.timestamp._seconds) - new Date(a.timestamp._seconds);
     });
-    // console.log(messages);
     
     return messages
   })

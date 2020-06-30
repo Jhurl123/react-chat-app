@@ -36,7 +36,7 @@ const NewConversationForm = (props) => {
   const [apiError, setApiError] = useState('')
 
   const conversations = messageContext.conversations
-  const currentUserId =  JSON.parse(localStorage.getItem('user')).userId
+  const currentUser =  JSON.parse(localStorage.getItem('user'))
 
   useEffect(() => {
     userNameInput.current.focus()
@@ -58,6 +58,8 @@ const NewConversationForm = (props) => {
 
     const conversationExists = checkExistingConversations()
     
+  console.log(conversationExists);
+      
     // Ignore this until  I can add conversation ids to the front/back end
     if( !conversationExists ) {
       startConversation(selectedUsers, newMessage)
@@ -99,9 +101,7 @@ const NewConversationForm = (props) => {
     // Copy created to prevent issue with blank Chip being created when enter is pressed
     let usersCopy = users.map(user => user)
 
-    // TODO Add the full user object including username here
-    // This involves adding the isername as a return from the route/datbase
-    usersCopy.push({name:"Justin", id: currentUserId})
+    usersCopy.push({name: currentUser.userName, id: currentUser.userId})
     
     let conversation = {
       users: usersCopy,

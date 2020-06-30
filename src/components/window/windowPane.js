@@ -109,7 +109,6 @@ const WindowPane = (props) => {
         else {
           const lastConversation = conversations.filter(convo => convo.id === activeConversation)[0]
           lastConversation['excerpt'] = excerpt
-          
           setConversations(prevState => [lastConversation, ...prevState.filter(convo => convo.id !== activeConversation)])
         }
       })
@@ -119,14 +118,11 @@ const WindowPane = (props) => {
   };
 
   const getMessages = async () => {
-    console.log("getMessages called");
     
     setApiError("");
     try {
       const response = await fetch("/get_messages");
       const messages = await response.json();
-
-      console.log(messages);
       
       setMessages(messages);
       socket.setMessages(messages);
