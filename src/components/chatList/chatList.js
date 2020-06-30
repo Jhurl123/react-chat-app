@@ -10,8 +10,11 @@ const useStyles = makeStyles((theme) => ({
   chatList: {
     borderRight: '1px solid #d3d3d3',
     height: '80vh',
-    overflowY: 'scroll',
+    overflowY: 'scroll'
   },
+  scrollContainer: {
+    marginTop: '60px'
+  }
 }))
 
 const ChatList = (props) => {
@@ -35,7 +38,7 @@ const ChatList = (props) => {
     if(conversations.length && messages.length) {
       setDisplayconvo(conversations.map(convo => {
         let message = messages.filter(message => convo.id === message.convoId)
-        
+
         if (!message.length) return undefined
         
         if(message.length > 25) {
@@ -55,16 +58,18 @@ const ChatList = (props) => {
   return (
     <div className={`${classes.chatList}`} >
       <ChatAdd openModal={openModal} />
-      <NewConversationModal toggleModal={openModal} open={modalOpen} />
-      {displayConversations && (
-        displayConversations.map(convo => <ChatConversation 
-                                            activateConversation={setActiveConversation} 
-                                            activeConversation={activeConversation}
-                                            key={convo.id} 
-                                            id={convo.id} 
-                                            info={convo} 
-                                          />)
-      )}
+      <div className={classes.scrollContainer}>
+        <NewConversationModal toggleModal={openModal} open={modalOpen} />
+        {displayConversations && (
+          displayConversations.map(convo => <ChatConversation 
+                                              activateConversation={setActiveConversation} 
+                                              activeConversation={activeConversation}
+                                              key={convo.id} 
+                                              id={convo.id} 
+                                              info={convo} 
+                                            />)
+        )}
+      </div>
     </div>
   )
 }

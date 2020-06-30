@@ -11,6 +11,8 @@ const useStyles = makeStyles((theme) => ({
     border: 'none',
     cursor: 'pointer',
     display: 'flex',
+    height: '60px',
+    position: 'absolute',
     fontSize: '1.25rem',
     justifyContent: 'center',
     padding: '.65rem',
