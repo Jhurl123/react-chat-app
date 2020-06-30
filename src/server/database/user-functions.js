@@ -126,12 +126,15 @@ const userLogin = async (snapshot, enteredPassword) => {
     message = passwordRes.then(newData => {
       if(newData) {
 
+        console.log(userName);
+        
         const token = createToken(userName)
         
         return {
           message: 'Login Sucessful!',
           token: token,
           userId: doc.id,
+          userName,
           passed: true
         }
       }

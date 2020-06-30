@@ -40,6 +40,8 @@ const NewConversationForm = (props) => {
 
   useEffect(() => {
     userNameInput.current.focus()
+    console.log(selectedUsers);
+    
   }, [])
 
   // Submit form if enter is pressed inside of text message field
@@ -94,11 +96,15 @@ const NewConversationForm = (props) => {
   // Insert new conversation into front/backend
   const startConversation = async (users, message) => {
 
+    // Copy created to prevent issue with blank Chip being created when enter is pressed
+    let usersCopy = users.map(user => user)
+
     // TODO Add the full user object including username here
-    users.push(currentUserId)
+    // This involves adding the isername as a return from the route/datbase
+    usersCopy.push({name:"Justin", id: currentUserId})
     
     let conversation = {
-      users,
+      users: usersCopy,
       message: message
     }
     
@@ -175,8 +181,8 @@ const NewConversationForm = (props) => {
           id="username"
           multiple
           options={foundUsers}
-          onChange={(event, newValue) => {
-            setSelectedUsers(newValue);
+          onChange={(event, newValue) => {            
+            if(Object.keys(newValue).length) setSelectedUsers(newValue);
             setFoundUsers([])
           }}
           onInputChange={(event, newInputValue) => {

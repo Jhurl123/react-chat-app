@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
@@ -9,6 +9,7 @@ import { Alert, AlertTitle } from '@material-ui/lab'
 import { Transition } from 'react-transition-group';
 import IconButton from "@material-ui/core/IconButton"
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import MessageContext from '../../Context/messageContext';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -85,12 +86,27 @@ const SignUpModal = (props) => {
   const [error, setError] = useState('')
   const [formSubmit, setFormSubmit] = useState(false)
   const [apiError, setApiError] = useState('')
+  const messageContext = useContext(MessageContext)
+  const userNameRef = useRef(null)
 
   const { getMessages } = props
 
   const handleClose = () => {
     setModal(prevState => !prevState)
   }
+
+   useEffect(() => {
+
+    // Settimeout used to get around DOM manipulation issue in useEffect
+    // https://github.com/facebook/react/issues/17894
+    setTimeout(() => {
+      if(authChoice) {
+        if(userNameRef) {
+          userNameRef.current.focus()
+        }
+      }      
+    })
+  })
 
   // Change this to the login function and have a separate login function
   const handleFormSubmit = async (event) => {
@@ -127,9 +143,11 @@ const SignUpModal = (props) => {
     // Test if response from server is good, then return, or set error
     if(response.passed) {
 
-      localStorage.setItem('user', JSON.stringify({ userId: response.userId, token: response.token}))
+      const { userId, token, userName } = response
+      localStorage.setItem('user', JSON.stringify({ userId, token, userName}))
 
       getMessages()
+      messageContext.getConversations(userId)
       setError(false)
       setApiError(false)
       handleClose()
@@ -191,7 +209,7 @@ const SignUpModal = (props) => {
             onSubmit={event => handleFormSubmit(event)}
             className={classes.form}
           >
-            <Transition in={authChoice !== ''} timeout={300}>
+            <Transition in={authChoice !== ''} timeout={0}>
               {state => (
                 <div style={{...transitionStyles[state]}}>
                   <IconButton 
@@ -219,6 +237,7 @@ const SignUpModal = (props) => {
                     disabled={state === 'exited' ? true : false}
                     variant='outlined' 
                     onChange={e => setUserName(e.target.value)}
+                    inputRef={userNameRef}
                     helperText={ error && 'Invalid Username'}
                   />
                   <TextField
@@ -274,9 +293,6 @@ const SignUpModal = (props) => {
       disableBackdropClick={true}
       disableEscapeKeyDown={true}
       BackdropComponent={Backdrop}
-      BackdropProps= {{
-        timeout: 500
-      }}
     >
       {body}
     </Modal>

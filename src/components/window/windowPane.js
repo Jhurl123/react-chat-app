@@ -119,11 +119,15 @@ const WindowPane = (props) => {
   };
 
   const getMessages = async () => {
+    console.log("getMessages called");
+    
     setApiError("");
     try {
       const response = await fetch("/get_messages");
       const messages = await response.json();
 
+      console.log(messages);
+      
       setMessages(messages);
       socket.setMessages(messages);
       socket.messageListener(messages, setMessages);
@@ -197,6 +201,7 @@ const WindowPane = (props) => {
     messages: messages,
     conversations: conversations,
     startConversation,
+    getConversations,
     sendMessage: addMessage,
     client: socket,
     error: setApiError,
