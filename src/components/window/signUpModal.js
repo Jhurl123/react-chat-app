@@ -106,7 +106,7 @@ const SignUpModal = (props) => {
         }
       }      
     })
-  })
+  }, [authChoice])
 
   // Change this to the login function and have a separate login function
   const handleFormSubmit = async (event) => {
