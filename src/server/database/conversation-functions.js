@@ -1,6 +1,6 @@
 const db = require('./db-connect')
 
-exports.startConversation = async (users, message) => {
+exports.startConversation = async (users, userIds, message) => {
 
   if(message.length > 25) {
     // Don't let the excerpt overflow
@@ -13,7 +13,7 @@ exports.startConversation = async (users, message) => {
   // At this point the data will already be formatted as it should be, if not, throw error
   // Shouild return the conversation ids
   let conversationRef = db.db.collection('conversations')
-  let addConversation = conversationRef.add({users})
+  let addConversation = conversationRef.add({users, userIds})
   .then( ref => {
 
     let conversation = {
@@ -34,11 +34,14 @@ exports.startConversation = async (users, message) => {
 }
 
 exports.getConversations = async userId => {
+  console.log(userId);
   
   let conversationRef = db.db.collection('conversations')
-  let conversationQuery = conversationRef.where('users', 'array-contains', userId).get()  
+  let conversationQuery = conversationRef.where('userIds', 'array-contains', userId).get()  
     .then(snapshot => {
       if(snapshot.empty) {
+        console.log("Results re empty");
+        
         return false
       }
       else {

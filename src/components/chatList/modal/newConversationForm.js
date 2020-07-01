@@ -40,8 +40,6 @@ const NewConversationForm = (props) => {
 
   useEffect(() => {
     userNameInput.current.focus()
-    console.log(selectedUsers);
-    
   }, [])
 
   // Submit form if enter is pressed inside of text message field
@@ -54,7 +52,7 @@ const NewConversationForm = (props) => {
   const handleFormSubmit = (event) => {
     // Will need to send the message and add a conversation to the list
     if(event) event.preventDefault()
-    if(!newMessage.length) return
+    if(!newMessage.length || !selectedUsers.length) return
 
     const conversationExists = checkExistingConversations()
     
@@ -81,13 +79,23 @@ const NewConversationForm = (props) => {
   const checkExistingConversations = () => {
 
     const selectedIds = selectedUsers.map(user => user.id)
+
+    console.log(selectedIds);
     
     if (conversations.length) {
       const containsAllUsers = conversations.map(conversation =>  {
+        console.log(conversation.users);
+        
         return conversation.users.every(user => {
+          
+          console.log(user.id);
+          
           return selectedIds.includes(user.id)
         })
       })
+
+      console.log(containsAllUsers);
+      
 
       return containsAllUsers.filter(Boolean)[0]
     }
@@ -100,11 +108,14 @@ const NewConversationForm = (props) => {
 
     // Copy created to prevent issue with blank Chip being created when enter is pressed
     let usersCopy = users.map(user => user)
+    let userIds = users.map(user => user.id)
+    userIds.push(currentUser.userId)
 
     usersCopy.push({name: currentUser.userName, id: currentUser.userId})
     
     let conversation = {
       users: usersCopy,
+      userIds,
       message: message
     }
     

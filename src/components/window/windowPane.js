@@ -56,7 +56,7 @@ const WindowPane = (props) => {
     // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
     if (localStorage.getItem("user")) {
       setUser(true);
-      getMessages();
+      getMessages();      
       getConversations(userObject.userId)
     }
   }, []);
@@ -134,6 +134,8 @@ const WindowPane = (props) => {
   };
 
   const getConversations = async (userId) => {
+    console.log(userId);
+    
     setApiError("");
     try {
       const response = await fetch("/get_conversations", {
@@ -146,6 +148,8 @@ const WindowPane = (props) => {
       
       const allConversations = await response.json();
   
+      console.log(allConversations);
+      
       setConversations(allConversations.conversations);
       setActiveConversation(allConversations.conversations[0].id)
       // socket.setConversations(conversations);
