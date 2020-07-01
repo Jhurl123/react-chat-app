@@ -54,50 +54,50 @@ const NewConversationForm = (props) => {
     if(event) event.preventDefault()
     if(!newMessage.length || !selectedUsers.length) return
 
-    const conversationExists = checkExistingConversations()
+    const conversationId = checkExistingConversations()
+
+    console.log(conversationId);
     
-  console.log(conversationExists);
       
     // Ignore this until  I can add conversation ids to the front/back end
-    if( !conversationExists ) {
+    if( !conversationId ) {
       startConversation(selectedUsers, newMessage)
     }
     else {
-    //   let message = {
-    //     message: {
-    //       convoId: newConversation.id,
-    //       content: messageBody,
-    //       userId: userObject.userId,
-    //     },
-    //     userToken: userObject.token,
-    //   };
-    //   messageContext.addMessage(newMessage)
+      // Need to return the id from the checkExistingConversations method
+      let message = {
+        message: {
+          convoId: conversationId, 
+          content: newMessage,
+          userId: currentUser.userId,
+        },
+        userToken: currentUser.token,
+      };
+
+      messageContext.sendMessage(message)
+      closeModal()
     }
 
   }
 
   const checkExistingConversations = () => {
 
-    const selectedIds = selectedUsers.map(user => user.id)
-
-    console.log(selectedIds);
+    let selectedIds = selectedUsers.map(user => user.id)
+    selectedIds.push(currentUser.userId)
     
     if (conversations.length) {
-      const containsAllUsers = conversations.map(conversation =>  {
-        console.log(conversation.users);
         
-        return conversation.users.every(user => {
-          
-          console.log(user.id);
-          
+      let matchingConversation = false
+      for(let i = 0; i < conversations.length; i++) {
+        matchingConversation = conversations[i].users.every((user, index) => {   
           return selectedIds.includes(user.id)
         })
-      })
 
-      console.log(containsAllUsers);
+        if (matchingConversation)  matchingConversation = conversations[i].id;
+      }
       
+      return matchingConversation
 
-      return containsAllUsers.filter(Boolean)[0]
     }
 
     return 
@@ -108,6 +108,8 @@ const NewConversationForm = (props) => {
 
     // Copy created to prevent issue with blank Chip being created when enter is pressed
     let usersCopy = users.map(user => user)
+
+    // Create array of ids to be queryable by 'array-contains' in firebase
     let userIds = users.map(user => user.id)
     userIds.push(currentUser.userId)
 
