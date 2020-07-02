@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   chatList: {
     borderRight: '1px solid #d3d3d3',
     height: '80vh',
-    overflowY: 'scroll'
+    overflowY: 'auto'
   },
   scrollContainer: {
     marginTop: '60px'
@@ -28,15 +28,13 @@ const ChatList = (props) => {
   const conversations = messageContext.conversations
   const messages = messageContext.messages
 
-  let [displayConversations, setDisplayconvo] = useState([]) 
+  let [displayConversations, setDisplayConvo] = useState([]) 
   let [modalOpen, setModalOpen] = useState(false)
 
   useEffect(()=> {
-
-    console.log(conversations);
     
     if(conversations.length && messages.length) {
-      setDisplayconvo(conversations.map(convo => {
+      setDisplayConvo(conversations.map(convo => {
         let message = messages.filter(message => convo.id === message.convoId)
 
         if (!message.length) return undefined
@@ -50,6 +48,11 @@ const ChatList = (props) => {
     }
     
   }, [conversations, messages]);
+
+  const formatUsernames = (userNames) => {
+
+
+  }
 
   const openModal = () =>  {
     setModalOpen(prevState => !prevState)

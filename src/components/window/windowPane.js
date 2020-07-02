@@ -92,7 +92,7 @@ const WindowPane = (props) => {
         }
         response.json();
       })
-      .then((data) => {
+      .then( async (data) => {
         setMessages((prevState) => [message.message, ...prevState]);
 
         // Send the message to the client
@@ -107,15 +107,35 @@ const WindowPane = (props) => {
           setConversations(prevState => [newConversation, ...prevState])
         }
         else {
-          const lastConversation = conversations.filter(convo => convo.id === activeConversation)[0]
-          lastConversation['excerpt'] = excerpt
-          setConversations(prevState => [lastConversation, ...prevState.filter(convo => convo.id !== activeConversation)])
+          
+          let lastConversation = addExcerptToLastConversation(message.message.convoId,excerpt)
+
+          console.log(lastConversation);
+
+          lastConversation.then(lastConvo => {
+            setConversations(prevState => [lastConvo, ...prevState.filter(convo => convo.id !== lastConvo.id)])
+          })
+
         }
       })
       .catch((error) => {
         setApiError(error.message);
       });
   };
+
+  const addExcerptToLastConversation = (convoId, excerpt) => {
+
+    return new Promise(resolve => {
+      
+      const lastConversation = conversations.filter(convo => { 
+        return convo.id === convoId
+      })[0]
+      lastConversation['excerpt'] = excerpt
+
+      resolve(lastConversation)
+
+    })
+  }
 
   const getMessages = async () => {
     
@@ -134,7 +154,6 @@ const WindowPane = (props) => {
   };
 
   const getConversations = async (userId) => {
-    console.log(userId);
     
     setApiError("");
     try {
@@ -147,8 +166,6 @@ const WindowPane = (props) => {
       });
       
       const allConversations = await response.json();
-  
-      console.log(allConversations);
       
       setConversations(allConversations.conversations);
       setActiveConversation(allConversations.conversations[0].id)
@@ -179,20 +196,13 @@ const WindowPane = (props) => {
       userToken: userObject.token,
     };
 
-    console.log(newConversation);
-
-    // const excerpt = messageBody.length >= 25 ? messageBody.substring(0, 25) + '...' : messageBody
-    
-    // console.log(conversations);
-    
-    // newConversation['excerpt'] = excerpt
     setActiveConversation(newConversation.id)
     
     addMessage(message, newConversation);
   };
 
   //Used as prop
-  const activateConversation = conversationId => {
+  const activateConversation = conversationId => {   
     setActiveConversation(conversationId)
   }
 
@@ -202,6 +212,7 @@ const WindowPane = (props) => {
     conversations: conversations,
     startConversation,
     getConversations,
+    activateConversation,
     sendMessage: addMessage,
     client: socket,
     error: setApiError,

@@ -45,7 +45,7 @@ const NewConversationForm = (props) => {
   // Submit form if enter is pressed inside of text message field
   const formEnter = (event) => {
     if(event.keyCode == 13) {
-      handleFormSubmit()
+      handleFormSubmit(event)
     }
   }
 
@@ -54,54 +54,67 @@ const NewConversationForm = (props) => {
     if(event) event.preventDefault()
     if(!newMessage.length || !selectedUsers.length) return
 
-    const conversationId = checkExistingConversations()
+    const conversationProm = checkExistingConversations()
 
-    console.log(conversationId);
-    
+
+    conversationProm.then(convoId => {
       
-    // Ignore this until  I can add conversation ids to the front/back end
-    if( !conversationId ) {
-      startConversation(selectedUsers, newMessage)
-    }
-    else {
-      // Need to return the id from the checkExistingConversations method
-      let message = {
-        message: {
-          convoId: conversationId, 
-          content: newMessage,
-          userId: currentUser.userId,
-        },
-        userToken: currentUser.token,
-      };
+      // // Ignore this until  I can add conversation ids to the front/back end
+      if( !convoId ) {
+        startConversation(selectedUsers, newMessage)
+      }
+      else {
+        // Need to return the id from the checkExistingConversations method
+        let message = {
+          message: {
+            convoId,
+            content: newMessage,
+            userId: currentUser.userId,
+          },
+          userToken: currentUser.token,
+        };
 
-      messageContext.sendMessage(message)
-      closeModal()
-    }
+        messageContext.activateConversation(convoId)
+        messageContext.sendMessage(message)
+        closeModal()
+      }
+    })
 
   }
 
-  const checkExistingConversations = () => {
+  const checkExistingConversations = async () => {
 
-    let selectedIds = selectedUsers.map(user => user.id)
-    selectedIds.push(currentUser.userId)
-    
     if (conversations.length) {
-        
-      let matchingConversation = false
-      for(let i = 0; i < conversations.length; i++) {
-        matchingConversation = conversations[i].users.every((user, index) => {   
-          return selectedIds.includes(user.id)
-        })
-
-        if (matchingConversation)  matchingConversation = conversations[i].id;
-      }
-      
-      return matchingConversation
-
+      const conversationId = await loopConversation();
+      return conversationId
     }
 
     return 
   } 
+
+  const loopConversation = async () => {
+
+    let selectedIds = selectedUsers.map(user => user.id)
+    selectedIds.push(currentUser.userId)
+    
+    let matchingConversation = false
+
+    return new Promise(resolve => {
+      // Logic here not working as expected
+      for(let i = 0; i < conversations.length; i++) {
+        matchingConversation = conversations[i].users.every((user, index) => {   
+          return selectedIds.includes(user.id)
+        })
+        
+        if (matchingConversation)  {
+          matchingConversation = conversations[i].id;
+          break;
+        }
+      }
+      
+      resolve(matchingConversation)
+    })
+  }
 
   // Insert new conversation into front/backend
   const startConversation = async (users, message) => {
@@ -139,10 +152,6 @@ const NewConversationForm = (props) => {
       messageContext.startConversation(data.conversation, message )
       closeModal()
     })
-
-    // At this point we will check to see if the conversation exists yet
-    // If it does, add the message to the message list and update the conversation list so that the newest message is the last one showing
-    // If it does not, add a new one to the database
 
   }
 
