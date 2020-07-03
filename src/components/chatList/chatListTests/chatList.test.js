@@ -5,6 +5,10 @@ import ChatList from '../chatList'
 import { mount, configure  } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import messageContext from '../../../Context/messageContext';
+import localStorage from '../../message/messageTests/localStorage'
+
+window.localStorage = localStorage
+window.localStorage.setItem('user', JSON.stringify({userName: 'test'}))
 
 configure({ adapter: new Adapter() });
 

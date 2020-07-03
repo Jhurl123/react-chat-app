@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '1.15rem .75rem 1.15rem 1.5rem',
     borderBottom: '1px solid #d3d3d3',
     justifyContent: 'space-evenly',
+    cursor: 'pointer',
     minHeight: '90px',
     [theme.breakpoints.down("md")]: {
       justifyContent: 'space-around'
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     '& p': {
       margin: 0
     },
-  },
+  }
 
 }))
 
@@ -75,7 +76,6 @@ const ChatConversation = (props) => {
           >
           </StyledBadge>
           <div className={classes.info}>
-            <span>{info.users.length}</span>
             <ToolTipStyled title={`Users: ${info.users.allUsers}`} placement="top" arrow>
               <h4>{info.users.userString}</h4>
             </ToolTipStyled>

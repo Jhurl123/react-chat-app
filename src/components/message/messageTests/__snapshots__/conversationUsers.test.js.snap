@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message Pane Conversation Users Component renders as expected 1`] = `
+<div
+  className="makeStyles-users-1"
+>
+  <p>
+    
+  </p>
+</div>
+`;

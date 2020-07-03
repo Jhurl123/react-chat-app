@@ -2,13 +2,14 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Alert, AlertTitle } from '@material-ui/lab'
 import MessageList from "./messageList";
+import ConversationUsers from './conversationUsers'
 
 const useStyles = makeStyles((theme) => ({
   MessagePane: {
     width: '100%',
     height: '100%',
     display: 'flex',
-    paddingTop: '.5rem',
+    flexDirection: 'column',
     [theme.breakpoints.down("md")]: {
       height: 'calc(80vh - 80px)',
     }
@@ -37,6 +38,9 @@ const MessagePane = (props) => {
           </Alert>
         </div>
       }
+      {activeConversation && (
+        <ConversationUsers activeConversation={activeConversation} />
+      )}
       <MessageList activeConversation={activeConversation} userObject={userObject}/>
     </div>
   )

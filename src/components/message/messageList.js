@@ -1,4 +1,4 @@
-import React, { useContext, useCallback, useEffect } from 'react'
+import React, { useContext, useCallback } from 'react'
 import Message from './message'
 import { makeStyles } from '@material-ui/core'
 import MessageContext from '../../Context/messageContext'
@@ -7,7 +7,7 @@ import MessageContext from '../../Context/messageContext'
 const useStyles = makeStyles(theme => ({
   container: {
     height: '100%',
-    maxHeight: 'calc(80vh - 80px)',
+    maxHeight: 'calc(80vh - 120px)',
     margin: 0,
     padding: '0 1.5rem',
     paddingBottom: '3rem',
@@ -15,7 +15,10 @@ const useStyles = makeStyles(theme => ({
     overflow: 'auto',
     overflowX: 'hidden',
     display: 'flex',
-    flexDirection: 'column-reverse'
+    flexDirection: 'column-reverse',
+    [theme.breakpoints.down("md")]: {
+      paddingBottom: '0'
+    }
   }
 }))
 
