@@ -64,6 +64,10 @@ const NewConversationForm = (props) => {
         startConversation(selectedUsers, newMessage)
       }
       else {
+        console.log("Wrong method called!");
+        console.log(convoId);
+        
+        
         // Need to return the id from the checkExistingConversations method
         let message = {
           message: {
@@ -97,10 +101,15 @@ const NewConversationForm = (props) => {
     let selectedIds = selectedUsers.map(user => user.id)
     selectedIds.push(currentUser.userId)
     
+    console.log(selectedIds);
+    
     let matchingConversation = false
 
     return new Promise(resolve => {
       // Logic here not working as expected
+      // IIRC the issue was that adding one user to the convo worked fine, but i had issues using more than one
+      // Perhaps I could rework this
+      
       for(let i = 0; i < conversations.length; i++) {
         matchingConversation = conversations[i].users.every((user, index) => {   
           return selectedIds.includes(user.id)

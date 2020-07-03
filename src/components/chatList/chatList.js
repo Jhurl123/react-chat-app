@@ -21,7 +21,7 @@ const ChatList = (props) => {
 
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
-
+  const currentUser = localStorage.getItem('user')
   const { setActiveConversation, activeConversation } = props
   
   // Move this to the conversation list component when prototyping is over
@@ -35,6 +35,9 @@ const ChatList = (props) => {
     
     if(conversations.length && messages.length) {
       setDisplayConvo(conversations.map(convo => {
+
+        convo.users['userString'] = formatUsernames(convo.users)
+
         let message = messages.filter(message => convo.id === message.convoId)
 
         if (!message.length) return undefined
@@ -49,9 +52,19 @@ const ChatList = (props) => {
     
   }, [conversations, messages]);
 
-  const formatUsernames = (userNames) => {
+  const formatUsernames = (users) => {
+
+    //TODO Will need to strip the signed in users name from the usernames as well
+    let userNames = users.map(user => user.name)
+    let headerNames = userNames.filter((name, index) => {
+      return name !== currentUser.userName && index <=1
+    })
+    const userNameString = headerNames.join(', ')
 
 
+    
+    return userNameString
+    
   }
 
   const openModal = () =>  {

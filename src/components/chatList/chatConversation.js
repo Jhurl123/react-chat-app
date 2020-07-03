@@ -68,7 +68,8 @@ const ChatConversation = (props) => {
             <Avatar className={classes.green}>JH</Avatar>
           </StyledBadge> */}
           <div className={classes.info}>
-            <h4>{info.users[0].name}</h4>
+            <span>{info.users.length}</span>
+            <h4>{info.users.userString}</h4>
             <p>{info.excerpt}</p>
           </div>
           <span>{info.time}</span>
