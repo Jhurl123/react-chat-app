@@ -1,7 +1,8 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
 import { Avatar } from '@material-ui/core'
 import StyledBadge from '../badge/styledBadge'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const useStyles = makeStyles((theme) => ({
 
@@ -37,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 1.3rem',
     width: '100%',
     '& h4': {
-      margin: '0 0 .5rem 0'
+      margin: '0 0 .5rem 0',
+      alignSelf: 'flex-start'
     },
     '& p': {
       margin: 0
@@ -46,30 +48,37 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
+const ToolTipStyled = withStyles({
+  tooltip: {
+    fontSize: '1rem',
+  }
+})(Tooltip);
+
 const ChatConversation = (props) => {
 
   const classes = useStyles()
   const { info, activateConversation, activeConversation, id } = props
   
   // Need to use the messages here, and show the excerpt of the last message sent using context
-
+ // TODO New message indicator here - Use Styled badge 
   return (
     <div>
       {info && (
         <div className={`${classes.conversation} ${activeConversation == id ? classes.activeConversation : ''}`} onClick={()=> activateConversation(id)}>
-          {/* <StyledBadge
+          <StyledBadge
             overlap="circle"
             anchorOrigin={{
-              vertical: 'bottom',
+              vertical: 'top',
               horizontal: 'right',
             }}
             variant="dot"
           >
-            <Avatar className={classes.green}>JH</Avatar>
-          </StyledBadge> */}
+          </StyledBadge>
           <div className={classes.info}>
             <span>{info.users.length}</span>
-            <h4>{info.users.userString}</h4>
+            <ToolTipStyled title={`Users: ${info.users.allUsers}`} placement="top" arrow>
+              <h4>{info.users.userString}</h4>
+            </ToolTipStyled>
             <p>{info.excerpt}</p>
           </div>
           <span>{info.time}</span>

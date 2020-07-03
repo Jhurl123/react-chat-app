@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     padding: '.65rem',
     width: '100%',
+    zIndex: '100',
     '&:hover': {
       backgroundColor: "#037b03"
     }

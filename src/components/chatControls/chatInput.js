@@ -8,8 +8,9 @@ import MessageContext from '../../Context/messageContext'
 
 const useStyles = makeStyles((theme) => ({
   ChatInput: {
+    alignSelf: 'flex-start',
     borderRadius: '15px',
-    width: '75%',
+    width: '100%',
     padding: '.5rem',
     fontSize: '18px',
     border: 'none',
@@ -17,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '65%'
     }
+  },
+  icon: {
+    marginLeft: '0.5rem',
+    alignSelf: 'flex-start',
+    padding: '9px 12px 9px 12px',
   }
 }))
 
@@ -54,7 +60,7 @@ const ChatInput = (props) => {
 
   return (
     <div >
-      <form onSubmit={handleSubmit} style={{ padding: '.9rem'}}>
+      <form onSubmit={handleSubmit} style={{ padding: '.9rem', display: 'flex'}}>
         <input 
           className={classes.ChatInput}
           type="text"
@@ -64,7 +70,7 @@ const ChatInput = (props) => {
           placeholder="Send a message"
           onChange={ e => setMessage(e.target.value)}
         />
-        <IconButton onClick={handleSubmit} aria-label="Send Message" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
+        <IconButton className={classes.icon} onClick={handleSubmit} aria-label="Send Message" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
           <EmailIcon />
         </IconButton>
 

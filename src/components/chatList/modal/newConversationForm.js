@@ -101,19 +101,27 @@ const NewConversationForm = (props) => {
     let selectedIds = selectedUsers.map(user => user.id)
     selectedIds.push(currentUser.userId)
     
-    console.log(selectedIds);
+    let selectedArray = selectedIds.concat().sort()
     
     let matchingConversation = false
 
     return new Promise(resolve => {
-      // Logic here not working as expected
-      // IIRC the issue was that adding one user to the convo worked fine, but i had issues using more than one
-      // Perhaps I could rework this
       
       for(let i = 0; i < conversations.length; i++) {
-        matchingConversation = conversations[i].users.every((user, index) => {   
-          return selectedIds.includes(user.id)
-        })
+
+        let usersArray = conversations[i].users.map( user => user.id)
+        let compArray = usersArray.concat().sort()
+
+        if(compArray.length !== selectedArray.length) continue
+
+        for(let j = 0; j < compArray.length; j++) {
+          if(compArray[j] !== selectedArray[j]) {            
+            break
+          }
+          else if( compArray[j] === selectedArray[j] && j === compArray.length - 1) {            
+            matchingConversation = true
+          }
+        }
         
         if (matchingConversation)  {
           matchingConversation = conversations[i].id;
