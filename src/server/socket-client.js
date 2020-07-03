@@ -17,11 +17,23 @@ const messageListener = (messages, cb) => {
   socket.on('updateMessages', (messages) => cb(messages))
 }
 
+const conversationListener = (conversations, cb) => {
+  console.log("Called the conversations Listener")
+  socket.on('updateConversations', (conversations) => cb(conversations))
+}
+
+const setConversations = conversations => {
+  socket.emit('setConversations', conversations )
+}
+
+
 export default {
   socket,
   sendMessage,
   setMessages,
-  messageListener
+  messageListener,
+  conversationListener,
+  setConversations
 }
 
 

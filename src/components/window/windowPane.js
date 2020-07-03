@@ -107,15 +107,10 @@ const WindowPane = (props) => {
           setConversations(prevState => [newConversation, ...prevState])
         }
         else {
-          
           let lastConversation = addExcerptToLastConversation(message.message.convoId,excerpt)
-
-          console.log(lastConversation);
-
           lastConversation.then(lastConvo => {
             setConversations(prevState => [lastConvo, ...prevState.filter(convo => convo.id !== lastConvo.id)])
           })
-
         }
       })
       .catch((error) => {
@@ -131,7 +126,6 @@ const WindowPane = (props) => {
         return convo.id === convoId
       })[0]
       lastConversation['excerpt'] = excerpt
-
       resolve(lastConversation)
 
     })
@@ -169,8 +163,8 @@ const WindowPane = (props) => {
       
       setConversations(allConversations.conversations);
       setActiveConversation(allConversations.conversations[0].id)
-      // socket.setConversations(conversations);
-      // socket.messageListener(conversations, setConversations);
+      socket.setConversations(conversations);
+      socket.conversationListener(conversations, setConversations);
     } catch (err) {
       // display error if it exists
       setApiError("Sorry, couldn't grab these messages");
