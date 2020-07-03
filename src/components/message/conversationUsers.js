@@ -13,7 +13,10 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '2rem',
     width: '100%',
     zIndex: '2',
-    wordSpacing: '6px'
+    wordSpacing: '6px',
+    [theme.breakpoints.down("sm")]: {
+      fontSize: '.9rem'
+    }
   }
 }))
 

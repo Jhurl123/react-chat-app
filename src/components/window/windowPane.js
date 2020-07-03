@@ -163,8 +163,8 @@ const WindowPane = (props) => {
       
       setConversations(allConversations.conversations);
       setActiveConversation(allConversations.conversations[0].id)
-      socket.setConversations(conversations);
-      socket.conversationListener(conversations, setConversations);
+      // socket.setConversations(conversations);
+      // socket.conversationListener(conversations, setConversations);
     } catch (err) {
       // display error if it exists
       setApiError("Sorry, couldn't grab these messages");

@@ -23,9 +23,8 @@ const conversationListener = (conversations, cb) => {
 }
 
 const setConversations = conversations => {
-  socket.emit('setConversations', conversations )
+  socket.emit('setConversations', conversations)
 }
-
 
 export default {
   socket,
