@@ -53,15 +53,15 @@ const WindowPane = (props) => {
 
   // Use this hook to populate messages and conversation list
   useEffect(() => {
+
     if (localStorage.getItem("user")) {
       setUser(true);
     }
-    // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all message
     loadUserData()
-
   }, [conversations])
 
   const loadUserData = async () => {
+
     if (localStorage.getItem("user")) {
       await getConversations(currentUser.userId)
       socket.conversationListener(conversations, setConversations);
@@ -113,9 +113,11 @@ const WindowPane = (props) => {
         // Need two scenarios - new conversation as well as update 
         if(Object.keys(newConversation).length) {
           newConversation['excerpt'] = excerpt
-          setConversations(prevState => [newConversation, ...prevState])
-          socket.setConversations([newConversation, ...conversations]);
-        }
+          setConversations(prevState =>  {
+            socket.setConversations([newConversation, ...conversations]);
+            return [newConversation, ...prevState]
+          })
+          }
         else {
 
           console.log(conversations);
