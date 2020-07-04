@@ -32,10 +32,10 @@ io.on('connection', function (client) {
     client.broadcast.emit('updateMessages', socketMessages)
   })
 
-  // client.on('setConversations', (conversation) => {
-  //   socketConversation = conversation
-  //   client.broadcast.emit('updateConversation', socketConversation)
-  // })
+  client.on('setConversations', (conversation) => {
+    socketConversation = conversation
+    client.broadcast.emit('updateConversation', socketConversation)
+  })
 
   client.on('disconnect', function () {
     console.log('client disconnect...', client.id)

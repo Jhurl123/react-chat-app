@@ -30,7 +30,9 @@ export default {
   socket,
   sendMessage,
   setMessages,
-  messageListener
+  messageListener,
+  conversationListener,
+  setConversations
 }
 
 
