@@ -19,7 +19,10 @@ const messageListener = (messages, cb) => {
 
 const conversationListener = (conversations, cb) => {
   console.log("Called the conversations Listener")
-  socket.on('updateConversations', (conversations) => cb(conversations))
+  socket.on('updateConversations', (conversations) =>  {
+    console.log("This listener was called");
+    cb(conversations)
+  })
 }
 
 const setConversations = conversations => {
