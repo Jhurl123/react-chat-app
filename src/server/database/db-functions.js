@@ -35,7 +35,7 @@ exports.getMessages = (id) => {
   
   let messageRef = db.db.collection('messages');
 
-  let messages = messageRef.get()
+  let messages = messageRef.where('userId', '==', id).where('users', 'array-contains', id).get()
   .then(snapshot => {
     let messages = []
 
@@ -53,6 +53,8 @@ exports.getMessages = (id) => {
     messages = messages.sort(function(a,b) {
       return new Date(b.timestamp._seconds) - new Date(a.timestamp._seconds);
     });
+    
+    console.log(messages.length);
     
     return messages
   })

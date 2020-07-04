@@ -44,22 +44,30 @@ const useStyles = makeStyles((theme) => ({
 const WindowPane = (props) => {
   const classes = useStyles();
   const [messages, setMessages] = useState([]);
-  const [conversations, setConversations] = useState("");
+  const [conversations, setConversations] = useState([]);
   const [apiError, setApiError] = useState("");
   const [user, setUser] = useState(false);
   const [activeConversation, setActiveConversation] = useState("")
   const { menuStatus } = props;
-  const userObject = JSON.parse(localStorage.getItem('user')) || {}
+  const currentUser = JSON.parse(localStorage.getItem('user')) || {}
 
   // Use this hook to populate messages and conversation list
   useEffect(() => {
-    // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all messages
     if (localStorage.getItem("user")) {
       setUser(true);
-      getMessages();      
-      getConversations(userObject.userId)
     }
-  }, []);
+    // When the backend is built out, messages will be a list of messages with a certain convoId, not a lst of all message
+    loadUserData()
+
+  }, [conversations])
+
+  const loadUserData = async () => {
+    if (localStorage.getItem("user")) {
+      await getConversations(currentUser.userId)
+      
+      getMessages();      
+    }
+  }
 
   /**
    * Send a new message to the database
@@ -69,9 +77,9 @@ const WindowPane = (props) => {
       message: {
         convoId: 1,
         content: message,
-        userId: userObject.userId
+        userId: currentUser.userId
       },
-      userToken: userObject.token
+      userToken: currentUser.token
     }
    * @param {object} newConversation - new conversation object to add to state
   */
@@ -134,14 +142,22 @@ const WindowPane = (props) => {
   const getMessages = async () => {
     
     setApiError("");
+    
     try {
-      const response = await fetch("/get_messages");
+      const response = await fetch("/get_messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({userId: currentUser.userId}),
+      });
       const messages = await response.json();
       
       setMessages(messages);
       socket.setMessages(messages);
       socket.messageListener(messages, setMessages);
-    } catch (err) {
+    } 
+    catch (err) {
       // display error if it exists
       setApiError("Sorry, couldn't grab these messages");
     }
@@ -149,6 +165,8 @@ const WindowPane = (props) => {
 
   const getConversations = async (userId) => {
     
+    if(conversations.length) return
+
     setApiError("");
     try {
       const response = await fetch("/get_conversations", {
@@ -160,14 +178,14 @@ const WindowPane = (props) => {
       });
       
       const allConversations = await response.json();
-      
+      console.log(allConversations.conversations)
       setConversations(allConversations.conversations);
       setActiveConversation(allConversations.conversations[0].id)
       // socket.setConversations(conversations);
       // socket.conversationListener(conversations, setConversations);
     } catch (err) {
       // display error if it exists
-      setApiError("Sorry, couldn't grab these messages");
+      setApiError("Sorry, couldn't grab these conversations");
     }
   }
 
@@ -185,9 +203,9 @@ const WindowPane = (props) => {
       message: {
         convoId: newConversation.id,
         content: messageBody,
-        userId: userObject.userId,
+        userId: currentUser.userId,
       },
-      userToken: userObject.token,
+      userToken: currentUser.token,
     };
 
     setActiveConversation(newConversation.id)

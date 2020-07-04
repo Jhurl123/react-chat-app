@@ -8,9 +8,11 @@ const userFunctions = require('../database/user-functions')
 const convFunctions = require('../database/conversation-functions')
 const JWT = require('jsonwebtoken')
 
-router.get('/get_messages', async (req, res) => {
+router.post('/get_messages', async (req, res) => {
+
+  const { userId } = req.body
   try {
-    let messages = await dbFunctions.getMessages()
+    let messages = await dbFunctions.getMessages(userId)
     res.send(messages)
   }
   catch(err) {

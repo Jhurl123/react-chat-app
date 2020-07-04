@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import ChatConversation from './chatConversation';
 import ChatAdd from './chatAdd'
 import NewConversationModal from './modal/newConversationModal'
+import Toolbar from '../window/toolbar'
 
 import MessageContext from '../../Context/messageContext'
 

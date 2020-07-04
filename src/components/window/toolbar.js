@@ -3,11 +3,8 @@ import { makeStyles } from "@material-ui/core/styles"
 import Appbar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import IconButton from "@material-ui/core/IconButton"
-import Badge from "@material-ui/core/Badge"
-import AccountCircle from "@material-ui/icons/AccountCircle"
-import MailIcon from "@material-ui/icons/Mail"
-import NotificationsIcon from "@material-ui/icons/Notifications"
 import MenuIcon from '@material-ui/icons/Menu'
+import LogoutButton from './logoutButton'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -52,26 +49,7 @@ const WindowToolbar = (props) => {
         <div className={classes.sectionDesktop}>
           <h1 className={classes.toolHeader}>Whats Popping</h1>
           <div>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              // aria-controls={menuId}
-              aria-haspopup="true"
-              // onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            <LogoutButton />
           </div>
         </div>
 

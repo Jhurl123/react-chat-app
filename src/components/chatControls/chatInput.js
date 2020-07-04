@@ -33,6 +33,7 @@ const ChatInput = (props) => {
   const messageContext = useContext(MessageContext)
   const classes = useStyles()
   const { userObject, activeConversation } = props
+  const conversations = messageContext.conversations
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -44,12 +45,15 @@ const ChatInput = (props) => {
       return
     }
 
-    // Temporary variable to sit in place of any response from the server
+    const users = conversations.filter(convo => convo.id === activeConversation)
+    const userIds = users[0].users.map(user => user.id) 
+
     let newMessage = {
       message: {
         convoId: activeConversation,
         content: message,
-        userId: userObject.userId
+        userId: userObject.userId,
+        users: userIds
       },
       userToken: userObject.token
     }

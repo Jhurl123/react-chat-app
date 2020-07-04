@@ -63,17 +63,16 @@ const NewConversationForm = (props) => {
       if( !convoId ) {
         startConversation(selectedUsers, newMessage)
       }
-      else {
-        console.log("Wrong method called!");
-        console.log(convoId);
-        
-        
-        // Need to return the id from the checkExistingConversations method
+      else {        
+        const users = conversations.filter(convo => convo.id === convoId)
+        const userIds = users[0].users.map(user => user.id) 
+
         let message = {
           message: {
             convoId,
             content: newMessage,
             userId: currentUser.userId,
+            users: userIds
           },
           userToken: currentUser.token,
         };
