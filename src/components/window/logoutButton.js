@@ -32,6 +32,7 @@ const LogoutButton = (props) => {
 
   const logout = () => {
     localStorage.removeItem('user')
+    window.location.reload()
     handleClose()
   }
 
