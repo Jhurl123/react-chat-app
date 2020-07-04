@@ -146,7 +146,7 @@ const SignUpModal = (props) => {
       const { userId, token, userName } = response
       localStorage.setItem('user', JSON.stringify({ userId, token, userName}))
 
-      getMessages()
+      getMessages(userId)
       messageContext.getConversations(userId)
       setError(false)
       setApiError(false)
