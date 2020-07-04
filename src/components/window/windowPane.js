@@ -182,7 +182,7 @@ const WindowPane = (props) => {
       setConversations(allConversations.conversations);
       setActiveConversation(allConversations.conversations[0].id)
       // socket.setConversations(conversations);
-      // socket.conversationListener(conversations, setConversations);
+      socket.conversationListener(conversations, setConversations);
     } catch (err) {
       // display error if it exists
       setApiError("Sorry, couldn't grab these conversations");
@@ -210,6 +210,9 @@ const WindowPane = (props) => {
     };
 
     setActiveConversation(newConversation.id)
+    // example functionality 
+    // socket.setMessages([message, ...messages]);
+    socket.setConversations([newConversation, ...conversations]);
     addMessage(message, newConversation);
   };
 
