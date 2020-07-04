@@ -157,7 +157,9 @@ const WindowPane = (props) => {
       const messages = await response.json();
       
       setMessages(messages);
-      // socket.setMessages(messages);
+      console.log(messages);
+      
+      socket.setMessages(messages);
       socket.messageListener(messages, setMessages);
     } 
     catch (err) {
@@ -185,7 +187,7 @@ const WindowPane = (props) => {
       setConversations(allConversations.conversations);
       setActiveConversation(allConversations.conversations[0].id)
 
-      // socket.setConversations(conversations);
+      socket.setConversations(conversations);
       socket.conversationListener(conversations, setConversations);
     } catch (err) {
       // display error if it exists
