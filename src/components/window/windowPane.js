@@ -225,7 +225,7 @@ const WindowPane = (props) => {
 
     setActiveConversation(newConversation.id)
     // example functionality 
-    // socket.setMessages([message, ...messages]);
+    socket.setMessages([message, ...messages]);
     socket.setConversations([newConversation, ...conversations]);
     addMessage(message, newConversation);
   };
