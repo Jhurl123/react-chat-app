@@ -35,7 +35,7 @@ exports.getMessages = (id) => {
   
   let messageRef = db.db.collection('messages');
 
-  let messages = messageRef.where('userId', '==', id).where('users', 'array-contains', id).get()
+  let messages = messageRef.where('users', 'array-contains', id).get()
   .then(snapshot => {
     let messages = []
 
