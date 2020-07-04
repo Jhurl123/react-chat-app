@@ -34,7 +34,6 @@ exports.startConversation = async (users, userIds, message) => {
 }
 
 exports.getConversations = async userId => {
-  console.log(userId);
   
   let conversationRef = db.db.collection('conversations')
   let conversationQuery = conversationRef.where('userIds', 'array-contains', userId).get()  
@@ -42,7 +41,7 @@ exports.getConversations = async userId => {
       if(snapshot.empty) {
         console.log("Results re empty");
         
-        return false
+        return []
       }
       else {
         let conversations = []
