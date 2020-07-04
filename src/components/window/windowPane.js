@@ -107,7 +107,6 @@ const WindowPane = (props) => {
           return [message.message, ...prevState]
         })
 
-
         let messageContent = message.message.content
         const excerpt = messageContent.length >= 25 ? messageContent.substring(0, 25) + '...' : messageContent
 
@@ -213,12 +212,13 @@ const WindowPane = (props) => {
   const startConversation = async (newConversation, messageBody) => {
     
     // Format the object to be inserted into the db
+    const userIds = newConversation.users.map(user => user.id)
     let message = {
       message: {
         convoId: newConversation.id,
         content: messageBody,
         userId: currentUser.userId,
-        users: newConversation.users,
+        users: userIds,
       },
       userToken: currentUser.token,
     };
