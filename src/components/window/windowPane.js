@@ -154,7 +154,7 @@ const WindowPane = (props) => {
       const messages = await response.json();
       
       setMessages(messages);
-      socket.setMessages(messages);
+      // socket.setMessages(messages);
       socket.messageListener(messages, setMessages);
     } 
     catch (err) {
@@ -210,7 +210,6 @@ const WindowPane = (props) => {
     };
 
     setActiveConversation(newConversation.id)
-    
     addMessage(message, newConversation);
   };
 
