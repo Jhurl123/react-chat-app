@@ -204,6 +204,7 @@ const WindowPane = (props) => {
         convoId: newConversation.id,
         content: messageBody,
         userId: currentUser.userId,
+        users: newConversation.users,
       },
       userToken: currentUser.token,
     };
