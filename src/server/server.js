@@ -34,7 +34,7 @@ io.on('connection', function (client) {
 
   client.on('setConversations', (conversations) => {
     socketConversations = conversations
-    client.broadcast.emit('updateConversation', socketConversations)
+    client.broadcast.emit('updateConversations', socketConversations)
   })
 
   client.on('disconnect', function () {
