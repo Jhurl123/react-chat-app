@@ -114,6 +114,7 @@ const WindowPane = (props) => {
         if(Object.keys(newConversation).length) {
           newConversation['excerpt'] = excerpt
           setConversations(prevState => [newConversation, ...prevState])
+          socket.setConversations([newConversation, ...conversations]);
         }
         else {
 

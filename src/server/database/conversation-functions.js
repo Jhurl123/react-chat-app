@@ -39,7 +39,6 @@ exports.getConversations = async userId => {
   let conversationQuery = conversationRef.where('userIds', 'array-contains', userId).get()  
     .then(snapshot => {
       if(snapshot.empty) {
-        console.log("Results re empty");
         
         return []
       }
@@ -58,6 +57,11 @@ exports.getConversations = async userId => {
         
         return conversations
       }
+    })
+    .catch( err => {
+      console.log(err);
+      
+      throw Error(err)
     })
 
     return conversationQuery
