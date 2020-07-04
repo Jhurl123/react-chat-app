@@ -101,13 +101,12 @@ const WindowPane = (props) => {
         response.json();
       })
       .then( async (data) => {
+        // Send the message to the client
         setMessages((prevState) => {
-
           socket.setMessages([message.message, ...prevState]);
           return [message.message, ...prevState]
         })
 
-        // Send the message to the client
 
         let messageContent = message.message.content
         const excerpt = messageContent.length >= 25 ? messageContent.substring(0, 25) + '...' : messageContent
@@ -118,9 +117,18 @@ const WindowPane = (props) => {
           setConversations(prevState => [newConversation, ...prevState])
         }
         else {
+
+          console.log(conversations);
+          
           let lastConversation = addExcerptToLastConversation(message.message.convoId,excerpt)
           lastConversation.then(lastConvo => {
-            setConversations(prevState => [lastConvo, ...prevState.filter(convo => convo.id !== lastConvo.id)])
+            console.log(lastConvo);
+            
+            setConversations(prevState =>  {
+              console.log(prevState);
+              
+              return [lastConvo, ...prevState.filter(convo => convo.id !== lastConvo.id)]
+            })
           })
         }
       })
