@@ -64,6 +64,7 @@ const WindowPane = (props) => {
   const loadUserData = async () => {
     if (localStorage.getItem("user")) {
       await getConversations(currentUser.userId)
+      socket.conversationListener(conversations, setConversations);
       getMessages();      
     }
   }
@@ -226,7 +227,6 @@ const WindowPane = (props) => {
     };
 
     setActiveConversation(newConversation.id)
-    socket.conversationListener(conversations, setConversations);
     socket.setMessages([message, ...messages]);
     socket.setConversations([newConversation, ...conversations]);
 
