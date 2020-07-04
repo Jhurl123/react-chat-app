@@ -61,7 +61,8 @@ const WindowToolbar = (props) => {
           >
               <MenuIcon />
           </IconButton>
-          <h1 className={classes.toolHeader}>Whats Popping</h1>
+
+          <LogoutButton />
         </div>
       </Toolbar>
     </Appbar>
