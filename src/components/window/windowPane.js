@@ -164,9 +164,9 @@ const WindowPane = (props) => {
       const messages = await response.json();
       
       setMessages(messages);
+      socket.setMessages(messages);
       console.log(messages);
       
-      socket.setMessages(messages);
       socket.messageListener(messages, setMessages);
     } 
     catch (err) {
@@ -191,10 +191,12 @@ const WindowPane = (props) => {
       
       const allConversations = await response.json();
       console.log(allConversations.conversations)
-      setConversations(allConversations.conversations);
       setActiveConversation(allConversations.conversations[0].id)
-
+      
+      setConversations(allConversations.conversations);
       socket.setConversations(conversations);
+      console.log(conversations);
+      
       socket.conversationListener(conversations, setConversations);
     } catch (err) {
       // display error if it exists
@@ -227,6 +229,7 @@ const WindowPane = (props) => {
     // example functionality 
     socket.setMessages([message, ...messages]);
     socket.setConversations([newConversation, ...conversations]);
+
     addMessage(message, newConversation);
   };
 
