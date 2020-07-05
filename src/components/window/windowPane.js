@@ -129,7 +129,7 @@ const WindowPane = (props) => {
             
             setConversations(prevState =>  {
               console.log(prevState);
-              
+              console.log([lastConvo, ...prevState.filter(convo => (convo.id !== lastConvo.id) && prevState.length > 1)]);
               return [lastConvo, ...prevState.filter(convo => (convo.id !== lastConvo.id) && prevState.length > 1)]
             })
           })
