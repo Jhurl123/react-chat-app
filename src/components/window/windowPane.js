@@ -65,7 +65,7 @@ const WindowPane = (props) => {
     if (localStorage.getItem("user")) {
       await getConversations(currentUser.userId)
       // socket.conversationListener(conversations, setConversations);
-      getMessages();      
+      await getMessages();      
     }
   }
 
@@ -123,14 +123,14 @@ const WindowPane = (props) => {
 
           console.log(conversations);
           
-          let lastConversation = addExcerptToLastConversation(message.message.convoId,excerpt)
+          let lastConversation = addExcerptToLastConversation(message.message.convoId, excerpt)
           lastConversation.then(lastConvo => {
             console.log(lastConvo);
             
             setConversations(prevState =>  {
               console.log(prevState);
               
-              return [lastConvo, ...prevState.filter(convo => convo.id !== lastConvo.id)]
+              return [lastConvo, ...prevState.filter(convo => (convo.id !== lastConvo.id) && prevState.length > 1)]
             })
           })
         }
@@ -180,8 +180,6 @@ const WindowPane = (props) => {
   };
 
   const getConversations = async (userId) => {
-    
-    if(conversations.length) return
 
     setApiError("");
     try {
