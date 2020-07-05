@@ -46,6 +46,10 @@ const ChatInput = (props) => {
     }
 
     const users = conversations.filter(convo => convo.id === activeConversation)
+    console.log(activeConversation);
+    console.log(conversations);
+    
+    
     const userIds = users[0].users.map(user => user.id) 
 
     let newMessage = {

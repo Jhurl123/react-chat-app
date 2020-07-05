@@ -64,7 +64,7 @@ const WindowPane = (props) => {
 
     if (localStorage.getItem("user")) {
       await getConversations(currentUser.userId)
-      socket.conversationListener(conversations, setConversations);
+      // socket.conversationListener(conversations, setConversations);
       getMessages();      
     }
   }
