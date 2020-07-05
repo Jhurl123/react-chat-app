@@ -58,7 +58,7 @@ const WindowPane = (props) => {
       setUser(true);
     }
     loadUserData()
-  }, [conversations,messages])
+  }, [conversations])
 
   const loadUserData = async () => {
 
@@ -113,6 +113,7 @@ const WindowPane = (props) => {
         // Need two scenarios - new conversation as well as update 
         if(Object.keys(newConversation).length) {
           newConversation['excerpt'] = excerpt
+          setActiveConversation(newConversation.id)
           setConversations(prevState =>  {
             socket.setConversations([newConversation, ...conversations]);
             return [newConversation, ...prevState]
@@ -193,7 +194,7 @@ const WindowPane = (props) => {
       });
       
       const allConversations = await response.json();
-      console.log(allConversations.conversations)
+    
       setActiveConversation(allConversations.conversations[0].id)
       
       setConversations(allConversations.conversations);
