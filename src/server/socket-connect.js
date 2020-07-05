@@ -9,7 +9,6 @@ const connectSocket = () => {
 
 const sendMessage = (message) => {
   console.log( "This is the socket connect " + message);
-  
   socket.emit('sendMessage', message)
 }
 
