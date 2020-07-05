@@ -58,7 +58,7 @@ const WindowPane = (props) => {
       setUser(true);
     }
     loadUserData()
-  }, [conversations])
+  }, [])
 
   const loadUserData = async () => {
 
