@@ -32,14 +32,21 @@ const ConversationUsers = (props) => {
   useEffect(() => {
 
     let activeConvo = conversations.filter(convo => convo.id === activeConversation)
+    console.log("Convo users");
+
+    console.log(activeConvo);
+    
+    
     if(activeConvo.length) {
       let activeUsers = activeConvo[0].users.map(user => user.name)
       activeUsers = activeUsers.filter(user => user !== currentUser.userName)
+      console.log(activeUsers);
+      
       setUsers(activeUsers.join(', '))
     }
 
 
-  }, [activeConversation])
+  }, [activeConversation, conversations])
 
   return (
     <div className={classes.users}>
