@@ -12,9 +12,15 @@ const setMessages = messages => {
   socket.emit('setMessages', messages )
 }
 
+const addUser = userName => {
+  socket.emit('addUser', userName)
+}
+
 const messageListener = (messages, cb) => {
   console.log("Called the message Listener")
   socket.on('updateMessages', (messages) => { 
+    console.log("Update messages was called");
+    
     cb(messages)
   })
 }
@@ -33,6 +39,7 @@ const setConversations = conversations => {
 
 export default {
   socket,
+  addUser,
   sendMessage,
   setMessages,
   messageListener,

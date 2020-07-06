@@ -16,13 +16,20 @@ const convRoutes = require('./routes/conversation-routes')
 const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT)
 const io = require('socket.io')(server, { origins: '*:*'})
+let clients = {};
 io.on('connection', function (client) {
 
-  let socketMessages = [];
-
   client.on('connect', function () {
+    clients.push(client.id)
+    console.log(clients)
     console.log('client connected boiii...', client.id)
     // handleDisconnect()
+  })
+
+  client.on('addUser', (userName) => {
+    clients[userName] = client
+    console.log(clients);
+    
   })
 
   client.on('join', () => console.log("testseresr"))

@@ -56,6 +56,7 @@ const WindowPane = (props) => {
 
     if (localStorage.getItem("user")) {
       setUser(true);
+
     }
     loadUserData()
   }, [])
@@ -65,6 +66,7 @@ const WindowPane = (props) => {
     if (localStorage.getItem("user")) {
       await getConversations(currentUser.userId)
       // socket.conversationListener(conversations, setConversations);
+      socket.addUser(currentUser.userName)
       await getMessages(currentUser.userId);      
     }
   }
@@ -101,6 +103,7 @@ const WindowPane = (props) => {
         response.json();
       })
       .then( async (data) => {
+
         // Send the message to the client
         setMessages((prevState) => {
           socket.setMessages([message.message, ...prevState]);
@@ -168,10 +171,10 @@ const WindowPane = (props) => {
       const messages = await response.json();
       
       setMessages(messages);
+      socket.messageListener(messages, setMessages);
       socket.setMessages(messages);
       console.log(messages);
       
-      socket.messageListener(messages, setMessages);
     } 
     catch (err) {
       // display error if it exists
@@ -199,7 +202,7 @@ const WindowPane = (props) => {
       setActiveConversation(allConversations[0].id)
       
       setConversations(allConversations);
-      // socket.setConversations(allConversations);
+      socket.setConversations(allConversations);
       socket.conversationListener(allConversations, setConversations);
     } catch (err) {
       // display error if it exists
