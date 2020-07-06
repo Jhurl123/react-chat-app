@@ -24,6 +24,8 @@ router.post('/start_conversation', async (req, res) => {
     const { users, message, userIds } = req.body
     
     let conversation = await convFunctions.startConversation(users, userIds, message)
+
+    console.log(conversation);
     
     if( conversation ) res.status(200).send({conversation})
 

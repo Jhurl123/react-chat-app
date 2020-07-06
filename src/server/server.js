@@ -29,12 +29,12 @@ io.on('connection', function (client) {
 
   client.on('setMessages', (messages) => {
     socketMessages = messages
-    client.broadcast.emit('updateMessages', socketMessages)
+    client.emit('updateMessages', socketMessages)
   })
 
   client.on('setConversations', (conversations) => {
     socketConversations = conversations
-    client.broadcast.emit('updateConversations', socketConversations)
+    client.emit('updateConversations', socketConversations)
   })
 
   client.on('disconnect', function () {

@@ -65,7 +65,7 @@ const WindowPane = (props) => {
     if (localStorage.getItem("user")) {
       await getConversations(currentUser.userId)
       // socket.conversationListener(conversations, setConversations);
-      await getMessages();      
+      await getMessages(currentUser.userId);      
     }
   }
 
@@ -191,17 +191,16 @@ const WindowPane = (props) => {
         body: JSON.stringify({userId}),
       });
       
-      const allConversations = await response.json();
+      const convResponse = await response.json();
+      const allConversations = convResponse.conversations
       console.log(allConversations);
       
     
-      setActiveConversation(allConversations.conversations[0].id)
+      setActiveConversation(allConversations[0].id)
       
-      setConversations(allConversations.conversations);
-      socket.setConversations(allConversations.conversations);
-      console.log(conversations);
-      
-      socket.conversationListener(allConversations.conversations, setConversations);
+      setConversations(allConversations);
+      // socket.setConversations(allConversations);
+      socket.conversationListener(allConversations, setConversations);
     } catch (err) {
       // display error if it exists
       setApiError("Sorry, couldn't grab these conversations");
