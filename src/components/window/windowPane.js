@@ -64,10 +64,11 @@ const WindowPane = (props) => {
   const loadUserData = async () => {
 
     if (localStorage.getItem("user")) {
-      await getConversations(currentUser.userId)
-      // socket.conversationListener(conversations, setConversations);
-      socket.addUser(currentUser.userName)
-      await getMessages(currentUser.userId);      
+      const userId = currentUser.userId
+      await getConversations(userId)
+      // socket.conversationlistener({userName: currentUser.userName},conversations, setConversations);
+      socket.addUser(userId)
+      await getMessages();      
     }
   }
 
@@ -105,10 +106,14 @@ const WindowPane = (props) => {
       .then( async (data) => {
 
         // Send the message to the client
-        setMessages((prevState) => {
-          socket.setMessages([message.message, ...prevState]);
-          return [message.message, ...prevState]
-        })
+        // I think this needs to change since we really want just the new message to be sent to the client
+        // I think this just sends this users messages to the other usre which is not what  we want
+        // setMessages((prevState) => {
+        //   socket.setMessages([message.message, ...prevState]);
+        //   return [message.message, ...prevState]
+        // })
+
+        setMessages((prevState) => [message.message, ...prevState])
 
         let messageContent = message.message.content
         const excerpt = messageContent.length >= 25 ? messageContent.substring(0, 25) + '...' : messageContent
@@ -121,22 +126,24 @@ const WindowPane = (props) => {
             socket.setConversations([newConversation, ...conversations]);
             return [newConversation, ...prevState]
           })
-          }
+        }
         else {
-
-          console.log(conversations);
           
           let lastConversation = addExcerptToLastConversation(message.message.convoId, excerpt)
           lastConversation.then(lastConvo => {
-            console.log(lastConvo);
-            
-            setConversations(prevState =>  {
-              console.log(prevState);
-              console.log([lastConvo, ...prevState.filter(convo => (convo.id !== lastConvo.id) && prevState.length > 1)]);
-              return [lastConvo, ...prevState.filter(convo => (convo.id !== lastConvo.id) && prevState.length > 1)]
-            })
+            setConversations(prevState => [lastConvo, ...prevState.filter(convo => (convo.id !== lastConvo.id) && prevState.length > 1)])
           })
         }
+
+        console.log("Addmessage gere");
+        
+        let users = conversations.filter(convo => convo.id === activeConversation)[0]
+        console.log(users);
+        
+        let receivingUsers = users.users.filter(user => user.id !== currentUser.userId).map(user => user.id)
+        // Pass array of user ids here, then change the addUser to have the id instead of the username
+        console.log("Addmessage gere");
+        socket.sendMessage(receivingUsers, message)
       })
       .catch((error) => {
         setApiError(error.message);
@@ -169,10 +176,13 @@ const WindowPane = (props) => {
         body: JSON.stringify({userId: currentUser.userId}),
       });
       const messages = await response.json();
+      console.log(messages);
+      console.log(setMessages);
+      
       
       setMessages(messages);
-      socket.messageListener(messages, setMessages);
       socket.setMessages(messages);
+      socket.messageListener(messages, setMessages);
       console.log(messages);
       
     } 
@@ -203,7 +213,7 @@ const WindowPane = (props) => {
       
       setConversations(allConversations);
       socket.setConversations(allConversations);
-      socket.conversationListener(allConversations, setConversations);
+      socket.conversationlistener({userName: currentUser.userName},allConversations, setConversations);
     } catch (err) {
       // display error if it exists
       setApiError("Sorry, couldn't grab these conversations");

@@ -27,7 +27,7 @@ router.post('/send_message', async (req, res) => {
     const { message } = req.body
 
     let response = await dbFunctions.sendMessage(req.body)
-    socketEvents.sendMessage(req.body)
+    // socketEvents.sendMessage(req.body)
     const authToken = req.cookies['authToken']
     const validateJWT = JWT.verify(authToken, process.env.JSON_SECRET)
 

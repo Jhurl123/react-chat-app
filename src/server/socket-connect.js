@@ -7,10 +7,10 @@ const connectSocket = () => {
   socket.emit('join', 'test')
 }
 
-const sendMessage = (message) => {
-  console.log( "This is the socket connect " + message);
-  socket.emit('sendMessage', message)
-}
+// const sendMessage = (message) => {
+//   console.log( "This is the socket connect " + message);
+//   socket.emit('sendMessage', message)
+// }
 
 const receiveMessage = (message) => {
   socket.emit('receiveMessage', message)
@@ -27,6 +27,6 @@ socket.on('error', function (err) {
 
 module.exports = {
   socket,
-  sendMessage,
+  // sendMessage,
   receiveMessage
 }

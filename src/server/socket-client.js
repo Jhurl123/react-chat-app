@@ -4,24 +4,32 @@ const PORT = process.env.PORT || 8080;
 
 const socket = io()
 
-const sendMessage = message => {
-  socket.emit('sendMessage', () => message.message)
+const sendMessage = (userIds, message) => {
+  console.log(userIds);
+  console.log(message);
+  
+
+  socket.emit('sendMessage', {userIds, message})
 }
 
 const setMessages = messages => {
   socket.emit('setMessages', messages )
 }
 
-const addUser = userName => {
-  socket.emit('addUser', userName)
+const addUser = userId => {
+  socket.emit('addUser', userId)
 }
 
 const messageListener = (messages, cb) => {
   console.log("Called the message Listener")
-  socket.on('updateMessages', (messages) => { 
-    console.log("Update messages was called");
-    
-    cb(messages)
+  socket.on('updateMessages', (message) => { 
+
+    cb(prevState => {
+      console.log(prevState);
+      console.log(message);
+      
+      return [message.message, ...prevState]
+    })
   })
 }
 

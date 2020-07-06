@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 app.use(cookieParser())
 
 const dbRoutes = require('./routes/db-routes')
-const convRoutes = require('./routes/conversation-routes')
+const convRoutes = require('./routes/conversation-routes');
+const { useIsFocusVisible } = require('@material-ui/core');
 
 // Create server connection
 const PORT = process.env.PORT || 8080;
@@ -20,24 +21,28 @@ let clients = {};
 io.on('connection', function (client) {
 
   client.on('connect', function () {
-    clients.push(client.id)
-    console.log(clients)
+    // clients.push(client.id)
+    // console.log(clients)
     console.log('client connected boiii...', client.id)
     // handleDisconnect()
   })
 
-  client.on('addUser', (userName) => {
-    clients[userName] = client
-    console.log(clients);
+  client.on('addUser', (userId) => {
+    console.log(userId);
+    
+    clients[userId] = client
+    
+  })
+
+  client.on('sendMessage', ({userIds, message}) => {
+
+    console.log(userIds);
+    
+      userIds.forEach(id => clients[id].emit('updateMessages', message))
     
   })
 
   client.on('join', () => console.log("testseresr"))
-
-  client.on('setMessages', (messages) => {
-    socketMessages = messages
-    client.emit('updateMessages', socketMessages)
-  })
 
   client.on('setConversations', (conversations) => {
     socketConversations = conversations
