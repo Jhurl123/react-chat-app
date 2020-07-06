@@ -66,7 +66,6 @@ const WindowPane = (props) => {
     if (localStorage.getItem("user")) {
       const userId = currentUser.userId
       await getConversations(userId)
-      // socket.conversationlistener({userName: currentUser.userName},conversations, setConversations);
       socket.addUser(userId)
       await getMessages();      
     }
@@ -122,28 +121,18 @@ const WindowPane = (props) => {
         if(Object.keys(newConversation).length) {
           newConversation['excerpt'] = excerpt
           setActiveConversation(newConversation.id)
-          setConversations(prevState =>  {
-            socket.setConversations([newConversation, ...conversations]);
-            return [newConversation, ...prevState]
-          })
+          let newUsers = newConversation.users.map(user => user.id)
+          socket.startConversation(newUsers, newConversation, message);
+          
         }
         else {
-          
           let lastConversation = addExcerptToLastConversation(message.message.convoId, excerpt)
           lastConversation.then(lastConvo => {
             setConversations(prevState => [lastConvo, ...prevState.filter(convo => (convo.id !== lastConvo.id) && prevState.length > 1)])
           })
+          socket.sendMessage(getReceivingIds(activeConversation), message)
         }
 
-        console.log("Addmessage gere");
-        
-        let users = conversations.filter(convo => convo.id === activeConversation)[0]
-        console.log(users);
-        
-        let receivingUsers = users.users.filter(user => user.id !== currentUser.userId).map(user => user.id)
-        // Pass array of user ids here, then change the addUser to have the id instead of the username
-        console.log("Addmessage gere");
-        socket.sendMessage(receivingUsers, message)
       })
       .catch((error) => {
         setApiError(error.message);
@@ -213,7 +202,7 @@ const WindowPane = (props) => {
       
       setConversations(allConversations);
       socket.setConversations(allConversations);
-      socket.conversationlistener({userName: currentUser.userName},allConversations, setConversations);
+      socket.conversationListener(allConversations, setConversations);
     } catch (err) {
       // display error if it exists
       setApiError("Sorry, couldn't grab these conversations");
@@ -242,7 +231,6 @@ const WindowPane = (props) => {
     };
 
     setActiveConversation(newConversation.id)
-    socket.setMessages([message, ...messages]);
     socket.setConversations([newConversation, ...conversations]);
 
     addMessage(message, newConversation);
@@ -251,6 +239,11 @@ const WindowPane = (props) => {
   //Used as prop
   const activateConversation = conversationId => {   
     setActiveConversation(conversationId)
+  }
+
+  const getReceivingIds = (convoId) => {
+    let users = conversations.filter(convo => convo.id === convoId)[0]
+    return users.users.filter(user => user.id !== currentUser.userId).map(user => user.id)
   }
 
   // Need to fuigure out how to change conversations/messages shown in the message pane

@@ -5,10 +5,6 @@ const PORT = process.env.PORT || 8080;
 const socket = io()
 
 const sendMessage = (userIds, message) => {
-  console.log(userIds);
-  console.log(message);
-  
-
   socket.emit('sendMessage', {userIds, message})
 }
 
@@ -23,10 +19,10 @@ const addUser = userId => {
 const messageListener = (messages, cb) => {
   console.log("Called the message Listener")
   socket.on('updateMessages', (message) => { 
-
-    cb(prevState => {
+    console.log(message.message);
+    
+    cb(prevState =>  {
       console.log(prevState);
-      console.log(message);
       
       return [message.message, ...prevState]
     })
@@ -35,14 +31,21 @@ const messageListener = (messages, cb) => {
 
 const conversationListener = (conversations, cb) => {
   console.log("Called the conversations Listener")
-  socket.on('updateConversations', (conversations) =>  {
+  socket.on('updateConversations', (conversation) =>  {
     console.log("This conversation listener was called");  
-    cb(conversations)
+    console.log(conversations);
+    
+    cb([conversation, ...conversations])
   })
 }
 
 const setConversations = conversations => {
   socket.emit('setConversations', conversations)
+}
+
+const startConversation = (userIds, conversation, message) => {
+  socket.emit('sendMessage', {userIds, message})
+  socket.emit('startConversations', {userIds, conversation})
 }
 
 export default {
@@ -52,7 +55,8 @@ export default {
   setMessages,
   messageListener,
   conversationListener,
-  setConversations
+  setConversations,
+  startConversation
 }
 
 

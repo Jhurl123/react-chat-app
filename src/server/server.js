@@ -27,26 +27,24 @@ io.on('connection', function (client) {
     // handleDisconnect()
   })
 
-  client.on('addUser', (userId) => {
-    console.log(userId);
-    
+  client.on('addUser', (userId) => {    
     clients[userId] = client
-    
   })
 
   client.on('sendMessage', ({userIds, message}) => {
-
-    console.log(userIds);
-    
-      userIds.forEach(id => clients[id].emit('updateMessages', message))
-    
+    userIds.forEach(id => clients[id].emit('updateMessages', message))
   })
 
-  client.on('join', () => console.log("testseresr"))
+  // client.on('setConversations', (conversations) => {
+  //   socketConversations = conversations
+  //   client.emit('updateConversations', socketConversations)
+  // })
 
-  client.on('setConversations', (conversations) => {
-    socketConversations = conversations
-    client.emit('updateConversations', socketConversations)
+  client.on('startConversations', ({userIds, conversation}) => {
+
+    console.log(conversation);
+    
+    userIds.forEach(id => clients[id].emit('updateConversations', conversation))
   })
 
   client.on('disconnect', function () {
