@@ -18,8 +18,7 @@ const useStyles = makeStyles((theme) => ({
     width: "70%",
     position: 'absolute',
     left: '50%',
-    transform: 'translateX(-50%)',
-    zIndex: '100'
+    transform: 'translateX(-50%)'
   }
 }))
 

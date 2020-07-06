@@ -191,15 +191,15 @@ const WindowPane = (props) => {
         body: JSON.stringify({userId}),
       });
       
-      console.log({userId});
-      
       const allConversations = await response.json();
+      console.log(allConversations);
+      
     
       setActiveConversation(allConversations.conversations[0].id)
       
       setConversations(allConversations.conversations);
       socket.setConversations(allConversations.conversations);
-
+      console.log(conversations);
       
       socket.conversationListener(allConversations.conversations, setConversations);
     } catch (err) {
