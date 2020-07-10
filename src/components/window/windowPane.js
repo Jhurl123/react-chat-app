@@ -114,6 +114,10 @@ const WindowPane = (props) => {
           
         }
         else {
+          console.log(activeConversation);
+          console.log(message);
+          
+          
           socket.sendMessage(getReceivingIds(activeConversation), message)
         }
 
@@ -210,8 +214,10 @@ const WindowPane = (props) => {
   }
 
   const getReceivingIds = (convoId) => {
-    let users = conversations.filter(convo => convo.id === convoId)[0]
-    return users.users.filter(user => user.id !== currentUser.userId).map(user => user.id)
+    let activeConvo = conversations.filter(convo => convo.id === convoId)[0]
+    console.log(activeConvo);
+    
+    return activeConvo.users.filter(user => user.id !== currentUser.userId).map(user => user.id)
   }
 
   // Need to fuigure out how to change conversations/messages shown in the message pane
