@@ -144,8 +144,9 @@ const SignUpModal = (props) => {
     if(response.passed) {
 
       const { userId, token, userName } = response
+      console.log(userId);
+      
       localStorage.setItem('user', JSON.stringify({ userId, token, userName}))
-
       getMessages(userId)
       messageContext.getConversations(userId)
       setError(false)

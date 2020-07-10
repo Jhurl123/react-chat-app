@@ -41,9 +41,6 @@ io.on('connection', function (client) {
   // })
 
   client.on('startConversations', ({userIds, conversation}) => {
-
-    console.log(conversation);
-    
     userIds.forEach(id => clients[id].emit('updateConversations', conversation))
   })
 

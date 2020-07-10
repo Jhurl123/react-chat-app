@@ -152,9 +152,11 @@ const WindowPane = (props) => {
     })
   }
 
-  const getMessages = async () => {
+  const getMessages = async (id = "") => {
     
     setApiError("");
+
+    const userId = id ? id : currentUser.userId
     
     try {
       const response = await fetch("/get_messages", {
@@ -162,7 +164,7 @@ const WindowPane = (props) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({userId: currentUser.userId}),
+        body: JSON.stringify({userId: userId}),
       });
       const messages = await response.json();
       console.log(messages);
@@ -172,7 +174,6 @@ const WindowPane = (props) => {
       setMessages(messages);
       socket.setMessages(messages);
       socket.messageListener(messages, setMessages);
-      console.log(messages);
       
     } 
     catch (err) {
@@ -194,9 +195,7 @@ const WindowPane = (props) => {
       });
       
       const convResponse = await response.json();
-      const allConversations = convResponse.conversations
-      console.log(allConversations);
-      
+      const allConversations = convResponse.conversations      
     
       setActiveConversation(allConversations[0].id)
       

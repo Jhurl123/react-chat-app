@@ -11,6 +11,9 @@ const JWT = require('jsonwebtoken')
 router.post('/get_messages', async (req, res) => {
 
   const { userId } = req.body
+
+  console.log(userId);
+  
   try {
     let messages = await dbFunctions.getMessages(userId)
     res.send(messages)
