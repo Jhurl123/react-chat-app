@@ -15,10 +15,13 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   errorMessage: {
-    width: "70%",
-    position: 'absolute',
     left: '50%',
-    transform: 'translateX(-50%)'
+    marginTop: '1rem',
+    padding: '1rem',
+    position: 'absolute',
+    transform: 'translateX(-50%)',
+    width: "70%",
+    zIndex: '100'
   }
 }))
 

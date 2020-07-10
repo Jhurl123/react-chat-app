@@ -48,6 +48,10 @@ const ChatList = (props) => {
           // Don't let the excerpt overflow
           convo.excerpt = message[0].content.substring(0, 25) + '...'
         }
+        else {
+
+          convo.excerpt = message[0].content
+        }
         return convo
       }).filter(convo => convo !== undefined))
     }

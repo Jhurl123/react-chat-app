@@ -104,53 +104,25 @@ const WindowPane = (props) => {
       })
       .then( async (data) => {
 
-        // Send the message to the client
-        // I think this needs to change since we really want just the new message to be sent to the client
-        // I think this just sends this users messages to the other usre which is not what  we want
-        // setMessages((prevState) => {
-        //   socket.setMessages([message.message, ...prevState]);
-        //   return [message.message, ...prevState]
-        // })
-
         setMessages((prevState) => [message.message, ...prevState])
-
-        let messageContent = message.message.content
-        const excerpt = messageContent.length >= 25 ? messageContent.substring(0, 25) + '...' : messageContent
 
         // Need two scenarios - new conversation as well as update 
         if(Object.keys(newConversation).length) {
-          newConversation['excerpt'] = excerpt
           setActiveConversation(newConversation.id)
           let newUsers = newConversation.users.map(user => user.id)
           socket.startConversation(newUsers, newConversation, message);
           
         }
         else {
-          let lastConversation = addExcerptToLastConversation(message.message.convoId, excerpt)
-          lastConversation.then(lastConvo => {
-            setConversations(prevState => [lastConvo, ...prevState.filter(convo => (convo.id !== lastConvo.id) && prevState.length > 1)])
-          })
           socket.sendMessage(getReceivingIds(activeConversation), message)
         }
 
       })
       .catch((error) => {
+        console.log(error.message);
         setApiError(error.message);
       });
   };
-
-  const addExcerptToLastConversation = (convoId, excerpt) => {
-
-    return new Promise(resolve => {
-      
-      const lastConversation = conversations.filter(convo => { 
-        return convo.id === convoId
-      })[0]
-      lastConversation['excerpt'] = excerpt
-      resolve(lastConversation)
-
-    })
-  }
 
   const getMessages = async (id = "") => {
     
@@ -167,9 +139,6 @@ const WindowPane = (props) => {
         body: JSON.stringify({userId: userId}),
       });
       const messages = await response.json();
-      console.log(messages);
-      console.log(setMessages);
-      
       
       setMessages(messages);
       socket.setMessages(messages);

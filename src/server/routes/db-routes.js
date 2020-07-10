@@ -29,10 +29,18 @@ router.post('/send_message', async (req, res) => {
   try {
     const { message } = req.body
 
+    const authToken = req.cookies['authToken']
+
+    if(authToken) {
+      const validateJWT = JWT.verify(authToken, process.env.JSON_SECRET)
+    }
+    else {
+      throw Error()
+    }
+
+    
     let response = await dbFunctions.sendMessage(req.body)
     // socketEvents.sendMessage(req.body)
-    const authToken = req.cookies['authToken']
-    const validateJWT = JWT.verify(authToken, process.env.JSON_SECRET)
 
     // Add the excerpt from the message to its conversation
     convFunctions.addExcerpt(message)
