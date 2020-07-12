@@ -3,14 +3,6 @@ const db = require('./db-connect')
 var firebase = require("firebase-admin")
 const JWT = require('jsonwebtoken');
 
-// Add a new document in collection "cities" with ID 'LA'
-// Valid way to send data to a users collection
-
-// db.db.collection('users').doc().set(data);
-
-// getUsers()
-// var usersRef = ref.child("users");
-
 exports.sendMessage = async (newMessage) => {
 
   const { userToken, message } = newMessage

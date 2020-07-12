@@ -46,9 +46,6 @@ const ChatInput = (props) => {
     }
 
     const users = conversations.filter(convo => convo.id === activeConversation)
-    console.log(activeConversation);
-    console.log(conversations);
-    
     
     const userIds = users[0].users.map(user => user.id) 
 
@@ -57,6 +54,7 @@ const ChatInput = (props) => {
         convoId: activeConversation,
         content: message,
         userId: userObject.userId,
+        sendingUser: userObject,
         users: userIds
       },
       userToken: userObject.token
@@ -77,6 +75,7 @@ const ChatInput = (props) => {
           name="message"
           placeholder="Send a message"
           onChange={ e => setMessage(e.target.value)}
+          disabled={activeConversation ? false : true}
         />
         <IconButton className={classes.icon} onClick={handleSubmit} aria-label="Send Message" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
           <EmailIcon />

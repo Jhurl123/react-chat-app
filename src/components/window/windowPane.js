@@ -88,6 +88,8 @@ const WindowPane = (props) => {
   const addMessage = async (message, newConversation = {}) => {
     // Clear alert message
     setApiError("");
+    console.log(message);
+    
 
     await fetch("/send_message", {
       method: "POST",
@@ -103,7 +105,7 @@ const WindowPane = (props) => {
         response.json();
       })
       .then( async (data) => {
-
+        
         setMessages((prevState) => [message.message, ...prevState])
 
         // Need two scenarios - new conversation as well as update 
@@ -114,10 +116,6 @@ const WindowPane = (props) => {
           
         }
         else {
-          console.log(activeConversation);
-          console.log(message);
-          
-          
           socket.sendMessage(getReceivingIds(activeConversation), message)
         }
 
@@ -170,6 +168,8 @@ const WindowPane = (props) => {
       const convResponse = await response.json();
       const allConversations = convResponse.conversations      
     
+  
+      
       setActiveConversation(allConversations[0].id)
       
       setConversations(allConversations);

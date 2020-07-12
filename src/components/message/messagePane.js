@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Alert, AlertTitle } from '@material-ui/lab'
 import MessageList from "./messageList";
+import MessageContext from '../../Context/messageContext'
 import ConversationUsers from './conversationUsers'
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +31,19 @@ const MessagePane = (props) => {
   const classes = useStyles()
   const userObject = JSON.parse(localStorage.getItem('user'))
   const { error, activeConversation } = props
-  
+  const messageContext = useContext(MessageContext)
+  const conversations = messageContext.conversations || []
+  const messages = messageContext.messages || []
+
+  const [showUsers, setShowUsers] = useState(false)
+  useEffect(() => {
+    
+    setShowUsers((activeConversation && conversations.length && messages.length) ? true : false)
+
+    console.log(showUsers);
+    
+  }, [activeConversation, conversations, messages, showUsers])
+
   return (
     <div className={classes.MessagePane}>
       {error &&
@@ -41,7 +54,7 @@ const MessagePane = (props) => {
           </Alert>
         </div>
       }
-      {activeConversation && (
+      {showUsers && (
         <ConversationUsers activeConversation={activeConversation} />
       )}
       <MessageList activeConversation={activeConversation} userObject={userObject}/>

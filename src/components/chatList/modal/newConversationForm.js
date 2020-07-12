@@ -72,6 +72,7 @@ const NewConversationForm = (props) => {
             convoId,
             content: newMessage,
             userId: currentUser.userId,
+            sendingUser: currentUser,
             users: userIds
           },
           userToken: currentUser.token,

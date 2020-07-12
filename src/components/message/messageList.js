@@ -40,7 +40,7 @@ const MessageList = (props) => {
     <ul className={classes.container} ref={messageListEl}>
       {messages && 
         messages.filter(message => message.convoId === activeConversation).map(message =>  (
-          <Message key={message.id} class={userObject.userId === message.userId ? 'sent' : 'received'}>{message.content}</Message>
+          <Message key={message.id} user={message.sendingUser} class={userObject.userId === message.userId ? 'sent' : 'received'}>{message.content}</Message>
         ))}
     </ul>
   )

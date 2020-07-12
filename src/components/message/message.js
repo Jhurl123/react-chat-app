@@ -18,13 +18,25 @@ const useStyles = makeStyles(theme => ({
     alignSelf: 'flex-end',
     backgroundColor: '#1e96f1',
     color: '#ffffff'
+  },
+  sender: {
+    fontSize: '1.1rem',
+    textShadow: '.25px .25px #000000',
+    marginBottom: '.5rem',
   }
 }))
 
 const Message = (props) => {
   const classes = useStyles()
+  const user = JSON.parse(localStorage.getItem('user'))
+
+  console.log(props);
+  
   return (
     <li className={`${classes.message} ${classes[props.class]}` }>
+      {(props.user.userId !== user.userId &&
+        <div className={classes.sender}>{props.user.userName}</div>
+      )}
       {props.children}
     </li>
   )
