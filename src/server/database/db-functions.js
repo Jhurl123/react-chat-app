@@ -12,8 +12,20 @@ exports.sendMessage = async (newMessage) => {
   if(!validJWT) return
 
   let messageRef = db.db.collection('messages');
-  let response = messageRef.doc().set(message)
-  .then(() => true)
+  let response = messageRef.add(message)
+  .then((data) => {
+
+  if(!data) throw Error()
+
+  console.log("Message");
+  
+  console.log(data.id);
+
+  console.log("test Message");
+  
+  
+  return data.id
+  })
   .catch(err => {
     console.log(err);
     
@@ -27,10 +39,9 @@ exports.getMessages = (id) => {
   
   let messageRef = db.db.collection('messages');
 
-  let messages = messageRef.where('users', 'array-contains', id).get()
+  let messages = messageRef.where('users', 'array-contains', id).orderBy('users').orderBy('timestamp').get()
   .then(snapshot => {
     let messages = []
-
     if(snapshot.empty) {
       console.log('No matching documents')
       return []

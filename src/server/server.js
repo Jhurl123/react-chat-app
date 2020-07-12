@@ -40,7 +40,12 @@ io.on('connection', function (client) {
   })
 
   client.on('startConversations', ({userIds, conversation}) => {
-    userIds.forEach(id => clients[id].emit('updateConversations', conversation))
+    userIds.forEach(id => {
+      
+      if(clients.hasOwnProperty(id)) {
+        clients[id].emit('updateConversations', conversation)
+      }
+    })
   })
 
   client.on('disconnect', function () {

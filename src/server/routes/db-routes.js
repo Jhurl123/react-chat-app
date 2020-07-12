@@ -40,10 +40,12 @@ router.post('/send_message', async (req, res) => {
     let response = await dbFunctions.sendMessage(req.body)
     // socketEvents.sendMessage(req.body)
 
+    console.log(response);
+    
     // Add the excerpt from the message to its conversation
     convFunctions.addExcerpt(message)
     
-    res.send(true)
+    res.send({id: response})
   }
   catch (err) {
     console.log(err);

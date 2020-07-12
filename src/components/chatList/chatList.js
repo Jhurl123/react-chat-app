@@ -35,6 +35,9 @@ const ChatList = (props) => {
   useEffect(()=> {
     
     if(conversations.length && messages.length) {
+
+      console.log(conversations);
+      
       setDisplayConvo(conversations.map(convo => {
 
         convo.users['userString'] = formatUsernames(convo.users)

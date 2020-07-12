@@ -27,7 +27,6 @@ const MessageList = (props) => {
   const classes = useStyles()
   const messageContext = useContext(MessageContext)
   const { userObject, activeConversation } = props
-
   let messages = messageContext.messages || []
 
   const messageListEl = useCallback(node => {

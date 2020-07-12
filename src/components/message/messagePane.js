@@ -4,6 +4,8 @@ import { Alert, AlertTitle } from '@material-ui/lab'
 import MessageList from "./messageList";
 import MessageContext from '../../Context/messageContext'
 import ConversationUsers from './conversationUsers'
+import NoMessagePrompt from './noMessagePrompt'
+
 
 const useStyles = makeStyles((theme) => ({
   MessagePane: {
@@ -39,8 +41,6 @@ const MessagePane = (props) => {
   useEffect(() => {
     
     setShowUsers((activeConversation && conversations.length && messages.length) ? true : false)
-
-    console.log(showUsers);
     
   }, [activeConversation, conversations, messages, showUsers])
 
@@ -54,9 +54,17 @@ const MessagePane = (props) => {
           </Alert>
         </div>
       }
+
       {showUsers && (
         <ConversationUsers activeConversation={activeConversation} />
       )}
+
+      {!showUsers && (
+        <NoMessagePrompt>
+          Click the "Start Conversation" button to connect with new friends!
+        </NoMessagePrompt>
+      )}
+      
       <MessageList activeConversation={activeConversation} userObject={userObject}/>
     </div>
   )

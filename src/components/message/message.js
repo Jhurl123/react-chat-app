@@ -21,21 +21,22 @@ const useStyles = makeStyles(theme => ({
   },
   sender: {
     fontSize: '1.1rem',
-    textShadow: '.25px .25px #000000',
     marginBottom: '.5rem',
+    paddingBottom: '.5rem',
+    borderBottom: '1px solid #000000',
   }
 }))
 
 const Message = (props) => {
   const classes = useStyles()
   const user = JSON.parse(localStorage.getItem('user'))
-
-  console.log(props);
   
   return (
     <li className={`${classes.message} ${classes[props.class]}` }>
       {(props.user.userId !== user.userId &&
-        <div className={classes.sender}>{props.user.userName}</div>
+        <div className={classes.sender}>
+          {props.user.userName}
+        </div>
       )}
       {props.children}
     </li>

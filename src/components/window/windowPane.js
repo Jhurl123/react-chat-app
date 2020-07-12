@@ -65,12 +65,39 @@ const WindowPane = (props) => {
 
     if (localStorage.getItem("user")) {
       const userId = currentUser.userId
-      await getConversations(userId)
+      const allConversations = await getConversations(userId)
       socket.addUser(userId)
-      await getMessages();      
+      const allMessages = await getMessages(); 
+
+      setConversationOnRender(allConversations, allMessages)
+      
     }
   }
 
+  const setConversationOnRender = (allConversations, allMessages) => {
+    if(allConversations.length && allMessages.length) {
+      console.log(allConversations);
+      console.log(allMessages);
+      
+      let messageFound = false   
+      
+      allConversations.some(convo => {  
+        console.log("Conversation doesn't match");
+        
+
+        if(messageFound) return true
+        allMessages.some(message => {
+          if(message.convoId === convo.id) {
+            console.log("This matches");
+            
+            setActiveConversation(convo.id)
+            messageFound = true
+            return true
+          }
+        })
+      })
+    }
+  }     
   /**
    * Send a new message to the database
    * 
@@ -102,10 +129,11 @@ const WindowPane = (props) => {
         if (!response.ok) {
           throw new Error("Server Couldn't insert message!");
         }
-        response.json();
+        return response.json();
       })
       .then( async (data) => {
         
+        message.message['id'] = data.id
         setMessages((prevState) => [message.message, ...prevState])
 
         // Need two scenarios - new conversation as well as update 
@@ -117,6 +145,11 @@ const WindowPane = (props) => {
         }
         else {
           socket.sendMessage(getReceivingIds(activeConversation), message)
+          setConversations(prevState => {
+            const newConversation = prevState.filter(convo => convo.id === activeConversation)
+            const newList = prevState.filter(convo => convo.id !== activeConversation)
+            return [newConversation[0], ...newList]
+          })
         }
 
       })
@@ -140,12 +173,15 @@ const WindowPane = (props) => {
         },
         body: JSON.stringify({userId: userId}),
       });
-      const messages = await response.json();
+      const queriedMessages = await response.json();
+
+
+      setMessages(queriedMessages);
       
-      setMessages(messages);
-      socket.setMessages(messages);
-      socket.messageListener(messages, setMessages);
+      socket.setMessages(queriedMessages);
+      socket.messageListener(queriedMessages, setMessages);
       
+      return queriedMessages
     } 
     catch (err) {
       // display error if it exists
@@ -167,14 +203,12 @@ const WindowPane = (props) => {
       
       const convResponse = await response.json();
       const allConversations = convResponse.conversations      
-    
-  
-      
-      setActiveConversation(allConversations[0].id)
       
       setConversations(allConversations);
       socket.setConversations(allConversations);
       socket.conversationListener(allConversations, setConversations);
+      
+      return allConversations
     } catch (err) {
       // display error if it exists
       setApiError("Sorry, couldn't grab these conversations");
@@ -197,6 +231,7 @@ const WindowPane = (props) => {
         convoId: newConversation.id,
         content: messageBody,
         userId: currentUser.userId,
+        sendingUser: currentUser,
         users: userIds,
       },
       userToken: currentUser.token,
@@ -215,7 +250,6 @@ const WindowPane = (props) => {
 
   const getReceivingIds = (convoId) => {
     let activeConvo = conversations.filter(convo => convo.id === convoId)[0]
-    console.log(activeConvo);
     
     return activeConvo.users.filter(user => user.id !== currentUser.userId).map(user => user.id)
   }

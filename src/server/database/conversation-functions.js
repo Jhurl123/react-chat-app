@@ -10,10 +10,12 @@ exports.startConversation = async (users, userIds, message) => {
     excerpt = message
   }
 
+  const timestamp = new Date()
+
   // At this point the data will already be formatted as it should be, if not, throw error
   // Shouild return the conversation ids
   let conversationRef = db.db.collection('conversations')
-  let addConversation = conversationRef.add({users, userIds})
+  let addConversation = conversationRef.add({users, userIds, timestamp})
   .then( ref => {
 
     let conversation = {
@@ -36,7 +38,7 @@ exports.startConversation = async (users, userIds, message) => {
 exports.getConversations = async userId => {
   
   let conversationRef = db.db.collection('conversations')
-  let conversationQuery = conversationRef.where('userIds', 'array-contains', userId).get()  
+  let conversationQuery = conversationRef.where('userIds', 'array-contains', userId).orderBy('timestamp').get()  
     .then(snapshot => {
       if(snapshot.empty) {
         
@@ -50,10 +52,15 @@ exports.getConversations = async userId => {
           let conversation = {
             id: doc.id,
             users: data.users,
-            excerpt: data.excerpt
+            excerpt: data.excerpt,
+            timestamp: data.timestamp
           } 
           conversations.push(conversation)
         })
+
+        conversations = conversations.sort(function(a,b) {
+          return new Date(b.timestamp._seconds) - new Date(a.timestamp._seconds);
+        });
         
         return conversations
       }
@@ -80,10 +87,11 @@ exports.addExcerpt = async message => {
     excerpt = message.content
   }
 
-  // the issue here is that I'm trying to update a conversations field that doesn't exist yet
+  const timestamp = new Date()
+
   try {
     let conversationRef = db.db.collection('conversations').doc(message.convoId)
-    conversationRef.update({excerpt})
+    conversationRef.update({excerpt, timestamp})
     return true
   }
   catch(err) {
