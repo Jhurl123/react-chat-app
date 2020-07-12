@@ -11,34 +11,33 @@ app.use(cookieParser())
 
 const dbRoutes = require('./routes/db-routes')
 const convRoutes = require('./routes/conversation-routes');
-const { useIsFocusVisible } = require('@material-ui/core');
 
 // Create server connection
 const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT)
+// const io = require('socket.io')(server, { origins: '*:*', 'pingTimeout': 700000, 'pingInterval': 3000})
 const io = require('socket.io')(server, { origins: '*:*'})
+
 let clients = {};
+
 io.on('connection', function (client) {
 
-  client.on('connect', function () {
-    // clients.push(client.id)
-    // console.log(clients)
-    console.log('client connected boiii...', client.id)
-    // handleDisconnect()
-  })
+  client.emit('addUserConnect')
 
   client.on('addUser', (userId) => {    
     clients[userId] = client
   })
 
   client.on('sendMessage', ({userIds, message}) => {
-    userIds.forEach(id => clients[id].emit('updateMessages', message))
-  })
+    
+    userIds.forEach(id => {
+      
+      if(clients.hasOwnProperty(id)) {
+        clients[id].emit('updateMessages', message)
+      }
 
-  // client.on('setConversations', (conversations) => {
-  //   socketConversations = conversations
-  //   client.emit('updateConversations', socketConversations)
-  // })
+    })
+  })
 
   client.on('startConversations', ({userIds, conversation}) => {
     userIds.forEach(id => clients[id].emit('updateConversations', conversation))
@@ -46,7 +45,17 @@ io.on('connection', function (client) {
 
   client.on('disconnect', function () {
     console.log('client disconnect...', client.id)
+    removeUser()
   })
+
+  const removeUser = () => {
+    for(const clientObj in clients) {
+      if(clients[clientObj].id === client.id) {
+        delete clients[clientObj]
+        break
+      }
+    }
+  }
 
   client.on('error', function (err) {
     console.log('received error from client:', client.id)

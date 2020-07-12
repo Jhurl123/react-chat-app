@@ -14,18 +14,30 @@ const setMessages = messages => {
 
 const addUser = userId => {
   socket.emit('addUser', userId)
+  addUserConnect(userId)
+}
+
+const addUserConnect = (userId) => {
+  
+  socket.on('addUserConnect', () => {
+    socket.emit('addUser', userId)
+  })
 }
 
 const messageListener = (messages, cb) => {
   console.log("Called the message Listener")
   socket.on('updateMessages', (message) => { 
-    console.log(message.message);
+
+    const userId = JSON.parse(localStorage.getItem('user')).userId
     
-    cb(prevState =>  {
-      console.log(prevState);
-      
-      return [message.message, ...prevState]
-    })
+    if(message.message.userId !== userId) {
+
+      cb(prevState =>  {
+        console.log(prevState);
+        
+        return [message.message, ...prevState]
+      })
+    }
   })
 }
 
@@ -48,9 +60,11 @@ const startConversation = (userIds, conversation, message) => {
   socket.emit('startConversations', {userIds, conversation})
 }
 
+
 export default {
   socket,
   addUser,
+  addUserConnect,
   sendMessage,
   setMessages,
   messageListener,

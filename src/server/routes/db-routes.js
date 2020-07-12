@@ -11,8 +11,6 @@ const JWT = require('jsonwebtoken')
 router.post('/get_messages', async (req, res) => {
 
   const { userId } = req.body
-
-  console.log(userId);
   
   try {
     let messages = await dbFunctions.getMessages(userId)
@@ -49,8 +47,8 @@ router.post('/send_message', async (req, res) => {
   }
   catch (err) {
     console.log(err);
-    
-    res.status(500).send('Could not insert new message')
+    const errorMessage = err.message ? err.message : 'Could not insert new message'
+    res.status(500).send(errorMessage)
   }
 })
 
