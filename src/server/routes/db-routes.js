@@ -28,7 +28,6 @@ router.post('/send_message', async (req, res) => {
     const { message } = req.body
 
     const authToken = req.cookies['authToken']
-
     if(authToken) {
       const validateJWT = JWT.verify(authToken, process.env.JSON_SECRET)
     }
@@ -71,7 +70,8 @@ router.post('/user_signup', async (req, res) => {
 
       console.log(userRes);
       
-
+      res.cookie("authToken", userRes.token)
+      
       // Create token here
       let resObject = {
         status: 'User Successfully added', 
