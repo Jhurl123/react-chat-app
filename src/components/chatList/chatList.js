@@ -31,23 +31,21 @@ const ChatList = (props) => {
 
   let [displayConversations, setDisplayConvo] = useState([]) 
   let [modalOpen, setModalOpen] = useState(false)
+  let [convoChange, setConvoChange] = useState(false)
 
   useEffect(()=> {
     
     if(conversations.length && messages.length) {
-
-      console.log(conversations);
       
       setDisplayConvo(conversations.map(convo => {
 
+        console.log(convo);
         convo.users['userString'] = formatUsernames(convo.users)
         convo.users['allUsers'] = getUsernames(convo.users)
 
         let message = messages.filter(message => convo.id === message.convoId)
 
         if (!message.length) return undefined
-  
-        console.log(message);
         
         if(message[0].content.length > 25) {
           // Don't let the excerpt overflow
@@ -58,6 +56,7 @@ const ChatList = (props) => {
         }
         return convo
       }).filter(convo => convo !== undefined))
+      setConvoChange(prevState => !prevState)
     }
     
   }, [conversations, messages]);
@@ -93,7 +92,8 @@ const ChatList = (props) => {
                                               activateConversation={setActiveConversation} 
                                               activeConversation={activeConversation}
                                               key={convo.id} 
-                                              id={convo.id} 
+                                              id={convo.id}
+                                              convoChange={convoChange}
                                               info={convo} 
                                             />)
         )}

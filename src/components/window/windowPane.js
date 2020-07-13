@@ -76,19 +76,12 @@ const WindowPane = (props) => {
 
   const setConversationOnRender = (allConversations, allMessages) => {
     if(allConversations.length && allMessages.length) {
-      console.log(allConversations);
-      console.log(allMessages);
-      
       let messageFound = false   
       
       allConversations.some(convo => {  
-        console.log("Conversation doesn't match");
-        
-
         if(messageFound) return true
         allMessages.some(message => {
           if(message.convoId === convo.id) {
-            console.log("This matches");
             
             setActiveConversation(convo.id)
             messageFound = true

@@ -36,4 +36,19 @@ router.post('/start_conversation', async (req, res) => {
   }
 })
 
+router.post('/read_conversation', async (req, res) => {
+  try {
+    const { conversation } = req.body
+    
+    let unread = await convFunctions.markRead(conversation)
+    
+    if( unread ) res.status(200).send({unread})
+
+  }
+  catch(err) {
+    console.log(err);
+    res.status(500).send("Could not mark conversation as unread")
+  }
+})
+
 module.exports = router;
