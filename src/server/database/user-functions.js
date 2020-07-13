@@ -83,7 +83,7 @@ exports.verifyCredentials = (userName, password) => {
 exports.searchUsernames = (userName) => {
   
   let usersRef = db.db.collection('users');
-  let userQuery = usersRef.orderBy('userName').startAt(userName).endAt(userName + '~').get()
+  let userQuery = usersRef.orderBy('userName').startAt(userName.toUpperCase()).endAt(userName.toLowerCase() + '~').get()
   .then(snapshot => {
     if(snapshot.empty) {
       return false
