@@ -15,8 +15,8 @@ const convRoutes = require('./routes/conversation-routes');
 // Create server connection
 const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT)
-// const io = require('socket.io')(server, { origins: '*:*', 'pingTimeout': 700000, 'pingInterval': 3000})
-const io = require('socket.io')(server, { origins: '*:*'})
+const io = require('socket.io')(server, { origins: '*:*', 'pingTimeout': 7000000, 'pingInterval': 3000})
+// const io = require('socket.io')(server, { origins: '*:*'})
 
 let clients = {};
 
@@ -29,19 +29,15 @@ io.on('connection', function (client) {
   })
 
   client.on('sendMessage', ({userIds, message}) => {
-    
-    userIds.forEach(id => {
-      
+    userIds.forEach(id => {    
       if(clients.hasOwnProperty(id)) {
         clients[id].emit('updateMessages', message)
       }
-
     })
   })
 
   client.on('startConversations', ({userIds, conversation}) => {
     userIds.forEach(id => {
-      
       if(clients.hasOwnProperty(id)) {
         clients[id].emit('updateConversations', conversation)
       }
