@@ -219,6 +219,9 @@ const WindowPane = (props) => {
     
     // Format the object to be inserted into the db
     const userIds = newConversation.users.map(user => user.id)
+
+    const timestamp = new Date()
+    
     let message = {
       message: {
         convoId: newConversation.id,
@@ -226,6 +229,7 @@ const WindowPane = (props) => {
         userId: currentUser.userId,
         sendingUser: currentUser,
         users: userIds,
+        timestamp: (timestamp.getTime() / 1000)
       },
       userToken: currentUser.token,
     };

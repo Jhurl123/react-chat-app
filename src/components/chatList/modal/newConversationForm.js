@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 auto'
   },
   messageInput: {
-    width: '500px',
+    maxWidth: '500px',
+    width: '100%',
     marginTop: '2rem',
   },
   submitButton: {
@@ -33,6 +34,7 @@ const NewConversationForm = (props) => {
   const [selectedUsers, setSelectedUsers] = useState([])
   const [foundUsers, setFoundUsers] = useState([])
   const [newMessage, setNewMessage] = useState('')
+  const [formSubmitted, setFormSubmitted] = useState(false)
   const [apiError, setApiError] = useState('')
 
   const conversations = messageContext.conversations
@@ -66,6 +68,7 @@ const NewConversationForm = (props) => {
       else {        
         const users = conversations.filter(convo => convo.id === convoId)
         const userIds = users[0].users.map(user => user.id) 
+        const timestamp = new Date()
 
         let message = {
           message: {
@@ -73,11 +76,13 @@ const NewConversationForm = (props) => {
             content: newMessage,
             userId: currentUser.userId,
             sendingUser: currentUser,
-            users: userIds
+            users: userIds,
+            timestamp: (timestamp.getTime() / 1000)
           },
           userToken: currentUser.token,
         };
 
+        setFormSubmitted(true)
         messageContext.activateConversation(convoId)
         messageContext.sendMessage(message)
         closeModal()
@@ -136,6 +141,7 @@ const NewConversationForm = (props) => {
   // Insert new conversation into front/backend
   const startConversation = async (users, message) => {
 
+    setFormSubmitted(true)
     // Copy created to prevent issue with blank Chip being created when enter is pressed
     let usersCopy = users.map(user => user)
 
@@ -168,6 +174,11 @@ const NewConversationForm = (props) => {
     .then(data => {
       messageContext.startConversation(data.conversation, message )
       closeModal()
+      setFormSubmitted(false)
+    })
+    .catch(err => {
+      // TODO Error handling here
+      setFormSubmitted(false)
     })
 
   }
@@ -229,7 +240,7 @@ const NewConversationForm = (props) => {
           }}
           getOptionLabel={(option) => option.name}
           className={classes.usernameInput}
-          style={{ width: 500 }}
+          style={{ maxWidth: 500 }}
           renderTags={(value, getTagProps) =>
             value.map((option, index) => (
               <Chip variant="outlined" label={option.name} {...getTagProps({ index })} />
@@ -255,6 +266,7 @@ const NewConversationForm = (props) => {
           className={classes.submitButton}
           variant='contained' 
           color='primary'
+          disabled={formSubmitted}
         >
           Send Message
         </Button>

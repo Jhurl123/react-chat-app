@@ -6,7 +6,6 @@ import ChatInput from "../chatControls/chatInput";
 const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: '#f5f2f2',
-    minHeight: '80px',
     position: 'absolute',
     bottom: 0,
     width: '100%',

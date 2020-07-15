@@ -48,18 +48,26 @@ const ChatInput = (props) => {
     const users = conversations.filter(convo => convo.id === activeConversation)
     
     const userIds = users[0].users.map(user => user.id) 
+    const timestamp = new Date()
 
+    console.log(timestamp.getTime());
+    
+    console.log(Math.round((timestamp.getTime() / 1000)));
+    
     let newMessage = {
       message: {
         convoId: activeConversation,
         content: message,
         userId: userObject.userId,
         sendingUser: userObject,
-        users: userIds
+        users: userIds,
+        timestamp: Math.round((timestamp.getTime() / 1000))
       },
       userToken: userObject.token
     }
 
+    console.log(newMessage);
+    
     messageContext.sendMessage(newMessage)
     setMessage('')
   }
