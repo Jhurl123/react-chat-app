@@ -4,15 +4,14 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   messageHalf: {
     display: 'flex',
-    flex: '1',
     flexDirection: 'column',
     listStyleType: 'none',
     margin: '.5rem 0',
     maxWidth: '50%',
     position: 'relative',
     width: '100%',
-    [theme.breakpoints.down("sm")]: {
-      margin: '1.5rem 0'
+    flexWrap: 'no-wrap',
+    [theme.breakpoints.down("")]: {
     }
   },
   message: {
