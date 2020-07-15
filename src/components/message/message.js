@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   messageHalf: {
     display: 'flex',
+    flexDirection: 'column',
     listStyleType: 'none',
     margin: '.5rem 0',
     maxWidth: '50%',
@@ -35,11 +36,9 @@ const useStyles = makeStyles(theme => ({
   },
   subInfo: {
     color: '#525151',
-    position: 'absolute',
-    bottom: '-16px',
-    left: '5px',
     fontSize:'14px',
     width: '100%',
+    marginLeft: '5px'
   }
 }))
 
