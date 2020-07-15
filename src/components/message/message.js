@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
     listStyleType: 'none',
     margin: '.5rem 0',
     maxWidth: '50%',
+    minHeight: '70px',
     position: 'relative',
     width: '100%',
     flexWrap: 'nowrap',
