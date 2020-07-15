@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '50%',
     position: 'relative',
     width: '100%',
-    flexWrap: 'no-wrap',
+    flexWrap: 'nowrap',
     [theme.breakpoints.down("")]: {
     }
   },
