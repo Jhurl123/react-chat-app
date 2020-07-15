@@ -71,13 +71,14 @@ router.post('/user_signup', async (req, res) => {
       console.log(userRes);
       
       res.cookie("authToken", userRes.token)
-      
+
       // Create token here
       let resObject = {
         status: 'User Successfully added', 
         passed: true,
         userId: userRes.userId,
-        token: userRes.token
+        token: userRes.token,
+        userName
       }
       console.log(resObject);
       

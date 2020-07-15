@@ -75,6 +75,7 @@ const WindowPane = (props) => {
   }
 
   const setConversationOnRender = (allConversations, allMessages) => {
+    if(!allConversations || !allMessages) return
     if(allConversations.length && allMessages.length) {
       let messageFound = false   
       

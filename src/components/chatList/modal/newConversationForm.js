@@ -145,6 +145,8 @@ const NewConversationForm = (props) => {
     // Copy created to prevent issue with blank Chip being created when enter is pressed
     let usersCopy = users.map(user => user)
 
+    console.log(usersCopy);
+    
     // Create array of ids to be queryable by 'array-contains' in firebase
     let userIds = users.map(user => user.id)
     userIds.push(currentUser.userId)

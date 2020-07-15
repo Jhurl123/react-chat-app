@@ -124,9 +124,8 @@ const userLogin = async (snapshot, enteredPassword) => {
     const passwordRes = comparePassword(password, enteredPassword)
     
     message = passwordRes.then(newData => {
+      
       if(newData) {
-
-        console.log(userName);
         
         const token = createToken(userName)
         
