@@ -16,19 +16,19 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '20px',
     color: '#000000',
     display: 'block',
-    minHeight: '50px'
+    minHeight: '50px',  
+    alignSelf: 'flex-end' 
   },
   received: {
-    alignSelf: 'flex-start',
     marginBottom: '1.35rem',
     '& span': {
       backgroundColor: '#5CDF69',
+      alignSelf: 'flex-start' 
     }
   },
   sent: {
     alignSelf: 'flex-end',
     justifyContent: 'flex-end',
-    textAlign: 'right',
     '& span': {
       backgroundColor: '#1e96f1',
       color: '#ffffff',
