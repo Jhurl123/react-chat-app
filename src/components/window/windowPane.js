@@ -200,6 +200,7 @@ const WindowPane = (props) => {
       setConversations(allConversations);
       socket.setConversations(allConversations);
       socket.conversationListener(allConversations, setConversations);
+      setActiveConversation(allConversations[0].id)
       
       return allConversations
     } catch (err) {
@@ -221,7 +222,7 @@ const WindowPane = (props) => {
     const userIds = newConversation.users.map(user => user.id)
 
     const timestamp = new Date()
-    
+
     let message = {
       message: {
         convoId: newConversation.id,
