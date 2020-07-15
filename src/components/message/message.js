@@ -10,6 +10,9 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '50%',
     position: 'relative',
     width: '100%',
+    [theme.breakpoints.down("sm")]: {
+      margin: '1.5rem 0'
+    }
   },
   message: {
     padding: '1rem',
