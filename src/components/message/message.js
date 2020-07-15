@@ -14,7 +14,8 @@ const useStyles = makeStyles(theme => ({
     padding: '1rem',
     borderRadius: '20px',
     color: '#000000',
-    display: 'block'
+    display: 'block',
+    minHeight: '50px'
   },
   received: {
     alignSelf: 'flex-start',
