@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     width: '100%',
     flexWrap: 'nowrap',
+    flex: '1',
     [theme.breakpoints.down("")]: {
     }
   },
@@ -20,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '20px',
     color: '#000000',
     minHeight: '50px',  
-    alignSelf: 'flex-end' 
+    alignSelf: 'flex-end',
   },
   received: {
     marginBottom: '1.35rem',
