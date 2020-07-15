@@ -3,25 +3,22 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   messageHalf: {
-    display: 'flex',
-    flexDirection: 'column',
     listStyleType: 'none',
     margin: '.5rem 0',
     maxWidth: '50%',
-    minHeight: '70px',
     position: 'relative',
     width: '100%',
-    flexWrap: 'nowrap',
-    flex: '1',
     [theme.breakpoints.down("")]: {
     }
   },
   message: {
     padding: '1rem',
     borderRadius: '20px',
+    display: 'inline-block',
     color: '#000000',
     minHeight: '50px',  
-    alignSelf: 'flex-end',
+    wordBreak: 'break-word',
+    textAlign: 'left'
   },
   received: {
     marginBottom: '1.35rem',
@@ -32,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   },
   sent: {
     alignSelf: 'flex-end',
-    justifyContent: 'flex-end',
+    textAlign: 'right',
     '& span': {
       backgroundColor: '#1e96f1',
       color: '#ffffff',
