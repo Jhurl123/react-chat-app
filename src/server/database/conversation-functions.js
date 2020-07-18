@@ -54,7 +54,6 @@ exports.getConversations = async userId => {
             users: data.users,
             excerpt: data.excerpt,
             timestamp: data.timestamp,
-            unread: data.unread
           } 
           conversations.push(conversation)
         })
@@ -101,36 +100,3 @@ exports.addExcerpt = async message => {
 
 }
 
-exports.markUnread = (message) => {
-  try {
-
-    const unreadObject = message.users.filter(user => user !== message.userId).map(user => {
-      console.log(user);
-      
-      return {unread: true, user}
-    })
-    
-    console.log(unreadObject);
-    
-    let conversationRef = db.db.collection('conversations').doc(message.convoId)
-    conversationRef.update({unread: unreadObject})
-    return true
-  }
-  catch(err) {
-    throw Error(err)
-  }
-}
-
-
-exports.markRead = (conversation) => {
-  try {
-    console.log(conversation.unread);
-    
-    let conversationRef = db.db.collection('conversations').doc(conversation.id)
-    conversationRef.update({unread: conversation.unread})
-    return true
-  }
-  catch(err) {
-    throw Error(err)
-  }
-}

@@ -58,43 +58,30 @@ const ToolTipStyled = withStyles({
 })(Tooltip);
 
 const ChatConversation = (props) => {
-
+  
   const classes = useStyles()
-  const messageContext = useContext(MessageContext)
   const { info, activeConversation, activateConversation, convoChange, id, lastSender } = props
   const currentUser = JSON.parse(localStorage.getItem('user'))
-  const [isRead, setReadStatus] = useState(true)
-  const [excerpt, setExcerpt] = useState('')
   
-  const conversations = messageContext.conversations
-  const setConversations = messageContext.setConversations
+  const messageContext = useContext(MessageContext)
+  const [isRead, setReadStatus] = useState(true)
+  
+  const messages = messageContext.messages
 
   useEffect(() => {
+    messageUnread() ? setReadStatus(false) : setReadStatus(true)
+  
+  },[messages])
 
-    if(messageUnread()) {
-      setReadStatus(false)
-    }
-  },[info])
-
-  useEffect(() => {
-    let users = info.users
-    
-    console.log("Read status changes at line 77");
-    setReadStatus(false)
-
-  },[convoChange])
-
+  // Check messages to see if they have been read
   const messageUnread = () => {
-    let users = false
 
-    if(info.unread) {
-      // Temporary check
-      if(!Array.isArray(info.unread)) return false
-      console.log(info.unread);
-      
-      users = info.unread.filter(unread => unread.user === currentUser.userId)
-      console.log(users);
-      
+    let users = false
+    let lastMessage = messages.find(message => message.convoId === info.id)
+    if(!Array.isArray(lastMessage.unread)) return false
+
+    if(lastMessage['unread'].length) {
+      users = lastMessage.unread.filter(unread => unread === currentUser.userId)
     }
     
     return users.length ? true : false
@@ -103,17 +90,18 @@ const ChatConversation = (props) => {
   const readConversation = async (id) => {
 
     activateConversation(id)
+    let lastMessage = messages.find(message => message.convoId === info.id)
 
-    if(!Array.isArray(info.unread)) return false
+    if(!Array.isArray(lastMessage.unread)) return false
     
-    info.unread = info.unread.filter(unread => unread.user !== currentUser.userId)
-    
-    await fetch('/read_conversation', {
+    lastMessage.unread = lastMessage.unread.filter(unread => unread !== currentUser.userId)
+
+    await fetch('/read_message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({conversation: info})
+      body: JSON.stringify({message: lastMessage})
     })
     .then(res =>  {
       if (!res.ok) {
@@ -122,14 +110,9 @@ const ChatConversation = (props) => {
       return res.json()
 
     })
-    .then(data => {
-      setReadStatus(true)
-
-    })
+    .then(data => setReadStatus(true))
   }
 
-  // Need to use the messages here, and show the excerpt of the last message sent using context
- // TODO New message indicator here - Use Styled badge 
   return (
     <div>
       {info && (
@@ -162,7 +145,6 @@ const ChatConversation = (props) => {
   )
 }
 
-// const { info, activeConversation, activateConversation, convoChange, id, lastSender } = props
 ChatConversation.propTypes = {
   info: PropTypes.func,
   activeConversation: PropTypes.string,

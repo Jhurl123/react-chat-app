@@ -134,13 +134,12 @@ const WindowPane = (props) => {
           setActiveConversation(newConversation.id)
           let newUsers = newConversation.users.map(user => user.id)
           socket.startConversation(newUsers, newConversation, message);
-          
         }
         else {
           socket.sendMessage(getReceivingIds(activeConversation), message)
+          
           setConversations(prevState => {
             const newConversation = prevState.filter(convo => convo.id === activeConversation)
-            newConversation[0]['lastSender'] = currentUser.userId
             const newList = prevState.filter(convo => convo.id !== activeConversation)
             return [newConversation[0], ...newList]
           })
@@ -221,6 +220,7 @@ const WindowPane = (props) => {
     
     // Format the object to be inserted into the db
     const userIds = newConversation.users.map(user => user.id)
+    const unreadUsers = userIds.filter(user => user !== currentUser.userId)
 
     const timestamp = new Date()
 
@@ -231,6 +231,7 @@ const WindowPane = (props) => {
         userId: currentUser.userId,
         sendingUser: currentUser,
         users: userIds,
+        unread: unreadUsers,
         timestamp: (timestamp.getTime() / 1000)
       },
       userToken: currentUser.token,

@@ -3,7 +3,6 @@ let bodyParser = require("body-parser");
 const router = express.Router();
 const db = require('../database/db-connect')
 const dbFunctions = require('../database/db-functions')
-const socketEvents = require('../socket-connect')
 const userFunctions = require('../database/user-functions')
 const convFunctions = require('../database/conversation-functions')
 const JWT = require('jsonwebtoken')
@@ -41,8 +40,10 @@ router.post('/send_message', async (req, res) => {
     console.log(response);
     
     // Add the excerpt from the message to its conversation
-    convFunctions.addExcerpt(message)
-    convFunctions.markUnread(message)
+    await convFunctions.addExcerpt(message)
+    // await dbFunctions.markUnread(message)
+
+
     
     res.send({id: response})
   }
@@ -120,6 +121,21 @@ router.post('/username_search', async (req, res) => {
   catch(err) {
     console.log(err);
     
+  }
+})
+
+router.post('/read_message', async (req, res) => {
+  try {
+    console.log("Read MEessage");
+    
+    const { message } = req.body
+    let unread = await dbFunctions.markRead(message)
+    if( unread ) res.status(200).send({unread})
+
+  }
+  catch(err) {
+    console.log(err);
+    res.status(500).send("Could not mark message as unread")
   }
 })
 module.exports = router;

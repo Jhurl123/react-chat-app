@@ -32,7 +32,8 @@ const ChatInput = (props) => {
   const classes = useStyles()
   const { userObject, activeConversation } = props
   const conversations = messageContext.conversations
-
+  const currentUser = JSON.parse(localStorage.getItem('user'))
+  
   const handleSubmit = (event) => {
     event.preventDefault()
     
@@ -51,6 +52,7 @@ const ChatInput = (props) => {
     console.log(timestamp.getTime());
     
     console.log(Math.round((timestamp.getTime() / 1000)));
+    const unreadUsers = userIds.filter(user => user !== currentUser.userId)
     
     let newMessage = {
       message: {
@@ -59,6 +61,7 @@ const ChatInput = (props) => {
         userId: userObject.userId,
         sendingUser: userObject,
         users: userIds,
+        unread: unreadUsers,
         timestamp: Math.round((timestamp.getTime() / 1000))
       },
       userToken: userObject.token

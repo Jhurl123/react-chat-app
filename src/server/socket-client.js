@@ -22,31 +22,29 @@ const addUserConnect = (userId) => {
   socket.on('addUserConnect', () => {
     socket.emit('addUser', userId)
   })
+
 }
 
 const messageListener = (messages, cb) => {
-  console.log("Called the message Listener")
+  
   socket.on('updateMessages', (message) => { 
 
     const userId = JSON.parse(localStorage.getItem('user')).userId
-    
     if(message.message.userId !== userId) {
-
-      cb(prevState =>  {
+      cb(prevState =>  {    
         return [message.message, ...prevState]
       })
     }
+
   })
 }
 
 const conversationListener = (conversations, cb) => {
-  console.log("Called the conversations Listener")
+
   socket.on('updateConversations', (conversation) =>  {
-    console.log("This conversation listener was called");  
-    console.log(conversations);
-    
     cb([conversation, ...conversations])
   })
+
 }
 
 const setConversations = conversations => {

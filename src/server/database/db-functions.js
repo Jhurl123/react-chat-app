@@ -1,6 +1,4 @@
-// Connect to DB
 const db = require('./db-connect')
-var firebase = require("firebase-admin")
 const JWT = require('jsonwebtoken');
 
 exports.sendMessage = async (newMessage) => {
@@ -15,21 +13,20 @@ exports.sendMessage = async (newMessage) => {
   let response = messageRef.add(message)
   .then((data) => {
 
-  if(!data) throw Error()
+    if(!data) throw Error()
 
-  console.log("Message");
-  
-  console.log(data.id);
+    message['id'] = data.id
+    
+    this.markUnread(message)
+    
+    return data.id
 
-  console.log("test Message");
-  
-  
-  return data.id
   })
   .catch(err => {
     console.log(err);
     
     throw Error(err)
+
   })
 
   return response
@@ -55,9 +52,7 @@ exports.getMessages = (id) => {
 
     messages = messages.sort(function(a,b) {
       return new Date(b.timestamp._seconds) - new Date(a.timestamp._seconds);
-    });
-    
-    console.log(messages.length);
+    }); 
     
     return messages
   })
@@ -87,4 +82,33 @@ const validateJWT = async (token) => {
   })
 
   return validJWT
+
+}
+
+exports.markRead = (message) => {
+
+  try {
+    let messageRef = db.db.collection('messages').doc(message.id)
+    messageRef.update({unread: message.unread})
+    return true
+  }
+  catch(err) {
+    throw Error(err)
+  }
+
+}
+
+exports.markUnread = (message) => {
+  
+  try {
+    const unreadUsers = message.users.filter(user => user !== message.userId)
+
+    let messageRef = db.db.collection('messages').doc(message.id)
+    messageRef.update({unread: unreadUsers})
+    return true
+  }
+  catch(err) {
+    throw Error(err)
+  }
+
 }

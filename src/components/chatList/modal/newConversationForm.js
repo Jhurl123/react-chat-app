@@ -69,6 +69,7 @@ const NewConversationForm = (props) => {
       else {        
         const users = conversations.filter(convo => convo.id === convoId)
         const userIds = users[0].users.map(user => user.id) 
+        const unreadUsers = userIds.filter(user => user !== currentUser.userId)
         const timestamp = new Date()
 
         let message = {
@@ -78,6 +79,7 @@ const NewConversationForm = (props) => {
             userId: currentUser.userId,
             sendingUser: currentUser,
             users: userIds,
+            unread: unreadUsers,
             timestamp: (timestamp.getTime() / 1000)
           },
           userToken: currentUser.token,

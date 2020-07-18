@@ -47,8 +47,6 @@ const ChatList = (props) => {
         let message = messages.filter(message => convo.id === message.convoId)
 
         if (!message.length) return undefined
-
-        console.log(convo.unread);
         
         if(message[0].content.length > 25) {
           // Don't let the excerpt overflow

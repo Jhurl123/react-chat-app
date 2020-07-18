@@ -24,28 +24,12 @@ router.post('/start_conversation', async (req, res) => {
     const { users, message, userIds } = req.body
     
     let conversation = await convFunctions.startConversation(users, userIds, message)
-
-    console.log(conversation);
-    
     if( conversation ) res.status(200).send({conversation})
 
   }
   catch(err) {
     console.log(err);
     res.status(500).send("Could not start conversation")
-  }
-})
-
-router.post('/read_conversation', async (req, res) => {
-  try {
-    const { conversation } = req.body
-    let unread = await convFunctions.markRead(conversation)
-    if( unread ) res.status(200).send({unread})
-
-  }
-  catch(err) {
-    console.log(err);
-    res.status(500).send("Could not mark conversation as unread")
   }
 })
 
