@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from 'react'
+import PropTypes from 'prop-types';
 import { makeStyles } from "@material-ui/core/styles"
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -275,6 +276,10 @@ const NewConversationForm = (props) => {
       </form>
     </div>
   )
+}
+
+NewConversationForm.propTypes = {
+  closeModal: PropTypes.func,
 }
 
 export default NewConversationForm

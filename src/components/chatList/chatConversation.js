@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import { Avatar } from '@material-ui/core'
 import StyledBadge from '../badge/styledBadge'
 import Tooltip from '@material-ui/core/Tooltip'
+import MessageContext from '../../Context/messageContext'
 
 const useStyles = makeStyles((theme) => ({
 
@@ -58,35 +60,44 @@ const ToolTipStyled = withStyles({
 const ChatConversation = (props) => {
 
   const classes = useStyles()
-  const { info, activeConversation, activateConversation, convoChange, id } = props
+  const messageContext = useContext(MessageContext)
+  const { info, activeConversation, activateConversation, convoChange, id, lastSender } = props
   const currentUser = JSON.parse(localStorage.getItem('user'))
-  const [isRead, setReadStatus] = useState(false)
+  const [isRead, setReadStatus] = useState(true)
+  const [excerpt, setExcerpt] = useState('')
+  
+  const conversations = messageContext.conversations
+  const setConversations = messageContext.setConversations
 
   useEffect(() => {
-    
+
     if(messageUnread()) {
-      console.log("Read status changes");
-      
-      setReadStatus(true)
+      setReadStatus(false)
     }
+  },[info])
+
+  useEffect(() => {
+    let users = info.users
+    
+    console.log("Read status changes at line 77");
+    setReadStatus(false)
+
   },[convoChange])
 
   const messageUnread = () => {
     let users = false
-    console.log(info);
-    
-    if(info.unread) {
 
+    if(info.unread) {
       // Temporary check
       if(!Array.isArray(info.unread)) return false
-
+      console.log(info.unread);
+      
       users = info.unread.filter(unread => unread.user === currentUser.userId)
+      console.log(users);
       
     }
-
-    console.log(users.length);
     
-    return users.length ? true: false
+    return users.length ? true : false
   }
 
   const readConversation = async (id) => {
@@ -112,7 +123,7 @@ const ChatConversation = (props) => {
 
     })
     .then(data => {
-      setReadStatus(false)
+      setReadStatus(true)
 
     })
   }
@@ -126,7 +137,7 @@ const ChatConversation = (props) => {
           className={`${classes.conversation} ${activeConversation == id ? classes.activeConversation : ''}`} 
           onClick={()=> readConversation(id)}
         >
-          {isRead && (
+          {!isRead && (
             <StyledBadge
               overlap="circle"
               anchorOrigin={{
@@ -149,6 +160,15 @@ const ChatConversation = (props) => {
       )}
     </div>
   )
+}
+
+// const { info, activeConversation, activateConversation, convoChange, id, lastSender } = props
+ChatConversation.propTypes = {
+  info: PropTypes.func,
+  activeConversation: PropTypes.string,
+  activateConversation: PropTypes.func,
+  convoChange: PropTypes.bool,
+  id: PropTypes.string
 }
 
 export default ChatConversation

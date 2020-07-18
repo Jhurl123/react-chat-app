@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton'
 import CancelIcon from '@material-ui/icons/Cancel';
 
@@ -13,4 +14,10 @@ const ModalCloseButon = (props) => {
   )
 
 }
+
+ModalCloseButon.propTypes = {
+  close: PropTypes.func,
+  styles: PropTypes.object
+}
+
 export default ModalCloseButon

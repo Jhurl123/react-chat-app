@@ -5,7 +5,6 @@ import ChatList from "../chatList/chatList";
 import MessagePane from "../message/messagePane";
 import ChatControls from "../chatControls/chatControls";
 import MessageContext from "../../Context/messageContext";
-import StaticConversation from "../chatList/conversationList";
 import socket from "../../server/socket-client";
 import SignUpModal from "./signUpModal";
 
@@ -48,6 +47,7 @@ const WindowPane = (props) => {
   const [apiError, setApiError] = useState("");
   const [user, setUser] = useState(false);
   const [activeConversation, setActiveConversation] = useState("")
+  const [lastSender, setLastSender] = useState("")
   const { menuStatus } = props;
   const currentUser = JSON.parse(localStorage.getItem('user')) || {}
 
@@ -56,7 +56,6 @@ const WindowPane = (props) => {
 
     if (localStorage.getItem("user")) {
       setUser(true);
-
     }
     loadUserData()
   }, [])
@@ -141,6 +140,7 @@ const WindowPane = (props) => {
           socket.sendMessage(getReceivingIds(activeConversation), message)
           setConversations(prevState => {
             const newConversation = prevState.filter(convo => convo.id === activeConversation)
+            newConversation[0]['lastSender'] = currentUser.userId
             const newList = prevState.filter(convo => convo.id !== activeConversation)
             return [newConversation[0], ...newList]
           })
@@ -259,10 +259,11 @@ const WindowPane = (props) => {
     conversations: conversations,
     startConversation,
     getConversations,
+    setConversations,
     activateConversation,
     sendMessage: addMessage,
     client: socket,
-    error: setApiError,
+    error: setApiError
   };
 
   return (

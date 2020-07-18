@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import ModalCloseButon from './modalCloseButton'
@@ -52,4 +53,10 @@ const NewConversationModal = (props) => {
     </Modal>
   )
 }
+
+NewConversationModal.propTypes = {
+  open: PropTypes.bool,
+  toggleModal: PropTypes.func
+}
+
 export default NewConversationModal

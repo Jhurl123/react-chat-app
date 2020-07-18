@@ -33,8 +33,6 @@ const messageListener = (messages, cb) => {
     if(message.message.userId !== userId) {
 
       cb(prevState =>  {
-        console.log(prevState);
-        
         return [message.message, ...prevState]
       })
     }

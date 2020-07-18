@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import PropTypes from 'prop-types';
 import { makeStyles } from "@material-ui/core/styles"
 import EmailIcon from '@material-ui/icons/Email'
 import IconButton from '@material-ui/core/IconButton'
@@ -62,8 +63,6 @@ const ChatInput = (props) => {
       },
       userToken: userObject.token
     }
-
-    console.log(newMessage);
     
     messageContext.sendMessage(newMessage)
     setMessage('')
@@ -92,6 +91,11 @@ const ChatInput = (props) => {
       </form>
     </div>
   )
+}
+
+ChatInput.propTypes = {
+  activeConversation: PropTypes.string,
+  userObject: PropTypes.object
 }
 
 export default ChatInput

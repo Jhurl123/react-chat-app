@@ -6,6 +6,7 @@ export default React.createContext({
   sendMessage: () => {},
   activateConversation: () => {},
   getConversations: () => {},
+  setConversations: () => {},
   client: () => {},
   error: () => {}
 })

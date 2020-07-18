@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext }from 'react'
 import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from 'prop-types';
 import ChatConversation from './chatConversation';
 import ChatAdd from './chatAdd'
 import NewConversationModal from './modal/newConversationModal'
@@ -39,13 +40,15 @@ const ChatList = (props) => {
       
       setDisplayConvo(conversations.map(convo => {
 
-        console.log(convo);
+        console.log("Runs everytime?");
         convo.users['userString'] = formatUsernames(convo.users)
         convo.users['allUsers'] = getUsernames(convo.users)
 
         let message = messages.filter(message => convo.id === message.convoId)
 
         if (!message.length) return undefined
+
+        console.log(convo.unread);
         
         if(message[0].content.length > 25) {
           // Don't let the excerpt overflow
@@ -57,6 +60,7 @@ const ChatList = (props) => {
         return convo
       }).filter(convo => convo !== undefined))
       setConvoChange(prevState => !prevState)
+      
     }
     
   }, [conversations, messages]);
@@ -100,6 +104,11 @@ const ChatList = (props) => {
       </div>
     </div>
   )
+}
+
+ChatList.propTypes = {
+  activeConversation: PropTypes.string,
+  activateConversation: PropTypes.func
 }
 
 export default ChatList
