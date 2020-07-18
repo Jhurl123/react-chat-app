@@ -25,7 +25,7 @@ const addUserConnect = (userId) => {
 
 }
 
-const messageListener = (messages, cb) => {
+const messageListener = (cb) => {
   
   socket.on('updateMessages', (message) => { 
 

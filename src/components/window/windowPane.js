@@ -137,7 +137,7 @@ const WindowPane = (props) => {
         }
         else {
           socket.sendMessage(getReceivingIds(activeConversation), message)
-          
+
           setConversations(prevState => {
             const newConversation = prevState.filter(convo => convo.id === activeConversation)
             const newList = prevState.filter(convo => convo.id !== activeConversation)
@@ -172,7 +172,7 @@ const WindowPane = (props) => {
       setMessages(queriedMessages);
       
       socket.setMessages(queriedMessages);
-      socket.messageListener(queriedMessages, setMessages);
+      socket.messageListener(setMessages);
       
       return queriedMessages
     } 
