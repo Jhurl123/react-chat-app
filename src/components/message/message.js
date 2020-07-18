@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -46,6 +47,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const Message = (props) => {
+
   const classes = useStyles()
   const currentUser = JSON.parse(localStorage.getItem('user'))
   const [formattedDate, setFormattedDate] = useState('')
@@ -81,6 +83,12 @@ const Message = (props) => {
       )}
     </li>
   )
+}
+
+Message.propTypes = {
+  message: PropTypes.object,
+  time: PropTypes.string,
+  user: PropTypes.object
 }
 
 export default Message

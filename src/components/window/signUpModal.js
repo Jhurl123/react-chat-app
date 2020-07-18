@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
-import Fade from '@material-ui/core/Fade';
 import Backdrop from '@material-ui/core/Backdrop';
 import Button from '@material-ui/core/Button';
 import { Alert, AlertTitle } from '@material-ui/lab'
@@ -299,6 +299,10 @@ const SignUpModal = (props) => {
       {body}
     </Modal>
   )
+}
+
+SignUpModal.propTypes = {
+  getMessages: PropTypes.func
 }
 
 export default SignUpModal

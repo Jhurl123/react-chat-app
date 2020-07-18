@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { makeStyles } from "@material-ui/core/styles"
 import EmailIcon from '@material-ui/icons/Email'
 import IconButton from '@material-ui/core/IconButton'
-import AttachFileIcon from '@material-ui/icons/AttachFile'
 import MessageContext from '../../Context/messageContext'
 
 
@@ -88,9 +87,6 @@ const ChatInput = (props) => {
           <EmailIcon />
         </IconButton>
 
-        {/* <IconButton aria-label="Attach a File" size="medium" color="primary" style={{marginLeft: '.5rem'}}>
-          <AttachFileIcon />
-        </IconButton> */}
       </form>
     </div>
   )

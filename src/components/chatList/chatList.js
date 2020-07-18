@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useContext }from 'react'
-import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
+import { makeStyles } from "@material-ui/core/styles";
 import ChatConversation from './chatConversation';
 import ChatAdd from './chatAdd'
 import NewConversationModal from './modal/newConversationModal'
-import Toolbar from '../window/toolbar'
 
 import MessageContext from '../../Context/messageContext'
 
@@ -40,7 +39,6 @@ const ChatList = (props) => {
       
       setDisplayConvo(conversations.map(convo => {
 
-        console.log("Runs everytime?");
         convo.users['userString'] = formatUsernames(convo.users)
         convo.users['allUsers'] = getUsernames(convo.users)
 

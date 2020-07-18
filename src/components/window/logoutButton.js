@@ -1,22 +1,11 @@
 import React, { useState } from 'react'
-import { makeStyles } from "@material-ui/core/styles"
 import IconButton from "@material-ui/core/IconButton"
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from "@material-ui/icons/AccountCircle"
 
-const useStyles = makeStyles((theme) => ({
 
-  logoutButton: {
-
-  }
-}))
-
-
-
-const LogoutButton = (props) => {
-
-  const classes = useStyles();
+const LogoutButton = () => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const currentUser = JSON.parse(localStorage.getItem('user'))
@@ -39,7 +28,6 @@ const LogoutButton = (props) => {
   return (
     <div>
       <IconButton
-        className={classes.logoutButton}
         edge="end"
         aria-label="account of current user"
         aria-haspopup="true"
@@ -68,8 +56,6 @@ const LogoutButton = (props) => {
           <MenuItem onClick={logout}>Log out</MenuItem>
         </Menu>
       )}
-
-
     </div>
   )
 }

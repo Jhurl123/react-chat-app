@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles'
-import { Avatar } from '@material-ui/core'
 import StyledBadge from '../badge/styledBadge'
 import Tooltip from '@material-ui/core/Tooltip'
 import MessageContext from '../../Context/messageContext'

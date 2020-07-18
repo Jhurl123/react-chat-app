@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
-const Window = (props) => {
+const Window = () => {
 
   const classes = useStyles()
 
@@ -32,7 +32,7 @@ const Window = (props) => {
     setMenuStatus(prevState => !prevState)    
   }
 
-  // refactor to only rerender when the size condition is met
+  // TODO refactor to only rerender when the size condition is met
   return (
     <Container maxWidth={'lg'}>
       <Box mt={8} mb={8}>

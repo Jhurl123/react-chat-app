@@ -1,4 +1,5 @@
 import React, { useContext, useCallback } from 'react'
+import PropTypes from 'prop-types'
 import Message from './message'
 import { makeStyles } from '@material-ui/core'
 import MessageContext from '../../Context/messageContext'
@@ -46,11 +47,16 @@ const MessageList = (props) => {
             user={message.sendingUser}
             class={userObject.userId === message.userId ? 'sent' : 'received'}
           >
-              {message.content}
+            {message.content}
           </Message>
         ))}
     </ul>
   )
+}
+
+MessageList.propTypes = {
+  userObject: PropTypes.object,
+  activeConversation: PropTypes.string
 }
 
 export default MessageList

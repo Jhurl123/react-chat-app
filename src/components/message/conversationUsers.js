@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
+import PropTypes from 'prop-types';
 import { makeStyles } from "@material-ui/core/styles";
 import MessageContext from '../../Context/messageContext'
-import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   users: {

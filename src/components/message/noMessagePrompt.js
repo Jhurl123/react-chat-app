@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import { makeStyles } from "@material-ui/core/styles";
 
 
@@ -23,6 +24,10 @@ const NoMessagePrompt = (props) => {
       </h2>
     </div>
   )
+}
+
+NoMessagePrompt.propTypes = {
+  children: PropTypes.element.isRequired
 }
 
 export default NoMessagePrompt
