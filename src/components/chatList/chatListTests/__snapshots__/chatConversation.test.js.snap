@@ -1,3 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Chat Conversation Tests renders the ui as expected 1`] = `<div />`;
+exports[`Chat Conversation Tests renders the ui as expected 1`] = `
+<div>
+  <div
+    className="makeStyles-conversation-1 makeStyles-activeConversation-2"
+    onClick={[Function]}
+  >
+    <div
+      className="makeStyles-info-5"
+    >
+      <h4
+        aria-describedby={null}
+        className=""
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        title="Users: undefined"
+      />
+      <p>
+        This is the last message we sent...
+      </p>
+    </div>
+    <span />
+  </div>
+</div>
+`;

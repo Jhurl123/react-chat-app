@@ -50,7 +50,7 @@ const ConversationUsers = (props) => {
 }
 
 ConversationUsers.propTypes = {
-  activeConversation: PropTypes.string
+  activeConversation: PropTypes.number
 }
 
 export default ConversationUsers

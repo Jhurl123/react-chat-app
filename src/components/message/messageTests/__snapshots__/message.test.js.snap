@@ -2,6 +2,10 @@
 
 exports[`Message Component renders the UI as expected 1`] = `
 <li
-  className="makeStyles-message-1 undefined"
-/>
+  className="makeStyles-messageHalf-1 undefined"
+>
+  <span
+    className="makeStyles-message-2"
+  />
+</li>
 `;

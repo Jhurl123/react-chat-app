@@ -421,10 +421,10 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                           />
                           <fieldset
                             aria-hidden="true"
-                            class="PrivateNotchedOutline-root-93 MuiOutlinedInput-notchedOutline"
+                            class="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
                           >
                             <legend
-                              class="PrivateNotchedOutline-legendLabelled-95"
+                              class="PrivateNotchedOutline-legendLabelled-14"
                             >
                               <span>
                                  Enter User Name
@@ -460,10 +460,10 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                           />
                           <fieldset
                             aria-hidden="true"
-                            class="PrivateNotchedOutline-root-93 MuiOutlinedInput-notchedOutline"
+                            class="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
                           >
                             <legend
-                              class="PrivateNotchedOutline-legendLabelled-95"
+                              class="PrivateNotchedOutline-legendLabelled-14"
                             >
                               <span>
                                 Enter Password
@@ -583,7 +583,7 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
               </ForwardRef(Fade)>
             </ForwardRef(Backdrop)>
           </WithStyles(ForwardRef(Backdrop))>
-          <TrapFocus
+          <Unstable_TrapFocus
             disableAutoFocus={false}
             disableEnforceFocus={false}
             disableRestoreFocus={false}
@@ -1153,10 +1153,10 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                                               className="MuiOutlinedInput-notchedOutline"
                                               classes={
                                                 Object {
-                                                  "legend": "PrivateNotchedOutline-legend-94",
-                                                  "legendLabelled": "PrivateNotchedOutline-legendLabelled-95",
-                                                  "legendNotched": "PrivateNotchedOutline-legendNotched-96",
-                                                  "root": "PrivateNotchedOutline-root-93",
+                                                  "legend": "PrivateNotchedOutline-legend-13",
+                                                  "legendLabelled": "PrivateNotchedOutline-legendLabelled-14",
+                                                  "legendNotched": "PrivateNotchedOutline-legendNotched-15",
+                                                  "root": "PrivateNotchedOutline-root-12",
                                                 }
                                               }
                                               label={
@@ -1169,10 +1169,10 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                                             >
                                               <fieldset
                                                 aria-hidden={true}
-                                                className="PrivateNotchedOutline-root-93 MuiOutlinedInput-notchedOutline"
+                                                className="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
                                               >
                                                 <legend
-                                                  className="PrivateNotchedOutline-legendLabelled-95"
+                                                  className="PrivateNotchedOutline-legendLabelled-14"
                                                 >
                                                   <span>
                                                      Enter User Name
@@ -1489,10 +1489,10 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                                               className="MuiOutlinedInput-notchedOutline"
                                               classes={
                                                 Object {
-                                                  "legend": "PrivateNotchedOutline-legend-94",
-                                                  "legendLabelled": "PrivateNotchedOutline-legendLabelled-95",
-                                                  "legendNotched": "PrivateNotchedOutline-legendNotched-96",
-                                                  "root": "PrivateNotchedOutline-root-93",
+                                                  "legend": "PrivateNotchedOutline-legend-13",
+                                                  "legendLabelled": "PrivateNotchedOutline-legendLabelled-14",
+                                                  "legendNotched": "PrivateNotchedOutline-legendNotched-15",
+                                                  "root": "PrivateNotchedOutline-root-12",
                                                 }
                                               }
                                               label={
@@ -1505,10 +1505,10 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                                             >
                                               <fieldset
                                                 aria-hidden={true}
-                                                className="PrivateNotchedOutline-root-93 MuiOutlinedInput-notchedOutline"
+                                                className="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
                                               >
                                                 <legend
-                                                  className="PrivateNotchedOutline-legendLabelled-95"
+                                                  className="PrivateNotchedOutline-legendLabelled-14"
                                                 >
                                                   <span>
                                                     Enter Password
@@ -1792,7 +1792,7 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
               data-test="sentinelEnd"
               tabIndex={0}
             />
-          </TrapFocus>
+          </Unstable_TrapFocus>
         </div>
       </Portal>
     </ForwardRef(Portal)>

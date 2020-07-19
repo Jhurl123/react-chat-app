@@ -76,7 +76,9 @@ const ChatConversation = (props) => {
   const messageUnread = () => {
 
     let users = false
+
     let lastMessage = messages.find(message => message.convoId === info.id)
+    
     if(!Array.isArray(lastMessage.unread)) return false
 
     if(lastMessage['unread'].length) {
@@ -145,7 +147,7 @@ const ChatConversation = (props) => {
 }
 
 ChatConversation.propTypes = {
-  info: PropTypes.func,
+  info: PropTypes.object,
   activeConversation: PropTypes.string,
   activateConversation: PropTypes.func,
   convoChange: PropTypes.bool,

@@ -3,12 +3,12 @@
 exports[`Chat Add Tests renders the ui as expected 1`] = `
 <button
   aria-label="Open a new Conversation"
-  className="makeStyles-addContainer-13"
+  className="makeStyles-addContainer-4"
   onClick={[Function]}
 >
   <svg
     aria-hidden={true}
-    className="MuiSvgIcon-root makeStyles-addIcon-14 MuiSvgIcon-fontSizeLarge"
+    className="MuiSvgIcon-root makeStyles-addIcon-5 MuiSvgIcon-fontSizeLarge"
     focusable="false"
     viewBox="0 0 24 24"
   >
@@ -17,7 +17,7 @@ exports[`Chat Add Tests renders the ui as expected 1`] = `
     />
   </svg>
   <span
-    className="makeStyles-convPrompt-15"
+    className="makeStyles-convPrompt-6"
   >
     Start Conversation
   </span>

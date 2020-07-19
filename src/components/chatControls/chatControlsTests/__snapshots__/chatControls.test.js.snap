@@ -19,7 +19,7 @@ exports[`Chat controls test renders the ui as expected 1`] = `
       >
         <input
           autoComplete="off"
-          className="makeStyles-ChatInput-105"
+          className="makeStyles-ChatInput-2"
           disabled={true}
           name="message"
           onChange={[Function]}
@@ -29,7 +29,7 @@ exports[`Chat controls test renders the ui as expected 1`] = `
         />
         <button
           aria-label="Send Message"
-          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-106 MuiIconButton-colorPrimary"
+          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-3 MuiIconButton-colorPrimary"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}

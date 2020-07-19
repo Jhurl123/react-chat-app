@@ -132,10 +132,10 @@ exports[`NewConversationForm Component renders the UI as expected 1`] = `
           </div>
           <fieldset
             aria-hidden={true}
-            className="PrivateNotchedOutline-root-108 MuiOutlinedInput-notchedOutline"
+            className="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
           >
             <legend
-              className="PrivateNotchedOutline-legendLabelled-110"
+              className="PrivateNotchedOutline-legendLabelled-7"
             >
               <span>
                 Username
@@ -176,10 +176,10 @@ exports[`NewConversationForm Component renders the UI as expected 1`] = `
         />
         <fieldset
           aria-hidden={true}
-          className="PrivateNotchedOutline-root-108 MuiOutlinedInput-notchedOutline"
+          className="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="PrivateNotchedOutline-legendLabelled-110"
+            className="PrivateNotchedOutline-legendLabelled-7"
           >
             <span>
               Send Message

@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
-import ModalCloseButon from './modalCloseButton'
+import ModalCloseButton from './modalCloseButton'
 import NewConversationForm from './newConversationForm'
 import { makeStyles } from "@material-ui/core/styles"
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -45,7 +46,7 @@ const NewConversationModal = (props) => {
       BackdropComponent={Backdrop}
     >
       <div className={classes.paper}>
-        <ModalCloseButon styles={closeButtonStyles} close={toggleModal} />
+        <ModalCloseButton styles={closeButtonStyles} close={toggleModal} />
         <h2>Say 'Hi' to some one new!</h2>
         <NewConversationForm closeModal={toggleModal} />
       </div>

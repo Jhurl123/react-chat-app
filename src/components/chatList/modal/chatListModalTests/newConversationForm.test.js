@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import jest from 'jest'
 import renderer from 'react-test-renderer'
 import NewConversationForm from '../newConversationForm'
 

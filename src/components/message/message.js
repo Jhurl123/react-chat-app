@@ -44,8 +44,6 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-
-
 const Message = (props) => {
 
   const classes = useStyles()
@@ -69,8 +67,7 @@ const Message = (props) => {
     var b = seconds.split(/\D/);
     return b[2] + ' ' + months[b[1]-1];
   }
-  
-  // console.log(formatDDMMM('2016-10-14'));
+
   return (
     <li className={`${classes.messageHalf} ${classes[props.class]}`}>
       <span className={`${classes.message}`}>
@@ -87,7 +84,7 @@ const Message = (props) => {
 
 Message.propTypes = {
   message: PropTypes.object,
-  time: PropTypes.string,
+  time: PropTypes.object,
   user: PropTypes.object
 }
 
