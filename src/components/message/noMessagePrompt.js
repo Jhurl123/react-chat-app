@@ -27,7 +27,7 @@ const NoMessagePrompt = (props) => {
 }
 
 NoMessagePrompt.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.string
 }
 
 export default NoMessagePrompt

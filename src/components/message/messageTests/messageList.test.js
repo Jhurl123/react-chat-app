@@ -5,30 +5,66 @@ import renderer from 'react-test-renderer'
 import { mount, configure  } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import MessageList from '../messageList'
-import messageContext from '../../../Context/messageContext';
+import MessageContext from '../../../Context/messageContext';
+
+import localStorage from './localStorage'
+window.localStorage = localStorage
+window.localStorage.setItem('user', JSON.stringify({userName: 'test', userId: '123'}))
 
 configure({ adapter: new Adapter() });
+
+const currentUser = JSON.parse(window.localStorage.getItem('user'))
 
 const MESSAGES = [
   {
     id: 1,
-    content: 'Testerroo'
+    convoId: 1,
+    content: 'Testerroo',
+    userId: currentUser.userId,
+    sendingUser: currentUser,
+    users: [
+      '123',
+      '456'
+    ],
+    unread: [
+      '456'
+    ],
+    timestamp: new Date()
   },
   {
     id: 2,
-    content: 'Testerroo'
+    convoId: 1,
+    content: 'Testerroo',
+    userId: currentUser.userId,
+    sendingUser: currentUser,
+    users: [
+      '123',
+      '456'
+    ],
+    unread: [
+      '456'
+    ],
+    timestamp: new Date()
   },
   {
     id: 3,
-    content: 'Testerroo'
+    convoId: 1,
+    content: 'Testerroo',
+    userId: currentUser.userId,
+    sendingUser: currentUser,
+    users: [
+      '123',
+      '456'
+    ],
+    unread: [
+      '456'
+    ],
+    timestamp: new Date()
   }
 ]
 
-const userObject = {
-  userId: '123',
-}
-
 describe('Message List Tests', () => {
+
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<MessageList />, div);
@@ -45,14 +81,16 @@ describe('Message List Tests', () => {
   it('renders a list of messages from context', () => {
 
     const wrapper = mount(
-      <messageContext.Provider
+      <MessageContext.Provider
         value={{
           messages: MESSAGES
         }}
       >
-        <MessageList userObject={userObject}/>
-      </messageContext.Provider>
+        <MessageList userObject={currentUser}/>
+      </MessageContext.Provider>
     )
+    
+    console.log(wrapper);
     
     expect(wrapper.find('li').at('1').text()).toEqual('Testerroo')
   })

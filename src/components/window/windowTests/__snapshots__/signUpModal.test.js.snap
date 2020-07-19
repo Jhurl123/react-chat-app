@@ -318,11 +318,6 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
         "useStyles": [Function],
       }
     }
-    BackdropProps={
-      Object {
-        "timeout": 500,
-      }
-    }
     aria-describedby="simple-modal-description"
     aria-labelledby="simple-modal-title"
     disableBackdropClick={true}
@@ -347,7 +342,7 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
               <div
                 aria-hidden="true"
                 class="MuiBackdrop-root"
-                style="opacity: 1; webkit-transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+                style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
               />
               <div
                 data-test="sentinelStart"
@@ -537,7 +532,6 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
           <WithStyles(ForwardRef(Backdrop))
             onClick={[Function]}
             open={true}
-            timeout={500}
           >
             <ForwardRef(Backdrop)
               classes={
@@ -548,12 +542,10 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
               }
               onClick={[Function]}
               open={true}
-              timeout={500}
             >
               <ForwardRef(Fade)
                 in={true}
                 onClick={[Function]}
-                timeout={500}
               >
                 <Transition
                   appear={true}
@@ -568,7 +560,12 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                   onExit={[Function]}
                   onExited={[Function]}
                   onExiting={[Function]}
-                  timeout={500}
+                  timeout={
+                    Object {
+                      "enter": 225,
+                      "exit": 195,
+                    }
+                  }
                   unmountOnExit={false}
                 >
                   <div
@@ -630,7 +627,7 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                     onExit={[Function]}
                     onExited={[Function]}
                     onExiting={[Function]}
-                    timeout={300}
+                    timeout={0}
                     unmountOnExit={false}
                   >
                     <div
@@ -786,6 +783,19 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                         error={false}
                         helperText=""
                         id="userName"
+                        inputRef={
+                          Object {
+                            "current": <input
+                              aria-invalid="false"
+                              class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                              disabled=""
+                              id="userName"
+                              name="userName"
+                              type="text"
+                              value=""
+                            />,
+                          }
+                        }
                         label=" Enter User Name"
                         name="userName"
                         onChange={[Function]}
@@ -809,6 +819,19 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                           error={false}
                           helperText=""
                           id="userName"
+                          inputRef={
+                            Object {
+                              "current": <input
+                                aria-invalid="false"
+                                class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                                disabled=""
+                                id="userName"
+                                name="userName"
+                                type="text"
+                                value=""
+                              />,
+                            }
+                          }
                           label=" Enter User Name"
                           name="userName"
                           onChange={[Function]}
@@ -940,6 +963,19 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                                   autoFocus={false}
                                   fullWidth={false}
                                   id="userName"
+                                  inputRef={
+                                    Object {
+                                      "current": <input
+                                        aria-invalid="false"
+                                        class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                                        disabled=""
+                                        id="userName"
+                                        name="userName"
+                                        type="text"
+                                        value=""
+                                      />,
+                                    }
+                                  }
                                   label={
                                     <React.Fragment>
                                        Enter User Name
@@ -973,6 +1009,19 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                                     }
                                     fullWidth={false}
                                     id="userName"
+                                    inputRef={
+                                      Object {
+                                        "current": <input
+                                          aria-invalid="false"
+                                          class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                                          disabled=""
+                                          id="userName"
+                                          name="userName"
+                                          type="text"
+                                          value=""
+                                        />,
+                                      }
+                                    }
                                     label={
                                       <React.Fragment>
                                          Enter User Name
@@ -1007,6 +1056,19 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                                       fullWidth={false}
                                       id="userName"
                                       inputComponent="input"
+                                      inputRef={
+                                        Object {
+                                          "current": <input
+                                            aria-invalid="false"
+                                            class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                                            disabled=""
+                                            id="userName"
+                                            name="userName"
+                                            type="text"
+                                            value=""
+                                          />,
+                                        }
+                                      }
                                       multiline={false}
                                       name="userName"
                                       onChange={[Function]}
@@ -1040,6 +1102,19 @@ exports[`Sign Up Modal test renders the ui as expected 1`] = `
                                         fullWidth={false}
                                         id="userName"
                                         inputComponent="input"
+                                        inputRef={
+                                          Object {
+                                            "current": <input
+                                              aria-invalid="false"
+                                              class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled"
+                                              disabled=""
+                                              id="userName"
+                                              name="userName"
+                                              type="text"
+                                              value=""
+                                            />,
+                                          }
+                                        }
                                         multiline={false}
                                         name="userName"
                                         onChange={[Function]}

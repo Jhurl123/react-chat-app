@@ -1,47 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Chat Add Tests renders the ui as expected 1`] = `
-<div
-  className="makeStyles-addContainer-25"
+<button
+  aria-label="Open a new Conversation"
+  className="makeStyles-addContainer-13"
+  onClick={[Function]}
 >
-  <button
-    aria-label="Open a new Conversation"
-    className="MuiButtonBase-root MuiIconButton-root makeStyles-addIcon-26"
-    disabled={false}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onDragLeave={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex={0}
-    type="button"
+  <svg
+    aria-hidden={true}
+    className="MuiSvgIcon-root makeStyles-addIcon-14 MuiSvgIcon-fontSizeLarge"
+    focusable="false"
+    viewBox="0 0 24 24"
   >
-    <span
-      className="MuiIconButton-label"
-    >
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-        />
-      </svg>
-    </span>
-  </button>
+    <path
+      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+    />
+  </svg>
   <span
-    className="makeStyles-convPrompt-27"
+    className="makeStyles-convPrompt-15"
   >
     Start Conversation
   </span>
-</div>
+</button>
 `;

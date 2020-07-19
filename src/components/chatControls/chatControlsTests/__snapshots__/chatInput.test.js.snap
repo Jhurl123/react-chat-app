@@ -6,13 +6,15 @@ exports[`Chat Input Tests renders the UI as expected 1`] = `
     onSubmit={[Function]}
     style={
       Object {
+        "display": "flex",
         "padding": ".9rem",
       }
     }
   >
     <input
       autoComplete="off"
-      className="makeStyles-ChatInput-23"
+      className="makeStyles-ChatInput-24"
+      disabled={true}
       name="message"
       onChange={[Function]}
       placeholder="Send a message"
@@ -21,7 +23,7 @@ exports[`Chat Input Tests renders the UI as expected 1`] = `
     />
     <button
       aria-label="Send Message"
-      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-25 MuiIconButton-colorPrimary"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}

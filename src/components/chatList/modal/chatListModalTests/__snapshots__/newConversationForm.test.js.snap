@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewConversationForm Component renders the UI as expected 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    
+    <div
+      aria-expanded={false}
+      aria-owns={null}
+      className="MuiAutocomplete-root makeStyles-usernameInput-1 MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      role="combobox"
+      style={
+        Object {
+          "maxWidth": 500,
+        }
+      }
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink={false}
+          htmlFor="username"
+          id="username-label"
+        >
+          Username
+        </label>
+        <div
+          className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+          onClick={[Function]}
+        >
+          <input
+            aria-activedescendant={null}
+            aria-autocomplete="list"
+            aria-controls={null}
+            aria-invalid={false}
+            autoCapitalize="none"
+            autoComplete="off"
+            autoFocus={false}
+            className="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+            disabled={false}
+            id="username"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            required={false}
+            spellCheck="false"
+            type="text"
+            value=""
+          />
+          <div
+            className="MuiAutocomplete-endAdornment"
+          >
+            <button
+              aria-label="Clear"
+              className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              title="Clear"
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              aria-label="Open"
+              className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              title="Open"
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <fieldset
+            aria-hidden={true}
+            className="PrivateNotchedOutline-root-108 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              className="PrivateNotchedOutline-legendLabelled-110"
+            >
+              <span>
+                Username
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiFormControl-root MuiTextField-root makeStyles-messageInput-2"
+      onKeyDown={[Function]}
+    >
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
+        htmlFor="message-input"
+        id="message-input-label"
+      >
+        Send Message
+      </label>
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+        onClick={[Function]}
+      >
+        <textarea
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+          disabled={false}
+          id="message-input"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          rows={3}
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-108 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            className="PrivateNotchedOutline-legendLabelled-110"
+          >
+            <span>
+              Send Message
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submitButton-3 MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onSubmit={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="submit"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Send Message
+      </span>
+    </button>
+  </form>
+</div>
+`;

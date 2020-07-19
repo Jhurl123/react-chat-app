@@ -5,7 +5,9 @@ exports[`Message Pane Conversation Users Component renders as expected 1`] = `
   className="makeStyles-users-1"
 >
   <p>
-    
+    <strong>
+      
+    </strong>
   </p>
 </div>
 `;

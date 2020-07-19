@@ -35,11 +35,11 @@ describe('Sign Up Modal test', () => {
 
       let wrapper = mount(<SignUpModal />)
 
-     act( () => {
-        wrapper.find('.signup-button').first().simulate('click')
-      })
+      act( () => {
+          wrapper.find('.signup-button').first().simulate('click')
+        })
       
-      expect(wrapper.find('.login-button').first()).toBeNull()
+      expect(wrapper.find('.login-button').first()).toEqual({})
     })
 
   })

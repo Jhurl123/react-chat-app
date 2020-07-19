@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import renderer from 'react-test-renderer'
 import ConversationUsers from '../conversationUsers'
-import CONVERSATIONS from '../../chatList/conversationList'
 import localStorage from './localStorage'
 
 window.localStorage = localStorage

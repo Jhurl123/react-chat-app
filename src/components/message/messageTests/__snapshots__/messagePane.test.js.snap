@@ -2,21 +2,28 @@
 
 exports[`Message Pane component renders the ui as expected 1`] = `
 <div
-  className="makeStyles-MessagePane-4"
+  className="makeStyles-MessagePane-5"
 >
+  <div>
+    <h2
+      className="makeStyles-noPrompt-7"
+    >
+      Click the "Start Conversation" button to connect with new friends!
+    </h2>
+  </div>
   <ul
-    className="makeStyles-container-6"
+    className="makeStyles-container-8"
   />
 </div>
 `;
 
 exports[`Message Pane component renders the ui as expected when error is passed 1`] = `
 <div
-  className="makeStyles-MessagePane-4"
+  className="makeStyles-MessagePane-5"
 >
   <div>
     <div
-      className="MuiPaper-root MuiAlert-root MuiAlert-standardError makeStyles-errorMessage-5 MuiPaper-elevation0"
+      className="MuiPaper-root MuiAlert-root MuiAlert-standardError makeStyles-errorMessage-6 MuiPaper-elevation0"
       role="alert"
     >
       <div
@@ -45,8 +52,15 @@ exports[`Message Pane component renders the ui as expected when error is passed 
       </div>
     </div>
   </div>
+  <div>
+    <h2
+      className="makeStyles-noPrompt-7"
+    >
+      Click the "Start Conversation" button to connect with new friends!
+    </h2>
+  </div>
   <ul
-    className="makeStyles-container-6"
+    className="makeStyles-container-8"
   />
 </div>
 `;
