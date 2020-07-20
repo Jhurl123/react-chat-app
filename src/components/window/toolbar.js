@@ -57,7 +57,7 @@ const WindowToolbar = (props) => {
 
         <div className={classes.sectionMobile}>
           <IconButton 
-            aria-label="Open Conversations" 
+            aria-label="Open Conversations"
             color="inherit"
             onClick={e=>props.handleMenu(e)}
           >

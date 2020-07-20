@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`No Message Prompt tests renders the ui as expected 1`] = `
+<div>
+  <h2
+    className="makeStyles-noPrompt-1"
+  />
+</div>
+`;
